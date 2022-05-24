@@ -24,7 +24,7 @@
   
 
   <!-- CSS -->
-  <link rel="stylesheet" href="/css/themes/flatly.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/themes/yeti.css" media="screen" type="text/css">
   <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
   <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
   <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
@@ -42,6 +42,15 @@
   
   <!-- analytics -->
   
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script>
+
 
 
 
@@ -122,12 +131,16 @@
 		 </div> <!-- alert -->
 	  		
 
-	  <p>&amp;emsp; 原因不多说，总之下决心把Blog从Blogger迁移到Github。</p>
+	  <p>&emsp; 原因不多说，总之下决心把Blog从Blogger迁移到Github。</p>
 <p>具体过程：</p>
 <h5 id="一、在Github创建Github-Pages站点"><a href="#一、在Github创建Github-Pages站点" class="headerlink" title="一、在Github创建Github Pages站点"></a>一、在Github创建Github Pages站点</h5><p> 按<a target="_blank" rel="noopener" href="https://docs.github.com/cn/pages">官网教程</a>操作就行，这里有个<a target="_blank" rel="noopener" href="https://blog.csdn.net/yaorongke/article/details/119089190">史上最全教程</a>。</p>
 <br>
 
 <h5 id="二、安装建站工具"><a href="#二、安装建站工具" class="headerlink" title="二、安装建站工具"></a>二、安装建站工具</h5><p> 官网推荐用<a target="_blank" rel="noopener" href="https://jekyllrb.com/">Jekyll</a>，我用的 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">Hexo</a>，原因是上面史上最全教程推荐的。</p>
+<br>
+
+<h5 id="三、安装的插件"><a href="#三、安装的插件" class="headerlink" title="三、安装的插件"></a>三、安装的插件</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-tag-bootstrap --save</span><br><span class="line">npm install hexo-generator-search --save</span><br><span class="line">npm install hexo-excerpt --save</span><br></pre></td></tr></table></figure>
+
 <br>
 
 <h5 id="三、安装主题"><a href="#三、安装主题" class="headerlink" title="三、安装主题"></a>三、安装主题</h5><p>目前我用的主题是<a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-theme-freemind">Freemind</a>，优点：</p>
@@ -148,6 +161,20 @@
 	</div>
 
 	<!-- recommended posts -->
+	
+		
+
+    <div class="recommended_posts">
+        <h1>推荐文章</h1>
+        <ul>
+            
+                <li><a href="https://lthcweb.github.io/2022/05/21/char%EF%BC%8Cint%EF%BC%8Cfloat%EF%BC%8Cdouble%E6%89%80%E5%8D%A0%E5%AD%97%E8%8A%82%E6%95%B0/">char，int，float，double所占字节数</a></li>
+            
+                <li><a href="https://lthcweb.github.io/2022/05/19/hello-world/">Hello World</a></li>
+            
+        </ul>
+    </div>
+
 	
 
 	<div>
@@ -262,7 +289,7 @@
 	
 	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
 	   <div id="toc" class="toc collapse in">
-			<ol class="toc-article"><li class="toc-article-item toc-article-level-5"><a class="toc-article-link" href="#%E4%B8%80%E3%80%81%E5%9C%A8Github%E5%88%9B%E5%BB%BAGithub-Pages%E7%AB%99%E7%82%B9"><span class="toc-article-text">一、在Github创建Github Pages站点</span></a></li><li class="toc-article-item toc-article-level-5"><a class="toc-article-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85%E5%BB%BA%E7%AB%99%E5%B7%A5%E5%85%B7"><span class="toc-article-text">二、安装建站工具</span></a></li><li class="toc-article-item toc-article-level-5"><a class="toc-article-link" href="#%E4%B8%89%E3%80%81%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98"><span class="toc-article-text">三、安装主题</span></a></li><li class="toc-article-item toc-article-level-5"><a class="toc-article-link" href="#%E5%9B%9B%E3%80%81%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2"><span class="toc-article-text">四、自动部署</span></a></li></ol>
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-5"><a class="toc-article-link" href="#%E4%B8%80%E3%80%81%E5%9C%A8Github%E5%88%9B%E5%BB%BAGithub-Pages%E7%AB%99%E7%82%B9"><span class="toc-article-text">一、在Github创建Github Pages站点</span></a></li><li class="toc-article-item toc-article-level-5"><a class="toc-article-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85%E5%BB%BA%E7%AB%99%E5%B7%A5%E5%85%B7"><span class="toc-article-text">二、安装建站工具</span></a></li><li class="toc-article-item toc-article-level-5"><a class="toc-article-link" href="#%E4%B8%89%E3%80%81%E5%AE%89%E8%A3%85%E7%9A%84%E6%8F%92%E4%BB%B6"><span class="toc-article-text">三、安装的插件</span></a></li><li class="toc-article-item toc-article-level-5"><a class="toc-article-link" href="#%E4%B8%89%E3%80%81%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98"><span class="toc-article-text">三、安装主题</span></a></li><li class="toc-article-item toc-article-level-5"><a class="toc-article-link" href="#%E5%9B%9B%E3%80%81%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2"><span class="toc-article-text">四、自动部署</span></a></li></ol>
 		</div>
 	
 	</div>
