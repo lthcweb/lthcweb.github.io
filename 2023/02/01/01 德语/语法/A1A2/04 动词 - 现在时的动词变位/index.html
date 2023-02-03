@@ -29,7 +29,7 @@
 		if(typeof searchEngine == "undefined" || searchEngine == null || searchEngine == ""){
 			searchEngine = "https://www.google.com/search?q=";
 		}
-		var homeHost = "blog.matteo.eu.org";
+		var homeHost = "wujun234.github.io";
 		if(typeof homeHost == "undefined" || homeHost == null || homeHost == ""){
 			homeHost = window.location.host;
 		}
@@ -97,15 +97,7 @@ var _hmt = _hmt || [];
 		</li>
     
     
-      <li class="menu-item">
-        <a href="/tags" class="menu-item-link">标签</a>
-      </li>
-    
 
-    
-      <li class="menu-item">
-        <a href="/categories" class="menu-item-link">分类</a>
-      </li>
     
 
     
@@ -312,6 +304,28 @@ var _hmt = _hmt || [];
 									<a href="/2022/05/23/10%20%E5%85%B6%E4%BB%96/01%20%E7%BD%91%E7%AB%99%E7%9B%B8%E5%85%B3/Blog%E4%BB%8EBlogger%E8%BF%81%E7%A7%BB%E5%88%B0Github/">
                      
 										    Blog从Blogger迁移到Github
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2023/02/03/10%20%E5%85%B6%E4%BB%96/01%20%E7%BD%91%E7%AB%99%E7%9B%B8%E5%85%B3/Hexo%E6%94%AF%E6%8C%81%E6%B5%81%E7%A8%8B%E5%9B%BE/">
+                     
+										    Hexo支持流程图
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2023/02/02/10%20%E5%85%B6%E4%BB%96/01%20%E7%BD%91%E7%AB%99%E7%9B%B8%E5%85%B3/Markdown%E6%8F%92%E5%85%A5%E8%A7%86%E9%A2%91/">
+                     
+										    Markdown插入视频
                      
 									</a>
 								</li>
@@ -824,6 +838,11 @@ beauftragen - du beauftragst. er beauftragt.</p>
     <div class="post-guide">
         <div class="item left">
             
+              <a href="/2023/02/02/10%20%E5%85%B6%E4%BB%96/01%20%E7%BD%91%E7%AB%99%E7%9B%B8%E5%85%B3/Markdown%E6%8F%92%E5%85%A5%E8%A7%86%E9%A2%91/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  Markdown插入视频
+              </a>
+            
         </div>
         <div class="item right">
             
@@ -837,8 +856,24 @@ beauftragen - du beauftragst. er beauftragt.</p>
 
 
 
+	<div id="vcomments"></div>
+
 
 <script>
+	
+		// 评论
+		new Valine({
+			el: '#vcomments',
+			appId: '',
+			appKey: '',
+			placeholder: '请输入评论',
+			path: window.location.pathname,
+			avatar: 'retro',
+			highlight: false,
+      recordIP: true,
+      enableQQ: true,
+			requiredFields: ['nick','mail']
+		})
 	
 	
 </script>
@@ -869,6 +904,7 @@ beauftragen - du beauftragst. er beauftragt.</p>
 <script type="text/javascript"> 
 	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
 </script>
+
 	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
 </body>
 </html>
