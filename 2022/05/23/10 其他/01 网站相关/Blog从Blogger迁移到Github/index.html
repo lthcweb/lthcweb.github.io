@@ -77,6 +77,7 @@
 	
 		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 	
+
 <meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
@@ -211,7 +212,15 @@ var _hmt = _hmt || [];
 		</li>
     
     
+      <li class="menu-item">
+        <a href="/tags" class="menu-item-link">标签</a>
+      </li>
+    
 
+    
+      <li class="menu-item">
+        <a href="/categories" class="menu-item-link">分类</a>
+      </li>
     
 
     
@@ -726,8 +735,8 @@ quotes: '«»“”' # 'single'、"double" 变成 “single”、«single»
 <tr>
 <td>markdown-it-footnote</td>
 <td>脚注</td>
-<td><code>参考文献[^1]</code></td>
-<td>参考文献[^1]</td>
+<td><code>参考文献[^脚注]</code><br> <code>[^脚注]:脚注的内容</code></td>
+<td>参考文献<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></td>
 </tr>
 <tr>
 <td>markdown-it-ins</td>
@@ -818,22 +827,22 @@ quotes: '«»“”' # 'single'、"double" 变成 “single”、«single»
 :::
 </code></pre>
 <p>效果:</p>
-<div class="tips">
-<p><strong>提示</strong><br>
-这是一个提示</p>
-</div>
-<div class="warning">
-<p><strong>注意</strong><br>
-这是一个警告</p>
-</div>
-<div class="danger">
-<p><strong>警告</strong><br>
-这是一个危险信号</p>
-</div>
-<div class="success">
-<p><strong>成功</strong><br>
-这是一个成功信号</p>
-</div>
+<p>::: tips<br>
+<strong>提示</strong><br>
+这是一个提示<br>
+:::</p>
+<p>::: warning<br>
+<strong>注意</strong><br>
+这是一个警告<br>
+:::</p>
+<p>::: danger<br>
+<strong>警告</strong><br>
+这是一个危险信号<br>
+:::</p>
+<p>::: success<br>
+<strong>成功</strong><br>
+这是一个成功信号<br>
+:::</p>
 <pre><code>  自定义容器还需要在 Hexo 的主题下的控制 Markdown 渲染样式文件中配置如下 CSS 内容：（否则不会显示背景色填充效果）
 </code></pre>
 <pre><code>.tips {
@@ -954,6 +963,13 @@ git push
 - [Life]
 </code></pre>
 <p>此时这篇文章同时包括三个分类： PlayStation 和 Games 分别都是父分类 Diary 的子分类，同时 Life 是一个没有子分类的分类。</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>脚注的内容 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
 
 </div>
 
@@ -978,25 +994,31 @@ git push
     </div>
 
 
+ 
+	<!-- 解决giscus评论系统中文解码问题，详见 https://blog.southfox.me/2022/01/%E4%B8%BA%E5%8D%9A%E5%AE%A2%E6%94%AF%E6%8C%81%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/ -->
+	<meta property="og:title" content="2022/05/23/10 其他/01 网站相关/Blog从Blogger迁移到Github/"/>
+	<!-- <script type="module" src="https://unpkg.com/giscus?module"></script> 和下面二选一 -->
+	<script type="module" src="https://cdn.skypack.dev/giscus"></script>
+	<giscus-widget
+	  id="giscuscomments"
+	  repo="lthcweb/lthcweb.github.io"
+	  repoid="MDEwOlJlcG9zaXRvcnkzNjQzMzAzNzQ="
+	  category="Announcements"
+	  categoryid="DIC_kwDOFbc9hs4CPQN0"
+	  mapping="og:title"
+	  term="Welcome to giscus!"
+	  reactionsenabled="0"
+	  emitmetadata="0"
+	  inputposition="bottom"
+	  theme="light"
+	  lang="zh-CN"
+	  loading="lazy"
+	></giscus-widget>
+ 
 
-	<div id="vcomments"></div>
 
 
 <script>
-	
-		// 评论
-		new Valine({
-			el: '#vcomments',
-			appId: '',
-			appKey: '',
-			placeholder: '请输入评论',
-			path: window.location.pathname,
-			avatar: 'retro',
-			highlight: false,
-      recordIP: true,
-      enableQQ: true,
-			requiredFields: ['nick','mail']
-		})
 	
 	
 </script>
