@@ -8,6 +8,8 @@
 	<!-- title -->
 	
 	<title>
+	
+		char，int，float，double所占字节数 | 
 	 
 	个人笔记
 	</title>
@@ -250,7 +252,7 @@ var _hmt = _hmt || [];
 									</a>
 									
 							<ul>
-								<li class="file">
+								<li class="file active">
 									<a href="/2022/05/21/02%20C++/01%20C%E5%92%8CC++/char%EF%BC%8Cint%EF%BC%8Cfloat%EF%BC%8Cdouble%E6%89%80%E5%8D%A0%E5%AD%97%E8%8A%82%E6%95%B0/">
                      
 										    char，int，float，double所占字节数
@@ -384,33 +386,137 @@ var _hmt = _hmt || [];
 
 	<!-- 引入正文 -->
 	<div id="content">
-		<div id="index">
+		<h1 id="article-title">
+	char，int，float，double所占字节数
+</h1>
+<div class="article-meta">
 	
-		<div class="index-li">
-			<a href="/2022/05/26/02%20C++/03%20wxWidgets/c-%E3%80%81wxWidgets%E5%92%8Cxrc%E7%9A%84%E5%9B%BD%E9%99%85%E5%8C%96%EF%BC%88%E6%9C%AC%E5%9C%B0%E5%8C%96%EF%BC%89/">
-				<h2 class="index-title">
-					c++、wxWidgets和xrc的国际化（本地化）
-				</h2>
-				<div class="index-brief">
-					一、用poEdit生成.mo文件
+	<span>龙云</span>
+	<span>2022-05-21 23:37:45</span>
+		<div id="article-categories">
+    
+		<span>Categories：</span>
+            
+                
+                    <span>
+                        <i class="fa fa-folder" aria-hidden="true">
+                        <a href="/categories/c/">c++</a>
+                        </i>
+                      
+                    </span>
+                
+            
+    
 
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2022-05-26</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-	
-	<div id="index-paginator">
-		
-	</div>
+    
+		<span>Tags：</span>
+            
+                
+                    <span>
+                        <i class="fa fa-tag" aria-hidden="true">
+                        <a href="/tags/c/">c++</a>
+                        </i>
+                    </span>
+                
+            
+                
+                    <span>
+                        <i class="fa fa-tag" aria-hidden="true">
+                        <a href="/tags/数据类型/">数据类型</a>
+                        </i>
+                    </span>
+                
+            
+    
+		</div>
+
 </div>
 
+<div id="article-content">
+	<p>一般情况下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">编译器</th>
+<th style="text-align:center">char</th>
+<th style="text-align:center">short</th>
+<th style="text-align:center">int</th>
+<th style="text-align:center">long</th>
+<th style="text-align:center">float</th>
+<th style="text-align:center">double</th>
+<th style="text-align:center">指针</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">32位</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">4</td>
+</tr>
+<tr>
+<td style="text-align:center">64位</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">8</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/2022/05/23/10%20%E5%85%B6%E4%BB%96/01%20%E7%BD%91%E7%AB%99%E7%9B%B8%E5%85%B3/02%20Blog%E4%BB%8EBlogger%E8%BF%81%E7%A7%BB%E5%88%B0Github/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  Github Pages建立过程和详细教程
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+        </div>
+    </div>
+
+
+ 
+	<!-- 解决giscus评论系统中文解码问题，详见 https://blog.southfox.me/2022/01/%E4%B8%BA%E5%8D%9A%E5%AE%A2%E6%94%AF%E6%8C%81%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/ -->
+	<meta property="og:title" content="2022/05/21/02 C++/01 C和C++/char，int，float，double所占字节数/"/>
+	<!-- <script type="module" src="https://unpkg.com/giscus?module"></script> 和下面二选一 -->
+	<script type="module" src="https://cdn.skypack.dev/giscus"></script>
+	<giscus-widget
+	  id="giscuscomments"
+	  repo="lthcweb/lthcweb.github.io"
+	  repoid="MDEwOlJlcG9zaXRvcnkzNjQzMzAzNzQ="
+	  category="Announcements"
+	  categoryid="DIC_kwDOFbc9hs4CPQN0"
+	  mapping="og:title" 
+	  term="Welcome to giscus!"
+	  reactionsenabled="0"
+	  emitmetadata="0"
+	  inputposition="bottom"
+	  theme="light"
+	  lang="zh-CN"
+	  loading="lazy"
+	></giscus-widget>
+ 
+
+
+
+<script>
+	
+	
+</script>
 	</div>
 	<div id="footer">
 	<p>
