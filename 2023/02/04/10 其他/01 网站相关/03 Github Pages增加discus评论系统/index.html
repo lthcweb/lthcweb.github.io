@@ -8,6 +8,8 @@
 	<!-- title -->
 	
 	<title>
+	
+		Github Pages增加discus评论系统 | 
 	 
 	个人笔记
 	</title>
@@ -305,7 +307,7 @@ var _hmt = _hmt || [];
 							</ul>
 			
 							<ul>
-								<li class="file">
+								<li class="file active">
 									<a href="/2023/02/04/10%20%E5%85%B6%E4%BB%96/01%20%E7%BD%91%E7%AB%99%E7%9B%B8%E5%85%B3/03%20Github%20Pages%E5%A2%9E%E5%8A%A0discus%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/">
                      
 										    03 Github Pages增加discus评论系统
@@ -384,54 +386,219 @@ var _hmt = _hmt || [];
 
 	<!-- 引入正文 -->
 	<div id="content">
-		<div id="index">
+		<h1 id="article-title">
+	Github Pages增加discus评论系统
+</h1>
+<div class="article-meta">
 	
-		<div class="index-li">
-			<a href="/2023/02/01/01%20%E5%BE%B7%E8%AF%AD/01%20%E8%AF%AD%E6%B3%95/A1A2/04%20%E5%8A%A8%E8%AF%8D%20-%20%E7%8E%B0%E5%9C%A8%E6%97%B6%E7%9A%84%E5%8A%A8%E8%AF%8D%E5%8F%98%E4%BD%8D/">
-				<h2 class="index-title">
-					德语动词 - 现在时的动词变位
-				</h2>
-				<div class="index-brief">
-					1. 什么时候用现在时Präsens
+	<span>龙云</span>
+	<span>2023-02-04 20:55:00</span>
+		<div id="article-categories">
+    
+		<span>Categories：</span>
+            
+                
+                    <span>
+                        <i class="fa fa-folder" aria-hidden="true">
+                        <a href="/categories/其他/">其他</a>
+                        </i>
+                      
+                        >
+                      
+                    </span>
+                
+            
+                
+                    <span>
+                        <i class="fa fa-folder" aria-hidden="true">
+                        <a href="/categories/其他/网站相关/">网站相关</a>
+                        </i>
+                      
+                    </span>
+                
+            
+    
 
-表示正在进行的动作或存在的状态
-如：Wir lernen hier Deutsch. Ich wohne in Köln. Er arbeitet bei Siemens.
-表示一种持续行为如：Seit 10 Jahren wohnt er in Münche
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2023-02-01</span>
-                    
-                            
-                                
-                                    <span>
-                                        <i class="fa fa-folder" aria-hidden="true"></i>
-                                        <a href="/categories/德语/">德语</a>
-										
-											>
-										
-                                    </span>
-                                
-                            
-                                
-                                    <span>
-                                        <i class="fa fa-folder" aria-hidden="true"></i>
-                                        <a href="/categories/德语/语法/">语法</a>
-										
-                                    </span>
-                                
-                            
-                    
-                </div>
-		</div>	
-	
-	
-	<div id="index-paginator">
-		
-	</div>
+    
+		<span>Tags：</span>
+            
+                
+                    <span>
+                        <i class="fa fa-tag" aria-hidden="true">
+                        <a href="/tags/Blog/">Blog</a>
+                        </i>
+                    </span>
+                
+            
+    
+		</div>
+
 </div>
 
+<div id="article-content">
+	<h2 id="1-discus的特点">1. discus的特点</h2>
+<h4 id="👍-优点：">👍 优点：</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>不需要数据库，评论数据和文章放在一起，不用担心数据安全问题</p>
+</li>
+<li class="lvl-2">
+<p>楼中楼回复，适合博客系统</p>
+</li>
+<li class="lvl-2">
+<p>部署方便，傻瓜式部署</p>
+</li>
+<li class="lvl-2">
+<p>权限要求低</p>
+</li>
+<li class="lvl-2">
+<p>开源、免费、没有广告</p>
+</li>
+<li class="lvl-2">
+<p>支持多语言</p>
+</li>
+<li class="lvl-2">
+<p>支持自定义主题</p>
+</li>
+</ul>
+<h4 id="👎-缺点：">👎 缺点：</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>要求Github帐号，不过这也有好处，可以过滤一些垃圾评论。</p>
+</li>
+</ul>
+<h2 id="2-部署前的准备工作">2. 部署前的准备工作</h2>
+<h4 id="1-安装discus">1. 安装discus</h4>
+<p>打开 <a target="_blank" rel="noopener" href="https://github.com/apps/giscus%EF%BC%8C%E7%82%B9%E5%AE%89%E8%A3%85%EF%BC%8C%E5%A6%82%E4%B8%8B%E5%9B%BE%EF%BC%9A">https://github.com/apps/giscus，点安装，如下图：</a></p>
+<p><img src="https://raw.githubusercontent.com/lthcweb/BlogImg/main/gp/202302042314814.webp" alt="安装gisus"></p>
+<h4 id="2-为当前库打开-Discussions">2. 为当前库打开 Discussions</h4>
+<p>仓库 Setting –&gt; Features –&gt; 勾选 Discussions，如下图：</p>
+<p><img src="https://raw.githubusercontent.com/lthcweb/BlogImg/main/gp/202302042328709.webp" alt="打开Discussions"></p>
+<h4 id="3-配置discus">3. 配置discus</h4>
+<p>打开discus配置页面：<a target="_blank" rel="noopener" href="https://giscus.app/zh-CN">https://giscus.app/zh-CN</a> ，按如下设置，得到配置数据待用。</p>
+<p><img src="https://raw.githubusercontent.com/lthcweb/BlogImg/main/gp/202302042357762.webp" alt="discus配置页"></p>
+<h2 id="3-为文章添加discus评论组件">3. 为文章添加discus评论组件</h2>
+<h4 id="1-方法一">1. 方法一</h4>
+<p>适用于自带giscus的主题，如next，只需要安装插件就行。</p>
+<pre><code>npm install hexo-next-giscus --save
+</code></pre>
+<p>然后在hexo的_config.yml中添加：</p>
+<pre><code>giscus:
+    enable: true
+    repo=&quot;giscus/giscus-component&quot;
+    repo-id=&quot;MDEwOlJlcG9zaXRvcnkzOTEzMTMwMjA=&quot;
+    category=&quot;Announcements&quot;
+    category-id=&quot;DIC_kwDOF1L2fM4B-hVS&quot;
+    mapping=&quot;og:title&quot;
+    reactions-enabled=&quot;1&quot;
+    emit-metadata=&quot;1&quot;
+    input-position=&quot;top&quot;
+    theme=&quot;light&quot;
+    lang=&quot;zh-CN&quot;
+    loading=&quot;lazy&quot;
+    crossorigin=&quot;anonymous&quot;
+</code></pre>
+<h4 id="2-方法二">2. 方法二</h4>
+<p>适用于不带giscus的主题，在需要评论系统的位置，加入如下代码：</p>
+<pre><code>	&lt;!-- 解决giscus评论系统中文解码问题，详见 https://blog.southfox.me/2022/01/%E4%B8%BA%E5%8D%9A%E5%AE%A2%E6%94%AF%E6%8C%81%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/ --&gt;
+	&lt;% if (page.title)&#123; %&gt;&lt;meta property=&quot;og:title&quot; content=&quot;&lt;%= page.path %&gt;&quot;/&gt;&lt;% &#125; %&gt;
+  
+  &lt;!-- 下面两个script，二选一 --&gt;
+	&lt;!-- &lt;script type=&quot;module&quot; src=&quot;https://unpkg.com/giscus?module&quot;&gt;&lt;/script&gt; --&gt;
+	&lt;script type=&quot;module&quot; src=&quot;https://cdn.skypack.dev/giscus&quot;&gt;&lt;/script&gt;
+
+	&lt;giscus-widget
+	  id=&quot;giscuscomments&quot;
+	  repo=&quot;giscus/giscus-component&quot;
+	  repoid=&quot;MDEwOlJlcG9zaXRvcnkzOTEzMTMwMjA=&quot;
+	  category=&quot;Announcements&quot;
+	  categoryid=&quot;DIC_kwDOF1L2fM4B-hVS&quot;
+	  mapping=&quot;og:title&quot; 
+	  term=&quot;Welcome to giscus!&quot;
+	  reactionsenabled=&quot;1&quot;
+	  emitmetadata=&quot;1&quot;
+	  inputposition=&quot;top&quot;
+	  theme=&quot;light&quot;
+	  lang=&quot;zh-CN&quot;
+	  loading=&quot;lazy&quot;
+	&gt;&lt;/giscus-widget&gt;
+</code></pre>
+<h4 id="3-方法三">3. 方法三</h4>
+<p>适用于不带giscus的主题，在需要插入评论系统的位置，加入如下代码：</p>
+<pre><code>&lt;script src=&quot;https://giscus.app/client.js&quot;
+    data-repo=&quot;giscus/giscus-component&quot;
+    data-repo-id=&quot;MDEwOlJlcG9zaXRvcnkzOTEzMTMwMjA=&quot;
+    data-category=&quot;Announcements&quot;
+    data-category-id=&quot;DIC_kwDOF1L2fM4B-hVS&quot;
+    data-mapping=&quot;og:title&quot;
+    data-strict=&quot;0&quot;
+    data-reactions-enabled=&quot;1&quot;
+    data-emit-metadata=&quot;1&quot;
+    data-input-position=&quot;top&quot;
+    data-theme=&quot;light&quot;
+    data-lang=&quot;zh-CN&quot;
+    data-loading=&quot;lazy&quot;
+    crossorigin=&quot;anonymous&quot;
+    async&gt;
+&lt;/script&gt;
+</code></pre>
+<h2 id="4-discus的高级用法">4. discus的高级用法</h2>
+<p>以上设置，一般够用了，更多高级设置<a target="_blank" rel="noopener" href="https://github.com/giscus/giscus/blob/main/ADVANCED-USAGE.md">点我直达</a></p>
+<h2 id="5-效果预览">5. 效果预览</h2>
+<p><a target="_blank" rel="noopener" href="https://giscus.app/zh-CN">giscus</a></p>
+<p><a target="_blank" rel="noopener" href="https://mazhuang.org/2020/05/03/blog-template-qna/">码志</a></p>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/2023/02/05/10%20%E5%85%B6%E4%BB%96/02%20Markdown%E6%8A%80%E6%9C%AF/01%20Markdown%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  Markdown常用功能
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2023/02/03/10%20%E5%85%B6%E4%BB%96/02%20Markdown%E6%8A%80%E6%9C%AF/03%20Markdown%E7%94%A8Mermaid%E6%98%BE%E7%A4%BA%E6%B5%81%E7%A8%8B%E5%9B%BE%E7%AD%89%E5%9B%BE%E5%BD%A2/">
+                Markdown用Mermaid显示流程图等图形
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+ 
+	<!-- 解决giscus评论系统中文解码问题，详见 https://blog.southfox.me/2022/01/%E4%B8%BA%E5%8D%9A%E5%AE%A2%E6%94%AF%E6%8C%81%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/ -->
+	<meta property="og:title" content="2023/02/04/10 其他/01 网站相关/03 Github Pages增加discus评论系统/"/>
+	<!-- <script type="module" src="https://unpkg.com/giscus?module"></script> 和下面二选一 -->
+	<script type="module" src="https://cdn.skypack.dev/giscus"></script>
+	<giscus-widget
+	  id="giscuscomments"
+	  repo="lthcweb/lthcweb.github.io"
+	  repoid="MDEwOlJlcG9zaXRvcnkzNjQzMzAzNzQ="
+	  category="Announcements"
+	  categoryid="DIC_kwDOFbc9hs4CPQN0"
+	  mapping="og:title" 
+	  term="Welcome to giscus!"
+	  reactionsenabled="0"
+	  emitmetadata="0"
+	  inputposition="bottom"
+	  theme="light"
+	  lang="zh-CN"
+	  loading="lazy"
+	></giscus-widget>
+ 
+
+
+
+<script>
+	
+	
+</script>
 	</div>
 	<div id="footer">
 	<p>
