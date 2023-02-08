@@ -341,7 +341,7 @@ var _hmt = _hmt || [];
 									
 							<ul>
 								<li class="file">
-									<a href="/2023/02/07/10%20%E5%85%B6%E4%BB%96/02%20Markdown%E6%8A%80%E6%9C%AF/01%20%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD/">
+									<a href="/2023/02/08/10%20%E5%85%B6%E4%BB%96/02%20Markdown%E6%8A%80%E6%9C%AF/01%20%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD/">
                      
 										    01 常用功能
                      
@@ -764,6 +764,40 @@ AUTH_TWITTER_CSEC=4J2VC53Uu4z4qSF2DIUWfsu22Mg7dvu6LJ0pQ6VO4P********
 <pre><code>AUTH_GOOGLE_CID=*********************.apps.googleusercontent.com
 AUTH_GOOGLE_CSEC=******************
 </code></pre>
+<h2 id="域名管理邮件">域名管理邮件</h2>
+<p>在<a target="_blank" rel="noopener" href="https://improvmx.com/">improvmx.com</a> 经过简单配置后，可以<code>@你的域名</code>的邮件到指定邮箱，特别适合那些只需要收件的邮箱。</p>
+<ol>
+<li class="lvl-3">
+<p>将域名MX记录解析到 ImprovMX</p>
+<table>
+<thead>
+<tr>
+<th>Host</th>
+<th>Value</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>@</td>
+<td><a target="_blank" rel="noopener" href="http://mx1.improvmx.com">mx1.improvmx.com</a></td>
+<td>10</td>
+</tr>
+<tr>
+<td>@</td>
+<td><a target="_blank" rel="noopener" href="http://mx2.improvmx.com">mx2.improvmx.com</a></td>
+<td>20</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="lvl-3">
+<p>访问 <a target="_blank" rel="noopener" href="http://improvmx.com">http://improvmx.com</a> 填写</p>
+</li>
+</ol>
+<p>【Domain name】为解析的域名</p>
+<p>【Your email address】 为要接收转发邮件的邮箱，(可以使用国内邮箱)。</p>
+<p>然后点击 【Verify and start forwarding】</p>
 
 </div>
 
@@ -771,7 +805,7 @@ AUTH_GOOGLE_CSEC=******************
     <div class="post-guide">
         <div class="item left">
             
-              <a href="/2023/02/07/10%20%E5%85%B6%E4%BB%96/02%20Markdown%E6%8A%80%E6%9C%AF/01%20%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD/">
+              <a href="/2023/02/08/10%20%E5%85%B6%E4%BB%96/02%20Markdown%E6%8A%80%E6%9C%AF/01%20%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD/">
                   <i class="fa fa-angle-left" aria-hidden="true"></i>
                   Markdown常用功能
               </a>
@@ -795,9 +829,10 @@ AUTH_GOOGLE_CSEC=******************
 	   var remark_config = {
 	    host: 'https://remark.matteo.eu.org',
 	    site_id: 'matteo',
-      local: 'zh',
-      simple_view: true,
-      no_footer: true
+	   components: ['embed' | 'last-comments' | 'counter'],
+     	   locale: 'zh',
+                 simple_view: false,
+                no_footer: true
 	  }
 	</script>
 
