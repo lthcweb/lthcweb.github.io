@@ -9,7 +9,7 @@
 	
 	<title>
 	
-		安装Remark42评论系统 | 
+		史上最全Remark42评论系统安装教程 | 
 	 
 	个人笔记
 	</title>
@@ -319,9 +319,20 @@ var _hmt = _hmt || [];
 			
 							<ul>
 								<li class="file active">
-									<a href="/2023/02/07/10%20%E5%85%B6%E4%BB%96/01%20%E7%BD%91%E7%AB%99%E7%9B%B8%E5%85%B3/04%20%E5%AE%89%E8%A3%85Remark42%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/">
+									<a href="/2023/02/07/10%20%E5%85%B6%E4%BB%96/01%20%E7%BD%91%E7%AB%99%E7%9B%B8%E5%85%B3/04%20%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8Remark42%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">
                      
-										    04 安装Remark42评论系统
+										    04 史上最全Remark42评论系统安装教程
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2023/02/08/10%20%E5%85%B6%E4%BB%96/01%20%E7%BD%91%E7%AB%99%E7%9B%B8%E5%85%B3/05%20%E5%9F%BA%E4%BA%8E%E5%9F%9F%E5%90%8D%E5%88%9B%E5%BB%BA%E6%97%A0%E9%99%90%E6%95%B0%E9%87%8F%E7%9A%84%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6email/">
+                     
+										    05 基于域名创建无限数量的电子邮件email
                      
 									</a>
 								</li>
@@ -398,7 +409,7 @@ var _hmt = _hmt || [];
 	<!-- 引入正文 -->
 	<div id="content">
 		<h1 id="article-title">
-	安装Remark42评论系统
+	史上最全Remark42评论系统安装教程
 </h1>
 <div class="article-meta">
 	
@@ -447,7 +458,106 @@ var _hmt = _hmt || [];
 </div>
 
 <div id="article-content">
-	<h2 id="1-Remark42介绍">1. Remark42介绍</h2>
+	<p>Remark42是一个开源的、轻量级、强大的评论系统，注重隐私，不会搜集信息到第三方。 它可以嵌套到Blog、文章页面或者是你想有评论功能的任何地方。<br>
+Remark42并不是开箱即用，现在把安装方法记录下来，给需要用到的人参考，请算是小白，按照这个教程都可以轻松搭建。<br>
+<a target="_blank" rel="noopener" href="https://github.com/umputun/remark42">Remark在Github上的原代码</a></p>
+<span id="more"></span>  
+<h2 id="1-Remark42介绍">1. Remark42介绍</h2>
+<p>Remark42是一个开源的、轻量级、强大的评论系统，注重隐私。</p>
+<h3 id="1-1-功能">1.1 功能</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>支持 Markdown emoji</p>
+</li>
+<li class="lvl-2">
+<p>支持匿名、邮箱登录</p>
+</li>
+<li class="lvl-2">
+<p>支持各种OAuth，如GitHub、Google、Facebook、Twitter、Yandex、</p>
+</li>
+<li class="lvl-2">
+<p>颜值也不错，支持浅色和深色模式，带有树和普通演示文稿的多层嵌套评论</p>
+</li>
+<li class="lvl-2">
+<p>支持数据迁移，可以导入Disqus和WordPress的评论数据</p>
+</li>
+<li class="lvl-2">
+<p>强大的管理功能，管理员可以置顶、删除评论和用户禁言</p>
+</li>
+<li class="lvl-2">
+<p>支持投票，个人标示和验证</p>
+</li>
+<li class="lvl-2">
+<p>支持多种评论排序</p>
+</li>
+<li class="lvl-2">
+<p>图片可以可视化导入</p>
+</li>
+<li class="lvl-2">
+<p>支持最近的评论</p>
+</li>
+<li class="lvl-2">
+<p>支持RSS</p>
+</li>
+<li class="lvl-2">
+<p>支持通知</p>
+</li>
+<li class="lvl-2">
+<p>支持手动备份和自动备份，支持备份数据恢复</p>
+</li>
+<li class="lvl-2">
+<p>没有数据库，存储使用单一文件</p>
+</li>
+<li class="lvl-2">
+<p>支持Docker的部署</p>
+</li>
+<li class="lvl-2">
+<p>支持Linux, Windows和MacOS系统</p>
+</li>
+<li class="lvl-2">
+<p>一套评论系统可以用于多个网站</p>
+</li>
+<li class="lvl-2">
+<p>支持HTTPS的访问</p>
+</li>
+</ul>
+<h3 id="1-2-注重隐私">1.2 注重隐私</h3>
+<p><a target="_blank" rel="noopener" href="https://www.7benshu.com/post/2019/11/3/">以下注重隐私说明摘自拉斐</a></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>Remark42试图对任何私有或半私有信息非常敏感。</p>
+</li>
+<li class="lvl-2">
+<p>身份验证从身份验证提供程序请求最小可能的范围。他们返回的所有额外信息将立即丢弃，并且不会以任何形式存储。</p>
+</li>
+<li class="lvl-2">
+<p>通常，remark42仅保留用户ID，用户名和头像链接。这些字段均不直接公开-标识和名称进行了- 哈希处理，并附加了头像。</p>
+</li>
+<li class="lvl-2">
+<p>没有任何形式的跟踪。</p>
+</li>
+<li class="lvl-2">
+<p>登录技工使用存储在cookie（httpOnly，安全）中的JWT。第二个cookie（XSRF_TOKEN）是防止CSRF的随机ID。</p>
+</li>
+<li class="lvl-2">
+<p>没有跨站点登录，即无法在运行remark42的独立站点之间分析用户的行为。</p>
+</li>
+<li class="lvl-2">
+<p>不涉及第三方分析服务。</p>
+</li>
+<li class="lvl-2">
+<p>用户可以要求remark42知道的所有信息并导出到gz文件。</p>
+</li>
+<li class="lvl-2">
+<p>支持彻底清除与用户活动有关的所有信息。</p>
+</li>
+<li class="lvl-2">
+<p>Cookie的寿命可以限制为仅会话。</p>
+</li>
+<li class="lvl-2">
+<p>由remark42存储的所有潜在敏感数据都经过哈希处理和加密。</p>
+</li>
+</ul>
 <h2 id="2-安装">2. 安装</h2>
 <h3 id="2-1-前提条件">2.1 前提条件</h3>
 <ul class="lvl-0">
@@ -537,7 +647,7 @@ systemctl stop nginx
 <p>注意：如果需要生成泛域名（*.a.com）的证书，不能使用HTTP认证域名，需要改用DNS认证的方式。</p>
 <p>验证域名的方法有多种，这里采用自建虚拟webserver的http验证方式，要求服务器没有占用80端口，这也是上面停止nginx的原因。</p>
 <p>如果服务器已有80端口的服务，不建议使用自建虚拟webserver，此方式续租时略麻烦需要改造。</p>
-<pre><code>~/.acme.sh/acme.sh --issue -d remark.matteo.eu.org --standalone
+<pre><code>~/.acme.sh/acme.sh --issue -d remark2.sample.com --standalone
 </code></pre>
 <p><img src="https://raw.githubusercontent.com/lthcweb/BlogImg/main/gp/202302071402099.webp" alt="生成并验证证书"></p>
 <ol start="6">
@@ -571,7 +681,7 @@ systemctl stop nginx
 		--key-file   /etc/nginx/cert_file/key.pem  \
 		--fullchain-file /etc/nginx/cert_file/fullchain.pem
 </code></pre>
-<h3 id="2-3-2-修改nginx的配置文件，让remark42使用证书">2.3.2. 修改nginx的配置文件，让remark42使用证书</h3>
+<h4 id="2-3-2-修改nginx的配置文件，让remark42使用证书">2.3.2. 修改nginx的配置文件，让remark42使用证书</h4>
 <ol>
 <li class="lvl-3">
 <p>查看nginx配置文件位置</p>
@@ -632,7 +742,7 @@ systemctl stop nginx
 
 server &#123;
   listen 80;
-  server_name remark.matteo.eu.org
+  server_name remark2.sample.com
   return      301 https://remark42.sample.com$request_uri;
 &#125;
 </code></pre>
@@ -648,8 +758,30 @@ exit # 退出root模式，remark42只需要用户模式
 <p>这时候打开 <a target="_blank" rel="noopener" href="https://remark42.sample.com/web/%EF%BC%8C">https://remark42.sample.com/web/，</a><mark>不需要8080端口号</mark>，就能看到：</p>
 <p><img src="https://raw.githubusercontent.com/lthcweb/BlogImg/main/gp/202302071314600.webp" alt="remrk42安装成功"></p>
 <p>这时候还能打开 <a target="_blank" rel="noopener" href="http://remark42.sample.com:8080/web/">http://remark42.sample.com:8080/web/</a> ，不过已经不需要了，可以在服务器关闭http流量。</p>
-<h2 id="3-Remark42服务端配置">3. Remark42服务端配置</h2>
-<h3 id="3-1-实现开机自启动">3.1 实现开机自启动</h3>
+<h2 id="3-Remark42-前端配置">3. Remark42 前端配置</h2>
+<ol>
+<li class="lvl-3">
+<p>把以下代码嵌入到需要显示评论的地方</p>
+</li>
+</ol>
+<pre><code>&lt;div id=&quot;remark42&quot;&gt;&lt;/div&gt;
+</code></pre>
+<ol start="2">
+<li class="lvl-3">
+<p>在适当位置添加以下初始化脚本，如footer之类的地方</p>
+</li>
+</ol>
+<pre><code>&lt;script&gt;
+    var remark_config = &#123;
+    host: 'https://remark42.sample.com',
+    &#125;
+&lt;/script&gt;
+
+&lt;script&gt;!function(e,n)&#123;for(var o=0;o&lt;e.length;o++)&#123;var r=n.createElement(&quot;script&quot;),c=&quot;.js&quot;,d=n.head||n.body;&quot;noModule&quot;in r?(r.type=&quot;module&quot;,c=&quot;.mjs&quot;):r.async=!0,r.defer=!0,r.src=remark_config.host+&quot;/web/&quot;+e[o]+c,d.appendChild(r)&#125;&#125;(remark_config.components||[&quot;embed&quot;],document);&lt;/script&gt;
+</code></pre>
+<p>详细配置在这里 <a target="_blank" rel="noopener" href="https://remark42.com/docs/configuration/frontend/">Remark42前端详细配置</a></p>
+<h2 id="4-Remark42-服务端配置">4. Remark42 服务端配置</h2>
+<h3 id="4-1-实现开机自启动">4.1 实现开机自启动</h3>
 <p>我们需要用系统服务来实现开机自启动，方法如下：</p>
 <ol>
 <li class="lvl-3">
@@ -668,7 +800,7 @@ chown :remark42 /var/www/remark42
 </code></pre>
 <ol start="3">
 <li class="lvl-3">
-<p>建立环境配置文件</p>
+<p>建立环境配置文件注意 <code>SECRET</code> <mark>不能使用特殊字符</mark>，只能使用大小写字母和数字。</p>
 </li>
 </ol>
 <pre><code>vim /var/www/remark42/remark42.conf
@@ -680,7 +812,7 @@ AUTH_ANON=true
 EMOJI=true
 </code></pre>
 <p><code>AUTH_ANON=true</code> 将允许匿名访问和留言。</p>
-<ol start="4">
+<ol>
 <li class="lvl-3">
 <p>建立系统服务</p>
 </li>
@@ -710,8 +842,8 @@ WantedBy=multi-user.target
 </ol>
 <pre><code>systemctl enable --now remark42
 </code></pre>
-<h3 id="3-2-OAuth，-如Github-Google-Telegram-Microsoft-…">3.2 OAuth， 如Github, Google, Telegram, Microsoft …</h3>
-<h4 id="3-2-1-Github">3.2.1 Github</h4>
+<h3 id="4-2-匿名登录、邮箱登录和第三方应用登录，如Github-Google-Telegram-Twitter-…">4.2 匿名登录、邮箱登录和第三方应用登录，如Github, Google, Telegram, Twitter …</h3>
+<h4 id="4-2-1-Github-登录">4.2.1 Github 登录</h4>
 <ol>
 <li class="lvl-3">
 <p>在 “<strong>OAuth App</strong>”: <a target="_blank" rel="noopener" href="https://github.com/settings/developers">https://github.com/settings/developers</a></p>
@@ -735,7 +867,7 @@ Homepage URL里填上面的域名，如 <a target="_blank" rel="noopener" href="
 <pre><code>AUTH_GITHUB_CID=120c550d7e13****************
 AUTH_GITHUB_CSEC=107e234ee97b10269be7e40dc84ae26e********
 </code></pre>
-<h4 id="3-2-2-Twitter">3.2.2 Twitter</h4>
+<h4 id="34-2-2-Twitter-登录">34.2.2 Twitter 登录</h4>
 <ol>
 <li class="lvl-3">
 <p>在 “<strong>OAuth App</strong>”: <a target="_blank" rel="noopener" href="https://developer.twitter.com/en/apps">https://developer.twitter.com/en/apps</a></p>
@@ -759,45 +891,170 @@ AUTH_GITHUB_CSEC=107e234ee97b10269be7e40dc84ae26e********
 <pre><code>AUTH_TWITTER_CID=bTuOD2ZmCKWvQiOil********
 AUTH_TWITTER_CSEC=4J2VC53Uu4z4qSF2DIUWfsu22Mg7dvu6LJ0pQ6VO4P********
 </code></pre>
-<h4 id="3-2-3-Google">3.2.3 Google</h4>
+<h4 id="4-2-3-Google-登录">4.2.3 Google 登录</h4>
 <p>Google登录按<a target="_blank" rel="noopener" href="https://remark42.com/docs/configuration/authorization/">官网教程</a> 操作。</p>
 <pre><code>AUTH_GOOGLE_CID=*********************.apps.googleusercontent.com
 AUTH_GOOGLE_CSEC=******************
 </code></pre>
-<h2 id="域名管理邮件">域名管理邮件</h2>
-<p>在<a target="_blank" rel="noopener" href="https://improvmx.com/">improvmx.com</a> 经过简单配置后，可以<code>@你的域名</code>的邮件到指定邮箱，特别适合那些只需要收件的邮箱。</p>
+<h4 id="4-2-4-Email-登录">4.2.4 Email 登录</h4>
+<p>使用邮件相关功能，需要一个smtp服务器，这里以<a target="_blank" rel="noopener" href="https://www.sendgrid.com">SendGrid</a> 示例。</p>
 <ol>
 <li class="lvl-3">
-<p>将域名MX记录解析到 ImprovMX</p>
-<table>
-<thead>
-<tr>
-<th>Host</th>
-<th>Value</th>
-<th>Priority</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>@</td>
-<td><a target="_blank" rel="noopener" href="http://mx1.improvmx.com">mx1.improvmx.com</a></td>
-<td>10</td>
-</tr>
-<tr>
-<td>@</td>
-<td><a target="_blank" rel="noopener" href="http://mx2.improvmx.com">mx2.improvmx.com</a></td>
-<td>20</td>
-</tr>
-</tbody>
-</table>
-</li>
-<li class="lvl-3">
-<p>访问 <a target="_blank" rel="noopener" href="http://improvmx.com">http://improvmx.com</a> 填写</p>
+<p>在SengGrid获取Api Key<br>
+在<a target="_blank" rel="noopener" href="https://www.sendgrid.com">SendGrid官网</a> 注册登后：</p>
 </li>
 </ol>
-<p>【Domain name】为解析的域名</p>
-<p>【Your email address】 为要接收转发邮件的邮箱，(可以使用国内邮箱)。</p>
-<p>然后点击 【Verify and start forwarding】</p>
+<p><img src="https://raw.githubusercontent.com/lthcweb/BlogImg/main/gp/202302081415414.webp" alt="sendgrid"><br>
+<img src="https://raw.githubusercontent.com/lthcweb/BlogImg/main/gp/202302081415415.webp" alt="sendgrid"></p>
+<p>记录好这个&quot;<strong>Password</strong>&quot;，填到下面 <code>SMTP_PASSWORD</code> 字段。</p>
+<ol start="2">
+<li class="lvl-3">
+<p>启用邮箱设置</p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>要启用任何邮箱功能，下面四个字段必须有：</p>
+</li>
+</ul>
+<pre><code>SMTP_HOST=smtp.sendgrid.net
+SMTP_PORT=465
+SMTP_TLS=true
+SMTP_USERNAME=apikey
+SMTP_PASSWORD=SG.9-FfVdzMSoODgml-UTenZg.OtfpYh233r3na9Ss9ii69CCChMtyqbSJfZtBN0cVI4
+</code></pre>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>启用邮箱登录验证<br>
+AUTH_EMAIL_ENABLE=true<br>
+<a href="mailto:AUTH_EMAIL_FROM=noreply@matteo.eu.org">AUTH_EMAIL_FROM=noreply@matteo.eu.org</a><br>
+AUTH_EMAIL_SUBJ=“在 <a target="_blank" rel="noopener" href="http://Matteo.eu.org">Matteo.eu.org</a> 留言确认”<br>
+AUTH_EMAIL_CONTENT_TYPE=“text/html”</p>
+</li>
+<li class="lvl-2">
+<p>启用用户通知<br>
+NOTIFY_USERS=email<br>
+<a href="mailto:NOTIFY_EMAIL_FROM=noreply@matteo.eu.org">NOTIFY_EMAIL_FROM=noreply@matteo.eu.org</a><br>
+NOTIFY_EMAIL_VERIFICATION_SUBJ=‘邮件确认’</p>
+</li>
+<li class="lvl-2">
+<p>启用管理员通知<br>
+NOTIFY_ADMINS=email<br>
+<a href="mailto:NOTIFY_EMAIL_FROM=noreply@matteo.eu.org">NOTIFY_EMAIL_FROM=noreply@matteo.eu.org</a><br>
+<a href="mailto:ADMIN_SHARED_EMAIL=admin@matteo.eu.org">ADMIN_SHARED_EMAIL=admin@matteo.eu.org</a></p>
+</li>
+</ul>
+<h4 id="4-2-5-Teletram-登录">4.2.5 Teletram 登录</h4>
+<ol>
+<li class="lvl-3">
+<p>获取 HTTP API<br>
+和<a target="_blank" rel="noopener" href="https://t.me/botfather">@BotFather</a> 聊天</p>
+</li>
+</ol>
+<pre><code>/newbot
+</code></pre>
+<p>输入独一无二的机器人名字，Telegram就会给出 HTTP API.</p>
+<ol start="2">
+<li class="lvl-3">
+<p>启用 Telegram 登录</p>
+</li>
+</ol>
+<pre><code>AUTH_TELEGRAM=true
+</code></pre>
+<ol start="3">
+<li class="lvl-3">
+<p>管理员通知</p>
+</li>
+</ol>
+<p>创建一个频道，将上面的机器人作为管理员添加到其中，配置文件中设置频道ID。<a target="_blank" rel="noopener" href="https://github.com/GabrielRF/telegram-id#web-channel-id">Telegram私有频道ID获取办法</a> ，ID是13位数字，以<code>-</code>负号开始</p>
+<pre><code>NOTIFY_ADMINS=telegram
+NOTIFY_TELEGRAM_CHAN=-100**********
+NOTIFY_TYPE=telegram
+NOTIFY_TELEGRAM_TOKEN=62*****253:AA***********************************
+</code></pre>
+<ol start="4">
+<li class="lvl-3">
+<p>用户通知<br>
+暂时不能使用</p>
+</li>
+</ol>
+<h2 id="5-一些高级使用技巧">5. 一些高级使用技巧</h2>
+<h3 id="5-1-SSL证书自动续期">5.1 SSL证书自动续期</h3>
+<p>申请的SSL证书有效期只有几个月，超过后就要续期。<br>
+上面 <a href="#2.3.1-%E7%94%B3%E8%AF%B7ssl%E8%AF%81%E4%B9%A6">申请ssl证书</a> 的安装脚本自带自动续期功能。</p>
+<h3 id="5-2-实现开机自启动">5.2 实现开机自启动</h3>
+<p>见上面 <a href="#4.1-%E5%AE%9E%E7%8E%B0%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E5%8A%A8">实现开机自启动</a>。</p>
+<h3 id="5-3-多网站共用一个Remark42系统">5.3 多网站共用一个Remark42系统</h3>
+<p>从这里得到的方法： <a target="_blank" rel="noopener" href="https://github.com/umputun/remark42/discussions/950">方法来源</a></p>
+<h4 id="5-3-1-步骤一，设置前端代码的-site-id">5.3.1 步骤一，设置前端代码的 <code>site_id</code></h4>
+<p>网站一：</p>
+<pre><code>&lt;script&gt;
+    var remark_config = &#123;
+    host: 'https://remark42.sameple.com',
+    site_id: 'mysite1',
+    &#125;
+&lt;/script&gt;
+</code></pre>
+<p>网站二：</p>
+<pre><code>&lt;script&gt;
+    var remark_config = &#123;
+    host: 'https://remark42.sameple.com',
+    site_id: 'mysite2',
+    &#125;
+&lt;/script&gt;
+</code></pre>
+<h4 id="5-3-2-步骤二，服务端设置">5.3.2 步骤二，服务端设置</h4>
+<ol>
+<li class="lvl-3">
+<p>如果用命令行启动，site参数如下</p>
+</li>
+</ol>
+<pre><code>--site=mysite1 --site=mysite2
+</code></pre>
+<ol start="2">
+<li class="lvl-3">
+<p>如果用环境参数启动，</p>
+</li>
+</ol>
+<pre><code>SITE=mysite1,mysite2
+</code></pre>
+<h3 id="5-4-管理评论">5.4 管理评论</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>管理员ID在 <code>ADMIN_SHARED_ID</code> 字段设置，可以多个，用 <code>,</code> 隔开。</p>
+</li>
+</ul>
+<pre><code>ADMIN_SHARED_ID=github_a0698fa40eexxxxxxxxxxxx,google_0718xxxxxxxxxxxxxxxxxx
+</code></pre>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>怎么获得ID？在评论区登录后，点击登录的用户名，会打开个人ID，双击可以选择。</p>
+</li>
+<li class="lvl-2">
+<p>管理员在评论区登录后，可以执行管理操作，如删封黑。</p>
+</li>
+</ul>
+<h3 id="5-5-备份和恢复">5.5 备份和恢复</h3>
+<h4 id="5-5-1-备份数据">5.5.1 备份数据</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>自动备份<br>
+Remark42 默认在${BACKUP_PATH}(default ./var/backup) 下制作每日备份文件。备份最多${MAX_BACKUP_FILES}（默认 10）。每个备份文件都包含导出和 gzip 压缩的内容，即所有注释。</p>
+</li>
+<li class="lvl-2">
+<p>手动备份手动备份需要设置 <code>ADMIN_PASSWD</code> 并启用 ，注意密码不能使用特殊字符。</p>
+<pre><code>ADMIN_PASSWD=4ot8kfgahdGFHH3
+</code></pre>
+<p>备份命令：</p>
+<pre><code>./remark42.linux-386 --url=https://remark42.sample.com --secret=some_secret_key_phrase_1234 backup --site=sample --admin-passwd=4ot8kfgahdGFHH3
+</code></pre>
+</li>
+</ul>
+<h4 id="5-5-2-恢复数据">5.5.2 恢复数据</h4>
+<p>恢复数据需要设置 <code>ADMIN_PASSWD</code> 并启用。恢复命令:</p>
+<pre><code>./remark42.linux-386 --url=https://remark42.sample.com --secret=some_secret_key_phrase_1234 restore --file=userbackup-matteo-20230208T185724.gz --site=sample --admin-passwd=4ot8kfgahdGFHH3
+</code></pre>
+<p><mark>恢复命令会删除现有的所有评论</mark>，如要合并现在评论，看<a target="_blank" rel="noopener" href="https://remark42.com/docs/backup/restore/">官网教程</a></p>
 
 </div>
 
@@ -805,9 +1062,9 @@ AUTH_GOOGLE_CSEC=******************
     <div class="post-guide">
         <div class="item left">
             
-              <a href="/2023/02/08/10%20%E5%85%B6%E4%BB%96/02%20Markdown%E6%8A%80%E6%9C%AF/01%20%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD/">
+              <a href="/2023/02/08/10%20%E5%85%B6%E4%BB%96/01%20%E7%BD%91%E7%AB%99%E7%9B%B8%E5%85%B3/05%20%E5%9F%BA%E4%BA%8E%E5%9F%9F%E5%90%8D%E5%88%9B%E5%BB%BA%E6%97%A0%E9%99%90%E6%95%B0%E9%87%8F%E7%9A%84%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6email/">
                   <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  Markdown常用功能
+                  基于域名创建无限数量的电子邮件email
               </a>
             
         </div>
