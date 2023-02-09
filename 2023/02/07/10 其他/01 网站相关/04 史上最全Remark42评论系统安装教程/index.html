@@ -352,7 +352,7 @@ var _hmt = _hmt || [];
 									
 							<ul>
 								<li class="file">
-									<a href="/2023/02/08/10%20%E5%85%B6%E4%BB%96/02%20Markdown%E6%8A%80%E6%9C%AF/01%20%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD/">
+									<a href="/2023/02/09/10%20%E5%85%B6%E4%BB%96/02%20Markdown%E6%8A%80%E6%9C%AF/01%20%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD/">
                      
 										    01 常用功能
                      
@@ -1008,18 +1008,47 @@ NOTIFY_TELEGRAM_TOKEN=62*****253:AA***********************************
 <h4 id="5-3-2-步骤二，服务端设置">5.3.2 步骤二，服务端设置</h4>
 <ol>
 <li class="lvl-3">
-<p>如果用命令行启动，site参数如下</p>
+<p>网站 id 设置</p>
 </li>
 </ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>如果用命令行启动，site参数如下</p>
+</li>
+</ul>
 <pre><code>--site=mysite1 --site=mysite2
+</code></pre>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>如果用环境参数启动，</p>
+</li>
+</ul>
+<pre><code>SITE=mysite1,mysite2
 </code></pre>
 <ol start="2">
 <li class="lvl-3">
-<p>如果用环境参数启动，</p>
+<p>是否跨域设置，可能有以下组合：</p>
 </li>
 </ol>
-<pre><code>SITE=mysite1,mysite2
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>不设置任何值</strong>：在安装Remark42的同一域和子域上可用。</p>
+</li>
+<li class="lvl-2">
+<p><strong>ALLOWED_HOSTS</strong>设置为一组域，评论仅在列出的域上显示，登录授权在任何地方都不起作用，但在安装 Remark42 的同一域及其子域上可用。</p>
+</li>
+</ul>
+<pre><code>ALLOWED_HOSTS='self',example1.com,example2.com
 </code></pre>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>AUTH_SAME_SITE=None</strong> : 评论显示在任何域上，登录授权可以在任何地方使用。</p>
+</li>
+<li class="lvl-2">
+<p><strong>ALLOWED_HOSTS</strong>设置为一组域，且<strong>AUTH_SAME_SITE=None</strong>：评论显示在列出的域上，登录授权将也适用于这些域。</p>
+</li>
+</ul>
+<p>详细情况见 <a target="_blank" rel="noopener" href="https://remark42.com/docs/manuals/separate-domain/">官网说明</a></p>
 <h3 id="5-4-管理评论">5.4 管理评论</h3>
 <ul class="lvl-0">
 <li class="lvl-2">
