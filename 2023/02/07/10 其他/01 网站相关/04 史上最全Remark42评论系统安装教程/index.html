@@ -1023,14 +1023,14 @@ NOTIFY_TELEGRAM_TOKEN=62*****253:AA***********************************
 <p>如果用命令行启动，site参数如下</p>
 </li>
 </ul>
-<pre><code>--site=mysite1 --site=mysite2
+<pre><code>--site=mysite --site=mysite1 --site=mysite2
 </code></pre>
 <ul class="lvl-0">
 <li class="lvl-2">
 <p>如果用环境参数启动，</p>
 </li>
 </ul>
-<pre><code>SITE=mysite1,mysite2
+<pre><code>SITE=mysite,mysite1,mysite2
 </code></pre>
 <ol start="2">
 <li class="lvl-3">
@@ -1042,7 +1042,7 @@ NOTIFY_TELEGRAM_TOKEN=62*****253:AA***********************************
 <p><strong>不设置任何值</strong>：在安装Remark42的同一域和子域上可用。</p>
 </li>
 <li class="lvl-2">
-<p><strong>ALLOWED_HOSTS</strong>设置为一组域，评论仅在列出的域上显示，登录授权在任何地方都不起作用，但在安装 Remark42 的同一域及其子域上可用。</p>
+<p><strong>ALLOWED_HOSTS</strong>设置为一组域，评论仅在列出的域上显示，登录授权在任何地方都不起作用，但在安装 Remark42 的同一域及其子域上可用。<code>self</code> 表示remark所在的域名，这里为 <code>sample.com</code> 。</p>
 </li>
 </ul>
 <pre><code>ALLOWED_HOSTS='self',example1.com,example2.com
@@ -1051,10 +1051,17 @@ NOTIFY_TELEGRAM_TOKEN=62*****253:AA***********************************
 <li class="lvl-2">
 <p><strong>AUTH_SAME_SITE=None</strong> : 评论显示在任何域上，登录授权可以在任何地方使用。</p>
 </li>
+</ul>
+<pre><code>AUTH_SAME_SITE=None
+</code></pre>
+<ul class="lvl-0">
 <li class="lvl-2">
 <p><strong>ALLOWED_HOSTS</strong>设置为一组域，且<strong>AUTH_SAME_SITE=None</strong>：评论显示在列出的域上，登录授权将也适用于这些域。</p>
 </li>
 </ul>
+<pre><code>ALLOWED_HOSTS='self',sample1.com,example2.com
+AUTH_SAME_SITE=None
+</code></pre>
 <p>详细情况见 <a target="_blank" rel="noopener" href="https://remark42.com/docs/manuals/separate-domain/">官网说明</a></p>
 <h3 id="5-4-管理评论">5.4 管理评论</h3>
 <ul class="lvl-0">
