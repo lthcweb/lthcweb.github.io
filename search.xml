@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title>说yes的时候，并不代表同意</title>
+      <title>说同意的时候，并不都代表同意</title>
       <link href="/post/20230211215635.html"/>
       <url>/post/20230211215635.html</url>
       
@@ -35,7 +35,7 @@
       <link href="/post/20230208190737.html"/>
       <url>/post/20230208190737.html</url>
       
-        <content type="html"><![CDATA[<p><img src="https://raw.githubusercontent.com/lthcweb/BlogImg/main/gp/202302111938359.webp" alt=""></p><span id="more"></span><p>大家在网上冲浪的时候，经常需要用到电子邮件注册，不可避免就需要用到很多邮箱，在邮箱上的时间和金钱成本耗损上，都让大家头痛过，那今天给大家推荐这个一劳永逸的方案，就是让1个邮箱变成N个邮箱的域名邮箱技术，希望能给大家带来工作上的便利和帮助。<br>== 适合那些只需要收件的邮箱 ==</p><h2 id="1-将域名MX记录解析到-ImprovMX">1. 将域名MX记录解析到 ImprovMX</h2><table><thead><tr><th style="text-align:center">Host</th><th style="text-align:center">Value</th><th style="text-align:center">Priority</th></tr></thead><tbody><tr><td style="text-align:center">@</td><td style="text-align:center"><a href="http://mx1.improvmx.com">mx1.improvmx.com</a></td><td style="text-align:center">10</td></tr><tr><td style="text-align:center">@</td><td style="text-align:center"><a href="http://mx2.improvmx.com">mx2.improvmx.com</a></td><td style="text-align:center">20</td></tr></tbody></table><h2 id="2-访问-http-improvmx-com">2. 访问 <a href="http://improvmx.com">http://improvmx.com</a></h2><p>【Domain name】为解析的域名</p><p>【Your email address】 为要接收转发邮件的邮箱，(可以使用国内邮箱)。</p><p>然后点击 【Verify and start forwarding】</p><p>搞定！</p>]]></content>
+        <content type="html"><![CDATA[<p>在网上冲浪的时候，经常需要用到电子邮件注册，不可避免就需要用到很多邮箱，在邮箱上的时间和金钱成本耗损上，都让我头痛过，今天有了个一劳永逸的方案，就是让1个邮箱变成N个邮箱的域名邮箱技术。</p><p>== 适合那些只需要收件的邮箱 ==</p><span id="more"></span><h2 id="1-将域名MX记录解析到-ImprovMX">1. 将域名MX记录解析到 ImprovMX</h2><table><thead><tr><th style="text-align:center">Host</th><th style="text-align:center">Value</th><th style="text-align:center">Priority</th></tr></thead><tbody><tr><td style="text-align:center">@</td><td style="text-align:center"><a href="http://mx1.improvmx.com">mx1.improvmx.com</a></td><td style="text-align:center">10</td></tr><tr><td style="text-align:center">@</td><td style="text-align:center"><a href="http://mx2.improvmx.com">mx2.improvmx.com</a></td><td style="text-align:center">20</td></tr></tbody></table><h2 id="2-访问-http-improvmx-com">2. 访问 <a href="http://improvmx.com">http://improvmx.com</a></h2><p>【Domain name】为解析的域名</p><p>【Your email address】 为要接收转发邮件的邮箱，(可以使用国内邮箱)。</p><p>然后点击 【Verify and start forwarding】</p><p>搞定！</p>]]></content>
       
       
       <categories>
