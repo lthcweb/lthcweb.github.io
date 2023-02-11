@@ -1,0 +1,117 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>Github Pages增加discus评论系统 | 奥国天空</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/latest/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/grids-responsive-min.min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/latest/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><script type="text/javascript" src="//lib.baomitu.com/clipboard.js/latest/clipboard.min.js"></script><script type="text/javascript" src="//lib.baomitu.com/toastr.js/latest/toastr.min.js"></script><link rel="stylesheet" href="//lib.baomitu.com/toastr.js/latest/toastr.min.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Github Pages增加discus评论系统</h1><a id="logo" href="/.">奥国天空</a><p class="description">Matteo's life record</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Github Pages增加discus评论系统</h1><div class="post-meta">2023-02-04<span> | </span><span class="category"><a href="/categories/%E2%91%A2IT%E4%B8%96%E7%95%8C/">③IT世界</a><a href="/categories/%E2%91%A2IT%E4%B8%96%E7%95%8C/Blog%E7%9B%B8%E5%85%B3/">Blog相关</a></span><span class="post-time"><span class="post-meta-item-text"> | </span><span class="post-meta-item-icon"><i class="fa fa-keyboard-o"></i><span class="post-count"> 565</span><span class="post-meta-item-text"> 字</span></span></span><span class="post-time"> | <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i><span class="post-count"> 2</span><span class="post-meta-item-text"> 分钟</span></span></span></div><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">文章目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-discus%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-text">1. discus的特点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%F0%9F%91%8D-%E4%BC%98%E7%82%B9%EF%BC%9A"><span class="toc-text">👍 优点：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%F0%9F%91%8E-%E7%BC%BA%E7%82%B9%EF%BC%9A"><span class="toc-text">👎 缺点：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%83%A8%E7%BD%B2%E5%89%8D%E7%9A%84%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-text">2. 部署前的准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85discus"><span class="toc-text">1. 安装discus</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%B8%BA%E5%BD%93%E5%89%8D%E5%BA%93%E6%89%93%E5%BC%80-Discussions"><span class="toc-text">2. 为当前库打开 Discussions</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E9%85%8D%E7%BD%AEdiscus"><span class="toc-text">3. 配置discus</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%B8%BA%E6%96%87%E7%AB%A0%E6%B7%BB%E5%8A%A0discus%E8%AF%84%E8%AE%BA%E7%BB%84%E4%BB%B6"><span class="toc-text">3. 为文章添加discus评论组件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%96%B9%E6%B3%95%E4%B8%80"><span class="toc-text">1. 方法一</span></a></li></ol></li></ol></li></ol></div></div><div class="post-content"><h2 id="1-discus的特点">1. discus的特点</h2>
+<h4 id="👍-优点：">👍 优点：</h4>
+<ul>
+<li>不需要数据库，评论数据和文章放在一起，不用担心数据安全问题</li>
+<li>楼中楼回复，适合博客系统</li>
+<li>部署方便，傻瓜式部署</li>
+</ul>
+ <span id="more"></span>  
+<ul>
+<li>权限要求低</li>
+<li>开源、免费、没有广告</li>
+<li>支持多语言</li>
+<li>支持自定义主题</li>
+</ul>
+<h4 id="👎-缺点：">👎 缺点：</h4>
+<ul>
+<li>要求Github帐号，不过这也有好处，可以过滤一些垃圾评论。</li>
+</ul>
+<h2 id="2-部署前的准备工作">2. 部署前的准备工作</h2>
+<h4 id="1-安装discus">1. 安装discus</h4>
+<p>打开 <a target="_blank" rel="noopener" href="https://github.com/apps/giscus">https://github.com/apps/giscus</a> 点击安装，如下图：</p>
+<p><img src="https://raw.githubusercontent.com/lthcweb/BlogImg/main/gp/202302042314814.webp" alt="安装gisus"></p>
+<h4 id="2-为当前库打开-Discussions">2. 为当前库打开 Discussions</h4>
+<p>仓库 Setting –&gt; Features –&gt; 勾选 Discussions，如下图：</p>
+<p><img src="https://raw.githubusercontent.com/lthcweb/BlogImg/main/gp/202302042328709.webp" alt="打开Discussions"></p>
+<h4 id="3-配置discus">3. 配置discus</h4>
+<p>打开discus配置页面：<a target="_blank" rel="noopener" href="https://giscus.app/zh-CN">https://giscus.app/zh-CN</a> ，按如下设置，得到配置数据待用。</p>
+<p><img src="https://raw.githubusercontent.com/lthcweb/BlogImg/main/gp/202302042357762.webp" alt="discus配置页"></p>
+<h2 id="3-为文章添加discus评论组件">3. 为文章添加discus评论组件</h2>
+<h4 id="1-方法一">1. 方法一</h4>
+<p>适用于自带giscus的主题，如next，只需要安装插件就行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-next-giscus --save</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">然后在hexo的_config.yml中添加：  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>giscus:<br>
+enable: true<br>
+repo=“giscus/giscus-component”<br>
+repo-id=“MDEwOlJlcG9zaXRvcnkzOTEzMTMwMjA=”<br>
+category=“Announcements”<br>
+category-id=“DIC_kwDOF1L2fM4B-hVS”<br>
+mapping=“og:title”<br>
+reactions-enabled=“1”<br>
+emit-metadata=“1”<br>
+input-position=“top”<br>
+theme=“light”<br>
+lang=“zh-CN”<br>
+loading=“lazy”<br>
+crossorigin=“anonymous”</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 2. 方法二  </span><br><span class="line"></span><br><span class="line">适用于不带giscus的主题，在需要评论系统的位置，加入如下代码：   </span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>&lt;!-- 解决giscus评论系统中文解码问题，详见 https://blog.southfox.me/2022/01/%E4%B8%BA%E5%8D%9A%E5%AE%A2%E6%94%AF%E6%8C%81%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/ --&gt;
+&lt;% if (page.title)&#123; %&gt;&lt;meta property=&quot;og:title&quot; content=&quot;&lt;%= page.path %&gt;&quot;/&gt;&lt;% &#125; %&gt;
+</code></pre>
+  <!-- 下面两个script，二选一 -->
+<pre><code>&lt;!-- &lt;script type=&quot;module&quot; src=&quot;https://unpkg.com/giscus?module&quot;&gt;&lt;/script&gt; --&gt;
+&lt;script type=&quot;module&quot; src=&quot;https://cdn.skypack.dev/giscus&quot;&gt;&lt;/script&gt;
+
+&lt;giscus-widget
+  id=&quot;giscuscomments&quot;
+  repo=&quot;giscus/giscus-component&quot;
+  repoid=&quot;MDEwOlJlcG9zaXRvcnkzOTEzMTMwMjA=&quot;
+  category=&quot;Announcements&quot;
+  categoryid=&quot;DIC_kwDOF1L2fM4B-hVS&quot;
+  mapping=&quot;og:title&quot; 
+  term=&quot;Welcome to giscus!&quot;
+  reactionsenabled=&quot;1&quot;
+  emitmetadata=&quot;1&quot;
+  inputposition=&quot;top&quot;
+  theme=&quot;light&quot;
+  lang=&quot;zh-CN&quot;
+  loading=&quot;lazy&quot;
+&gt;&lt;/giscus-widget&gt;
+</code></pre>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 3. 方法三  </span><br><span class="line"></span><br><span class="line">适用于不带giscus的主题，在需要插入评论系统的位置，加入如下代码：    </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<script src="https://giscus.app/client.js"
+    data-repo="giscus/giscus-component"
+    data-repo-id="MDEwOlJlcG9zaXRvcnkzOTEzMTMwMjA="
+    data-category="Announcements"
+    data-category-id="DIC_kwDOF1L2fM4B-hVS"
+    data-mapping="og:title"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="1"
+    data-input-position="top"
+    data-theme="light"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async>
+</script>
+<pre><code>
+## 4. discus的高级用法  
+
+以上设置，一般够用了，更多高级设置
+[点我直达](https://github.com/giscus/giscus/blob/main/ADVANCED-USAGE.md)  
+
+## 5. 效果预览  
+
+[giscus](https://giscus.app/zh-CN)  
+
+[码志](https://mazhuang.org/2020/05/03/blog-template-qna/)  
+
+
+
+
+</code></pre>
+</div><div class="tags"><a href="/tags/Blog"><i class="fa fa-tag">Blog</i></a><a href="/tags/安装"><i class="fa fa-tag">安装</i></a></div><div class="post-nav"><a class="pre" href="/post/20230207014855.html">史上最全Remark42评论系统安装教程</a><a class="next" href="/post/20230203150106.html">Markdown常用功能</a></div><div id="remark42"></div><script>var remark_config = {
+  host: 'https://remark.matteo.eu.org',
+  site_id: 'matteo',
+  locale: 'zh',
+  simple_view: false,
+  no_footer: true
+}
+</script><script>!function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);</script></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E2%91%A0%E7%BD%91%E6%B5%B7%E6%8B%BE%E8%B4%9D/">①网海拾贝</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E2%91%A0%E7%BD%91%E6%B5%B7%E6%8B%BE%E8%B4%9D/%E7%BD%91%E6%96%87%E6%84%9F%E6%83%B3/">网文感想</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E2%91%A1%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">②编程语言</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E2%91%A1%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/">C++</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E2%91%A2IT%E4%B8%96%E7%95%8C/">③IT世界</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E2%91%A2IT%E4%B8%96%E7%95%8C/Blog%E7%9B%B8%E5%85%B3/">Blog相关</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E2%91%A2IT%E4%B8%96%E7%95%8C/Markdown/">Markdown</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E2%91%A2IT%E4%B8%96%E7%95%8C/%E5%A5%87%E5%B7%A7%E7%BB%8F%E9%AA%8C/">奇巧经验</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E2%91%A3%E5%BE%B7%E8%AF%AD%E5%AD%A6%E4%B9%A0/">④德语学习</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E2%91%A3%E5%BE%B7%E8%AF%AD%E5%AD%A6%E4%B9%A0/%E5%8F%91%E9%9F%B3/">发音</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E2%91%A3%E5%BE%B7%E8%AF%AD%E5%AD%A6%E4%B9%A0/%E8%AF%AD%E6%B3%95/">语法</a><span class="category-list-count">3</span></li></ul></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/%E8%AF%BB%E5%90%8E%E6%84%9F/" style="font-size: 15px;">读后感</a> <a href="/tags/c/" style="font-size: 15px;">c++</a> <a href="/tags/Blog/" style="font-size: 15px;">Blog</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 15px;">安装</a> <a href="/tags/Markdown/" style="font-size: 15px;">Markdown</a> <a href="/tags/%E5%9F%9F%E5%90%8D/" style="font-size: 15px;">域名</a> <a href="/tags/email/" style="font-size: 15px;">email</a> <a href="/tags/%E4%BB%A3%E8%AF%8D/" style="font-size: 15px;">代词</a> <a href="/tags/%E5%86%A0%E8%AF%8D/" style="font-size: 15px;">冠词</a> <a href="/tags/%E5%8A%A8%E8%AF%8D/" style="font-size: 15px;">动词</a> <a href="/tags/%E5%90%8D%E8%AF%8D/" style="font-size: 15px;">名词</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/post/20230211215635.html">说yes的时候，并不代表同意</a></li><li class="post-list-item"><a class="post-list-link" href="/post/20230208190737.html">基于域名创建无限数量的电子邮件email</a></li><li class="post-list-item"><a class="post-list-link" href="/post/20230207014855.html">史上最全Remark42评论系统安装教程</a></li><li class="post-list-item"><a class="post-list-link" href="/post/20230204195500.html">Github Pages增加discus评论系统</a></li><li class="post-list-item"><a class="post-list-link" href="/post/20230203150106.html">Markdown常用功能</a></li><li class="post-list-item"><a class="post-list-link" href="/post/20230203120406.html">Markdown用Mermaid显示流程图等图形</a></li><li class="post-list-item"><a class="post-list-link" href="/post/20230202220406.html">Markdown插入视频</a></li><li class="post-list-item"><a class="post-list-link" href="/post/20230201200012.html">德语动词 - 现在时的动词变位</a></li><li class="post-list-item"><a class="post-list-link" href="/post/20230201144333.html">德语代词-人称代词、物主代词、不定代词</a></li><li class="post-list-item"><a class="post-list-link" href="/post/20230201144305.html">德语冠词和否定词Kein</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2023 <a href="/." rel="nofollow">奥国天空.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=1.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.js"></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.0"></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="/css/search.css?v=1.0.0"><script type="text/javascript" src="/js/search.js?v=1.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+  search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/copycode.js?v=1.0.0" successtext="复制成功！"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css?v=1.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.0"></script></div></body></html>
