@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://matteo.eu.org/post/20230212155422.html</loc>
+    <lastmod>2023-02-12</lastmod>
+  </url>
+  <url>
+    <loc>https://matteo.eu.org/post/20230212225128.html</loc>
+    <lastmod>2023-02-12</lastmod>
+  </url>
+  <url>
+    <loc>https://matteo.eu.org/post/20230211215635.html</loc>
+    <lastmod>2023-02-12</lastmod>
+  </url>
+  <url>
+    <loc>https://matteo.eu.org/post/20230211235610.html</loc>
+    <lastmod>2023-02-12</lastmod>
+  </url>
+  <url>
     <loc>https://matteo.eu.org/post/20220521213745.html</loc>
     <lastmod>2023-02-12</lastmod>
   </url>
@@ -58,22 +74,6 @@
   </url>
   <url>
     <loc>https://matteo.eu.org/post/20230201032321.html</loc>
-    <lastmod>2023-02-12</lastmod>
-  </url>
-  <url>
-    <loc>https://matteo.eu.org/post/20230212155422.html</loc>
-    <lastmod>2023-02-12</lastmod>
-  </url>
-  <url>
-    <loc>https://matteo.eu.org/post/20230212225128.html</loc>
-    <lastmod>2023-02-12</lastmod>
-  </url>
-  <url>
-    <loc>https://matteo.eu.org/post/20230211235610.html</loc>
-    <lastmod>2023-02-12</lastmod>
-  </url>
-  <url>
-    <loc>https://matteo.eu.org/post/20230211215635.html</loc>
     <lastmod>2023-02-12</lastmod>
   </url>
 </urlset> 
