@@ -2,51 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://matteo.eu.org/tags/index.html</loc>
-    
-    <lastmod>2023-02-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://matteo.eu.org/post/20220521213745.html</loc>
-    
-    <lastmod>2023-02-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://matteo.eu.org/post/20230204195500.html</loc>
-    
-    <lastmod>2023-02-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://matteo.eu.org/post/20220523230406.html</loc>
-    
-    <lastmod>2023-02-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://matteo.eu.org/post/20230212115653.html</loc>
-    
-    <lastmod>2023-02-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://matteo.eu.org/post/20230203150106.html</loc>
     
     <lastmod>2023-02-12</lastmod>
@@ -219,6 +174,51 @@
   
   <url>
     <loc>https://matteo.eu.org/categories/index.html</loc>
+    
+    <lastmod>2023-02-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://matteo.eu.org/tags/index.html</loc>
+    
+    <lastmod>2023-02-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://matteo.eu.org/post/20220521213745.html</loc>
+    
+    <lastmod>2023-02-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://matteo.eu.org/post/20230204195500.html</loc>
+    
+    <lastmod>2023-02-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://matteo.eu.org/post/20220523230406.html</loc>
+    
+    <lastmod>2023-02-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://matteo.eu.org/post/20230212115653.html</loc>
     
     <lastmod>2023-02-12</lastmod>
     
