@@ -173,6 +173,15 @@
   </url>
   
   <url>
+    <loc>https://matteo.eu.org/post/20230214141418.html</loc>
+    
+    <lastmod>2023-02-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://matteo.eu.org/post/20230211215635.html</loc>
     
     <lastmod>2023-02-14</lastmod>
@@ -353,6 +362,13 @@
   
   <url>
     <loc>https://matteo.eu.org/tags/%E8%AF%BB%E5%90%8E%E6%84%9F/</loc>
+    <lastmod>2023-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://matteo.eu.org/tags/%E8%8A%82%E6%97%A5/</loc>
     <lastmod>2023-02-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
