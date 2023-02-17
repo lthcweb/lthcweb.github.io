@@ -13,4 +13,3 @@ Disallow: /vendors/
 Disallow: /fancybox/
 
 Sitemap: https://matteo.eu.org/sitemap.xml
-Sitemap: https://matteo.eu.org/baidusitemap.xml
