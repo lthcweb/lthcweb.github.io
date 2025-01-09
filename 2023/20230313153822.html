@@ -1,0 +1,251 @@
+<!doctype html><html lang=zh-hans><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta content="yes" name=apple-mobile-web-app-capable><meta content="black-translucent" name=apple-mobile-web-app-status-bar-style><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>C++中const的各种用法的详解 | 奥国天空</title>
+<meta property="og:title" content="C++中const的各种用法的详解 - 奥国天空"><meta property="og:type" content="article"><meta property="article:published_time" content='2023-03-13T15:38:22+08:00'><meta property="article:modified_time" content='2023-03-13T15:38:22+08:00'><meta name=Keywords content><meta name=description content="C++中const的各种用法的详解"><meta name=author content><meta property="og:url" content="https://matteo.eu.org/2023/20230313153822.html"><link rel="shortcut icon" href=/favicon.ico type=image/x-icon><link rel=apple-touch-icon sizes=180x180 href=/icons/favicon-apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/icons/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/icons/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=stylesheet type=text/css href=/css/style.css><link rel=stylesheet type=text/css href=/css/friendly.css><link rel=stylesheet href=//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css><script type=text/javascript src=//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js></script></head><body><div id=body_container class=body_container><main id=main class=main_container><div id=header><div class=site-name><h1 class=hidden>奥国天空</h1><a id=logo href=/.>奥国天空</a><p class=description>Matteo's Daily Life and Reflections</p></div><div id=nav-menu><a class=current href=https://matteo.eu.org/><i class="fa fa-home">首页</i></a>
+<a href=https://matteo.eu.org/categories.html title=分类><i class='fa fa-folder'></i><span>分类</span></a>
+<a href=https://matteo.eu.org/tags.html title=标签><i class='fa fa-tag'></i><span>标签</span></a>
+<a href=https://matteo.eu.org/archives.html title=归档><i class='fa fa-archive'></i><span>归档</span></a></div></div><div class=content_container><div class=toc-article><h2 class=toc-title>文章目录</h2><div class=toc-content><nav id=TableOfContents><ol><li><a href=#1-const修饰基本数据类型>1. const修饰基本数据类型</a><ol><li><a href=#11-const修饰一般常量及数组>1.1 const修饰一般常量及数组</a></li><li><a href=#12-const修饰指针变量及引用变量>1.2 const修饰指针变量*及引用变量&</a><ol><li><a href=#121-指针和引用的一些基本知识>1.2.1 指针*和引用&的一些基本知识</a></li><li><a href=#122-const修饰指针>1.2.2 const修饰指针（*）</a></li><li><a href=#123-const修饰引用>1.2.3 const修饰引用（&）</a></li></ol></li></ol></li><li><a href=#2-const应用到函数中>2. const应用到函数中</a><ol><li><a href=#21-const-修饰函数参数>2.1 const 修饰函数参数</a></li><li><a href=#22-const-修饰函数返回值>2.2 const 修饰函数返回值</a></li><li><a href=#23-const-修饰在函数名后面>2.3 const 修饰在函数名后面</a></li></ol></li></ol></nav></div></div><script type=text/javascript>var postToc=document.querySelector(".toc-article");if(postToc){const e=postToc.getBoundingClientRect().top;window.addEventListener("scroll",function(){var t=document.documentElement.scrollTop,t=t<188?0:t-188;postToc.style.top=t+e+"px"})}document.querySelector("#TableOfContents").children.length<1&&document.querySelector(".toc-article").remove()</script><article class=post><header><h1 class=post-title>C++中const的各种用法的详解</h1></header><time datetime=2023-03-13T14:38:22Z class="post-meta meta-date dt-published">2023年3月13日</time><div class=clear style=display:none><div class=toc-article><div class=toc-title>文章目录</div></div></div><div class=post-content><p>const名叫常量限定符，用来限定特定变量，以通知编译器该变量是不可修改的。习惯性的使用const，可以避免在函数中对某些不应修改的变量造成可能的改动。</p><h2 id=1-const修饰基本数据类型>1. const修饰基本数据类型</h2><h3 id=11-const修饰一般常量及数组>1.1 const修饰一般常量及数组</h3><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=k>const</span> <span class=kt>int</span> <span class=n>a</span><span class=o>=</span><span class=mi>10</span><span class=p>;</span>               <span class=err>等价的书写方式：</span>     <span class=kt>int</span> <span class=k>const</span> <span class=n>a</span><span class=o>=</span><span class=mi>10</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>const</span> <span class=kt>int</span> <span class=n>arr</span><span class=p>[</span><span class=mi>3</span><span class=p>]</span><span class=o>=</span><span class=p>{</span><span class=mi>1</span><span class=p>,</span><span class=mi>2</span><span class=p>,</span><span class=mi>3</span><span class=p>};</span>     <span class=err>等价的书写方式：</span>     <span class=kt>int</span> <span class=k>const</span> <span class=n>arr</span><span class=p>[</span><span class=mi>3</span><span class=p>]</span><span class=o>=</span><span class=p>{</span><span class=mi>1</span><span class=p>,</span><span class=mi>2</span><span class=p>,</span><span class=mi>3</span><span class=p>};</span>
+</span></span></code></pre></td></tr></table></div></div></div><p>对于类似这些基本数据类型，修饰符const可以用在类型说明符前，也可以用在类型说明符后，其结果是一样的。在使用这些常量的时候，只要不改变这些常量的值便好。</p><h3 id=12-const修饰指针变量及引用变量>1.2 const修饰指针变量*及引用变量&</h3><h4 id=121-指针和引用的一些基本知识>1.2.1 指针*和引用&的一些基本知识</h4><p>介绍本部分内容之前，先说说指针和引用的一些基本知识。</p><p>指针(pointer)是用来指向实际内存地址的变量，一般来说，指针是整型，而且一般的大家会接受十六进制的输出格式。
+引用(reference)是其相应变量的别名，用于向函数提供直接访问参数（而不是参数的副本）的途径，与指针相比，引用是一种受限制的指针类型，或者说是指针的一个子集，而从其功能上来看，似乎可以说引用是指针功能的一种高层实现。</p><p><strong>关于运算符&和*：</strong>
+在C++里，沿袭C中的语法，有两个一元运算符用于指针操作：&和*。&是取址符，*是指针符，也就是说，&用于返回变量的实际地址，*用于返回地址所指向的变量，他们应当互为逆运算</p><p>在定义变量的引用的时候，&只是个定义引用的标志，不代表取地址。</p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;iostream&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp></span><span class=k>using</span> <span class=k>namespace</span> <span class=n>std</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>a</span><span class=p>;</span>     <span class=c1>// a is an integer
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=kt>int</span> <span class=o>*</span><span class=n>aPtr</span><span class=p>;</span> <span class=c1>// aPtr is a pointer to an integer
+</span></span></span><span class=line><span class=cl><span class=c1></span>
+</span></span><span class=line><span class=cl>    <span class=n>a</span> <span class=o>=</span> <span class=mi>7</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>aPtr</span> <span class=o>=</span> <span class=o>&amp;</span><span class=n>a</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>&#34;Showing that * and &amp; are inverses of &#34;</span>
+</span></span><span class=line><span class=cl>         <span class=o>&lt;&lt;</span> <span class=s>&#34;each other.</span><span class=se>\n</span><span class=s>&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>&#34;a=&#34;</span> <span class=o>&lt;&lt;</span> <span class=n>a</span> <span class=o>&lt;&lt;</span> <span class=s>&#34;  *aPtr=&#34;</span> <span class=o>&lt;&lt;</span> <span class=o>*</span><span class=n>aPtr</span> <span class=o>&lt;&lt;</span> <span class=s>&#34;</span><span class=se>\n</span><span class=s>&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>&#34;aPtr = &#34;</span> <span class=o>&lt;&lt;</span> <span class=n>aPtr</span> <span class=o>&lt;&lt;</span> <span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>&#34;&amp;aPtr = &#34;</span> <span class=o>&lt;&lt;</span> <span class=o>&amp;</span><span class=n>aPtr</span> <span class=o>&lt;&lt;</span> <span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>&#34;&amp;*aPtr = &#34;</span> <span class=o>&lt;&lt;</span> <span class=o>&amp;*</span><span class=n>aPtr</span> <span class=o>&lt;&lt;</span> <span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>&#34;*&amp;aPtr = &#34;</span> <span class=o>&lt;&lt;</span> <span class=o>*&amp;</span><span class=n>aPtr</span> <span class=o>&lt;&lt;</span> <span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></div><p>运行结果：</p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>Showing that * and &amp; are inverses of each other.
+</span></span><span class=line><span class=cl>a=7  *aPtr=7
+</span></span><span class=line><span class=cl>aPtr = 0x61fe1c
+</span></span><span class=line><span class=cl>&amp;aPtr = 0x61fe10
+</span></span><span class=line><span class=cl>&amp;*aPtr = 0x61fe1c
+</span></span><span class=line><span class=cl>*&amp;aPtr = 0x61fe1c
+</span></span></code></pre></td></tr></table></div></div></div><h4 id=122-const修饰指针>1.2.2 const修饰指针（*）</h4><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=kt>int</span> <span class=n>a</span> <span class=o>=</span> <span class=mi>5</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>const</span> <span class=kt>int</span> <span class=n>b</span> <span class=o>=</span> <span class=mi>5</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>const</span> <span class=kt>int</span><span class=o>*</span> <span class=n>p</span> <span class=o>=</span> <span class=o>&amp;</span><span class=n>a</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=n>a</span> <span class=o>=</span> <span class=mi>4</span><span class=p>;</span><span class=c1>//合法
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=o>*</span><span class=n>p</span> <span class=o>=</span> <span class=mi>3</span><span class=p>;</span><span class=c1>//不合法，不能使用指针修改指向数据的值
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>p</span> <span class=o>=</span> <span class=o>&amp;</span><span class=n>b</span><span class=p>;</span><span class=c1>//合法
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>b</span> <span class=o>=</span> <span class=mi>4</span><span class=p>;</span><span class=c1>//不合法
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=o>*</span><span class=n>p</span> <span class=o>=</span> <span class=mi>3</span><span class=p>;</span><span class=c1>//不合法
+</span></span></span></code></pre></td></tr></table></div></div></div><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=kt>int</span> <span class=n>a</span> <span class=o>=</span> <span class=mi>5</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=n>b</span> <span class=o>=</span> <span class=mi>6</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=o>*</span> <span class=k>const</span> <span class=n>p</span> <span class=o>=</span> <span class=o>&amp;</span><span class=n>a</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=o>*</span><span class=n>p</span> <span class=o>=</span> <span class=mi>4</span><span class=p>;</span><span class=c1>//合法
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>p</span> <span class=o>=</span> <span class=o>&amp;</span><span class=n>b</span><span class=p>;</span><span class=c1>//不合法，保证指针不会指向别处
+</span></span></span></code></pre></td></tr></table></div></div></div><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=kt>int</span> <span class=n>a</span> <span class=o>=</span> <span class=mi>5</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=n>b</span> <span class=o>=</span> <span class=mi>6</span><span class=p>;</span> 
+</span></span><span class=line><span class=cl><span class=k>const</span> <span class=kt>int</span> <span class=o>*</span> <span class=k>const</span> <span class=n>p</span> <span class=o>=</span> <span class=o>&amp;</span><span class=n>a</span><span class=p>;</span>   <span class=c1>//合法
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=o>*</span><span class=n>p</span> <span class=o>=</span> <span class=mi>4</span><span class=p>;</span><span class=c1>//不合法
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>p</span> <span class=o>=</span> <span class=o>&amp;</span><span class=n>b</span><span class=p>;</span><span class=c1>//不合法
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>a</span> <span class=o>=</span> <span class=mi>7</span><span class=p>;</span><span class=c1>//合法
+</span></span></span></code></pre></td></tr></table></div></div></div><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=k>const</span> <span class=kt>int</span> <span class=n>a</span> <span class=o>=</span> <span class=mi>5</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=n>b</span> <span class=o>=</span> <span class=mi>6</span><span class=p>;</span> 
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=o>*</span> <span class=k>const</span> <span class=n>q</span> <span class=o>=</span> <span class=o>&amp;</span><span class=n>a</span><span class=p>;</span><span class=c1>//不合法
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=k>const</span> <span class=kt>int</span> <span class=o>*</span> <span class=k>const</span> <span class=n>p</span> <span class=o>=</span> <span class=o>&amp;</span><span class=n>a</span><span class=p>;</span><span class=c1>//合法
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=o>*</span><span class=n>p</span> <span class=o>=</span> <span class=mi>4</span><span class=p>;</span><span class=c1>//不合法
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>p</span> <span class=o>=</span> <span class=o>&amp;</span><span class=n>b</span><span class=p>;</span><span class=c1>//不合法
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>a</span> <span class=o>=</span> <span class=mi>7</span><span class=p>;</span><span class=c1>//不合法    
+</span></span></span></code></pre></td></tr></table></div></div></div><p>可以参考《Effective c++》Item21上的做法，</p><p>如果<strong>const位于星号*的左侧</strong>，则const就是用来修饰指针所指向的变量，即指针指向为常量；</p><p>如果<strong>const位于星*号的右侧</strong>，const就是修饰指针本身，即指针本身是常量。</p><p>因此，[1]和[2]的情况相同，都是指针所指向的内容为常量，这种情况下不允许对内容进行更改操作，如不能*a = 3 ；</p><p>[3]为指针本身是常量，而指针所指向的内容不是常量，这种情况下不能对指针本身进行更改操作，如a++是错误的；</p><p>[4]为指针本身和指向的内容均为常量。</p><h4 id=123-const修饰引用>1.2.3 const修饰引用（&）</h4><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=kt>int</span> <span class=n>x</span> <span class=o>=</span> <span class=mi>10</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=o>&amp;</span><span class=n>a0</span> <span class=o>=</span> <span class=n>x</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=k>const</span> <span class=o>&amp;</span><span class=n>a1</span><span class=o>=</span><span class=n>x</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>const</span> <span class=kt>int</span> <span class=o>&amp;</span><span class=n>a2</span><span class=o>=</span><span class=n>x</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=o>&amp;</span><span class=k>const</span> <span class=n>a3</span><span class=o>=</span><span class=n>x</span><span class=p>;</span> <span class=c1>//这种方式C中可用，效果和int &amp;a一样；C++编译器未定义   
+</span></span></span></code></pre></td></tr></table></div></div></div><h2 id=2-const应用到函数中>2. const应用到函数中</h2><h3 id=21-const-修饰函数参数>2.1 const 修饰函数参数</h3><p>如果参数作输出用，不论它是什么数据类型，也不论它采用“指针传递”还是“引用传递”，都不能加const 修饰，否则该参数将失去输出功能。</p><p><strong>const 只能修饰输入参数</strong>，可以分为三种情况：</p><ul><li>值传递的不用 const 修饰</li></ul><p>值传递参数一般不需要 const 修饰，因为函数会自动产生临时变量复制实参值。</p><p>并且对于一般的 int、double 等内置类型，一般采用值传递方式。</p><p>不要将函数 <code>void Func1(int x)</code> 写成 <code>void Func1(const int x)</code> 。同理不要将函数 <code>void Func2(A a)</code> 写成 <code>void Func2(const A a)</code>。其中A 为用户自定义的数据类型。</p><ul><li>const 修饰指针时，可以防止指针被意外篡改。</li></ul><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=kt>void</span> <span class=nf>Func1</span><span class=p>(</span><span class=k>const</span> <span class=kt>char</span><span class=o>*</span> <span class=n>str</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div></div><ul><li>const 修饰自定义类型的参数</li></ul><p>定义类型的参数如采用值传递，临时对象将会复制参数，需要用构造函数，比较浪费时间，一般采用 const 外加引用传递的方法。</p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=kt>void</span> <span class=nf>Func2</span><span class=p>(</span><span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>string</span><span class=o>&amp;</span> <span class=n>str</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=kt>void</span> <span class=nf>Func3</span><span class=p>(</span><span class=k>const</span> <span class=n>A</span><span class=o>&amp;</span> <span class=n>a</span><span class=p>);</span> <span class=c1>// A为自定义class
+</span></span></span></code></pre></td></tr></table></div></div></div><h3 id=22-const-修饰函数返回值>2.2 const 修饰函数返回值</h3><ul><li>const 修饰“值传递”方式的的函数返回值，由于函数会把返回值复制到外部临时的存储单元中，加 const 修饰没有任何价值，修饰与不修饰返回值作用一样。</li></ul><p>不要把函数 <code>int GetInt(void)</code> 写成 <code>const int GetInt(void)</code>。</p><ul><li>const 修饰以“指针传递”方式的函数返回值，那么函数返回值（即指针）的内容不能被修改，该返回值只能被赋给加const 修饰的同类型指针。</li></ul><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=k>const</span> <span class=kt>char</span> <span class=o>*</span> <span class=nf>GetString</span><span class=p>(</span><span class=kt>void</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=kt>char</span> <span class=o>*</span><span class=n>str</span> <span class=o>=</span> <span class=n>GetString</span><span class=p>();</span>        <span class=c1>// 将出现编译错误：
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=k>const</span> <span class=kt>char</span> <span class=o>*</span><span class=n>str</span> <span class=o>=</span> <span class=n>GetString</span><span class=p>();</span> <span class=c1>// 正确
+</span></span></span></code></pre></td></tr></table></div></div></div><ul><li>const 修饰“引用传递”作为返回值，此时返回的值不能作为左值使用，既不能被赋值，也不能被修改。</li></ul><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;iostream&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp></span><span class=k>using</span> <span class=k>namespace</span> <span class=n>std</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>A</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl><span class=k>private</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>data</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>public</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>A</span><span class=p>(</span><span class=kt>int</span> <span class=n>num</span><span class=p>)</span><span class=o>:</span><span class=n>data</span><span class=p>(</span><span class=n>num</span><span class=p>){}</span>
+</span></span><span class=line><span class=cl>    <span class=o>~</span><span class=n>A</span><span class=p>(){};</span>
+</span></span><span class=line><span class=cl>    <span class=kt>int</span><span class=o>&amp;</span> <span class=n>get_data</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>data</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>A</span> <span class=n>a</span><span class=p>(</span><span class=mi>1</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=n>a</span><span class=p>.</span><span class=n>get_data</span><span class=p>()</span><span class=o>=</span><span class=mi>3</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>cout</span><span class=o>&lt;&lt;</span><span class=n>a</span><span class=p>.</span><span class=n>get_data</span><span class=p>()</span><span class=o>&lt;&lt;</span><span class=n>endl</span><span class=p>;</span> <span class=c1>//data=3
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></div><p>这个时候为了避免成员函数被修改就需要加上const关键字，这个时候如果试图改变返回值是不允许的。</p><p>需要指出的是，如果函数的返回类型是内置类型，比如 int char 等，修改返回值本身就是不合法的！所以 const 返回值是处理返回类型为用户定义类型的情况。</p><h3 id=23-const-修饰在函数名后面>2.3 const 修饰在函数名后面</h3><p>在函数名后面表示是 C++ 常成员函数，该函数不能修改对象内的任何成员，只能发生读操作，不能发生写操作。</p><p>const 修饰成员函数， 根本上是修饰了 this 指针。</p><p><strong>注意</strong>：const 关键字不能与 static 关键字同时使用，因为 static 关键字修饰静态成员函数，静态成员函数不含有 this 指针，即不能实例化，const 成员函数必须具体到某一实例。</p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=k>class</span> <span class=nc>People</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl> <span class=k>public</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>talk</span><span class=p>(</span><span class=kt>void</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=nf>eat</span><span class=p>(</span><span class=kt>void</span><span class=p>)</span> <span class=k>const</span><span class=p>;</span> <span class=c1>// const 成员函数
+</span></span></span><span class=line><span class=cl><span class=c1></span> <span class=k>private</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>m_age</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=n>People</span><span class=o>::</span><span class=n>eat</span><span class=p>(</span><span class=kt>void</span><span class=p>)</span> <span class=k>const</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=o>++</span><span class=n>m_age</span><span class=p>;</span> <span class=c1>// 编译错误，企图修改数据成员m_num
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>talk</span><span class=p>();</span>  <span class=c1>// 编译错误，企图调用非const函数
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=k>return</span>    <span class=n>m_age</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></div><ul><li>const 对象只能访问 const 成员函数,而非 const 对象可以访问任意的成员函数,包括 const 成员函数.</li><li>const 对象的成员是不可修改的,然而 const 对象通过指针维护的对象却是可以修改的.</li><li>const 成员函数不可以修改对象的数据,不管对象是否具有 const 性质.它在编译时,以是否修改成员数据为依据,进行检查.</li><li>然而加上 mutable 修饰符的数据成员,对于任何情况下通过任何手段都可修改,自然此时的 const 成员函数是可以修改它的</li></ul></div><div class=post-archive><h2>相关文章</h2><ul class=listing><li><a href=/2023/20230217181620.html>开源C++库列表</a></li></ul></div><div class="post-meta meta-tags"><ul class=clearfix><li><a href=/tags/c++.html target=_blank>C++</a></li><li><a href=/tags/c++%E5%9F%BA%E7%A1%80.html target=_blank>C++基础</a></li></ul></div></article><div id=remark42></div><script>var remark_config={host:"https://remark42.matteo.eu.org",site_id:"matteo",locale:"zh",simple_view:!1,no_footer:!1}</script><script>!function(e,t){for(s=0;s<e.length;s++){var s,n=t.createElement("script"),o=".js",i=t.head||t.body;"noModule"in n?(n.type="module",o=".mjs"):n.async=!0,n.defer=!0,n.src=remark_config.host+"/web/"+e[s]+o,i.appendChild(n)}}(remark_config.components||["embed"],document)</script></div><footer id=footer><div>&copy; 2025 <a href=https://matteo.eu.org/>奥国天空 By</a></div><br><div><div class=github-badge><a href=https://gohugo.io/ target=_black rel=nofollow><span class=badge-subject>Powered by</span><span class="badge-value bg-blue">Hugo</span></a></div><div class=github-badge><a href=https://www.flysnow.org/ target=_black><span class=badge-subject>Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a></div><div class=github-badge><a href=https://github.com/flysnow-org/maupassant-hugo target=_black><span class=badge-subject>Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a></div></div></footer><script type=text/javascript>window.MathJax={tex2jax:{inlineMath:[["$","$"]],processEscapes:!0}}</script><script src='//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script><a id=rocket href=#top></a><script type=text/javascript src='/js/totop.js?v=0.0.0' async></script><style type=text/css>div.highlight{position:relative;margin:1em 0}.copy-code{display:none;position:absolute;top:4px;right:4px;color:rgba(255,255,255,.8);background:rgba(78,78,78,.8);border-radius:var(--radius);padding:0 5px;font:inherit;user-select:none;cursor:pointer;border:0;--radius:8px}div.highlight:hover .copy-code,pre:hover .copy-code{display:block}</style><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script><script>window.addEventListener("load",function(){var t,e=document.querySelector(".sidebar_container");Lightense("img:not(.no-lightense),.lightense",{beforeShow(){t=window.getComputedStyle(e).getPropertyValue("display"),e.style.display="none"},afterHide(){e.style.display=t}})},!1);function getZindex(e){var t=document.querySelector(e);return window.getComputedStyle(t).getPropertyValue("z-index")}function getDisplay(e){var t=document.querySelector(e);return window.getComputedStyle(t).getPropertyValue("display")}function getPosition(e){var t=document.querySelector(e);return window.getComputedStyle(t).getPropertyValue("position")}</script><script src=/js/lightense.min.js></script></main><aside id=sidebar_container class=sidebar_container><div id=sidebar><div class=widget><figure><img class=no-lightense src=/icons/favicon-192x192.png width=100 height=100><figcaption><h4>Matteo</h4></figcaption></figure></div><div class=widget><div class=widget-title><i class="fa fa-search">搜索</a></i></div><div class=search-form><input id=local-search-input placeholder=Search type=text name=q results=0><div id=local-search-result></div><p>文章数量: 30</p></div></div><div class=widget><div class=widget-title><i class="fa fa-folder-o"><a href=/categories.html>分类</a></i></div><ul class=tree-sections><ul><li><a href=https://matteo.eu.org/post/01net.html>①网海拾贝</a><ul><li><a href=https://matteo.eu.org/post/01net/wen.html>网络文摘</a>
+<span class=category-count>(1)</span><ul></ul></li></ul></li><li><a href=https://matteo.eu.org/post/02pr.html>②编程语言</a><ul><li><a href=https://matteo.eu.org/post/02pr/cplus.html>C++</a>
+<span class=category-count>(4)</span><ul></ul></li></ul></li><li><a href=https://matteo.eu.org/post/03it.html>③IT世界</a><ul><li><a href=https://matteo.eu.org/post/03it/blog.html>Blog相关</a>
+<span class=category-count>(6)</span><ul></ul></li><li><a href=https://matteo.eu.org/post/03it/mark.html>Markdown</a>
+<span class=category-count>(4)</span><ul></ul></li><li><a href=https://matteo.eu.org/post/03it/exp.html>奇巧经验</a>
+<span class=category-count>(2)</span><ul></ul></li><li><a href=https://matteo.eu.org/post/03it/tech.html>前沿技术</a>
+<span class=category-count>(1)</span><ul></ul></li></ul></li><li><a href=https://matteo.eu.org/post/04deut.html>④德语学习</a><ul><li><a href=https://matteo.eu.org/post/04deut/gram.html>语法</a>
+<span class=category-count>(6)</span><ul></ul></li></ul></li><li><a href=https://matteo.eu.org/post/05life.html>⑤人生百味</a><ul><li><a href=https://matteo.eu.org/post/05life/talk.html>胡言乱语</a>
+<span class=category-count>(6)</span><ul></ul></li></ul></li></ul></ul></div><div class=widget><div class=widget-title><i class="fa fa-files-o">最近文章</i></div><ul class=recent_post><li><a href=https://matteo.eu.org/2024/20241022005306.html title="在 Visual Studio Code（VSCode) 中通过 CMake 和 vcpkg 安装和使用包">在 Visual Studio Code（VSCode) 中通过 CMake 和 vcpkg 安装和使用包</a></li><li><a href=https://matteo.eu.org/2023/20230313153822.html title=C++中const的各种用法的详解>C++中const的各种用法的详解</a></li><li><a href=https://matteo.eu.org/2023/20230313020157.html title=德语中只接第三格Dativ的动词>德语中只接第三格Dativ的动词</a></li><li><a href=https://matteo.eu.org/2023/20230313011111.html title=德语中的人三物四>德语中的人三物四</a></li><li><a href=https://matteo.eu.org/2023/20230311215201.html title=古今中外时间对照表，系统详细，方便记忆查询>古今中外时间对照表，系统详细，方便记忆查询</a></li><li><a href=https://matteo.eu.org/2023/20230218191559.html title=调整美化Hugo的maupassant主题>调整美化Hugo的maupassant主题</a></li><li><a href=https://matteo.eu.org/2023/20230217181620.html title=开源C++库列表>开源C++库列表</a></li><li><a href=https://matteo.eu.org/2023/20230216233051.html title="Github 使用 rsync 同步网站到个人服务器">Github 使用 rsync 同步网站到个人服务器</a></li><li><a href=https://matteo.eu.org/2023/20230214151418.html title=情人节的起源和风行世界的原因>情人节的起源和风行世界的原因</a></li><li><a href=https://matteo.eu.org/2023/20230214001310.html title=一个直径60米的气球在18000米高空需要多少氦气？>一个直径60米的气球在18000米高空需要多少氦气？</a></li></ul></div><section class=widget><div class=widget-title><i class="fa fa-star-o">标签</i></div><div class=tagcloud><a href=https://matteo.eu.org/tags/a2.html>A2</a>
+<a href=https://matteo.eu.org/tags/blog.html>Blog</a>
+<a href=https://matteo.eu.org/tags/c++.html>C++</a>
+<a href=https://matteo.eu.org/tags/c++%E5%9F%BA%E7%A1%80.html>C++基础</a>
+<a href=https://matteo.eu.org/tags/cmake.html>CMake</a>
+<a href=https://matteo.eu.org/tags/email.html>Email</a>
+<a href=https://matteo.eu.org/tags/hugo.html>Hugo</a>
+<a href=https://matteo.eu.org/tags/markdown.html>Markdown</a>
+<a href=https://matteo.eu.org/tags/maupassant.html>Maupassant</a>
+<a href=https://matteo.eu.org/tags/vcpkg.html>Vcpkg</a>
+<a href=https://matteo.eu.org/tags/vscode.html>VSCode</a>
+<a href=https://matteo.eu.org/tags/%E4%B8%BB%E9%A2%98.html>主题</a>
+<a href=https://matteo.eu.org/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD.html>人工智能</a>
+<a href=https://matteo.eu.org/tags/%E4%BB%A3%E8%AF%8D.html>代词</a>
+<a href=https://matteo.eu.org/tags/%E5%86%A0%E8%AF%8D.html>冠词</a>
+<a href=https://matteo.eu.org/tags/%E5%8A%A8%E8%AF%8D.html>动词</a>
+<a href=https://matteo.eu.org/tags/%E5%90%8D%E8%AF%8D.html>名词</a>
+<a href=https://matteo.eu.org/tags/%E5%9F%9F%E5%90%8D.html>域名</a>
+<a href=https://matteo.eu.org/tags/%E5%AE%89%E8%A3%85.html>安装</a>
+<a href=https://matteo.eu.org/tags/%E5%BC%80%E6%BA%90.html>开源</a>
+<a href=https://matteo.eu.org/tags/%E5%BE%B7%E8%AF%AD.html>德语</a>
+<a href=https://matteo.eu.org/tags/%E6%97%B6%E9%97%B4.html>时间</a>
+<a href=https://matteo.eu.org/tags/%E7%83%AD%E7%82%B9.html>热点</a>
+<a href=https://matteo.eu.org/tags/%E7%A7%91%E5%AD%A6.html>科学</a>
+<a href=https://matteo.eu.org/tags/%E7%BE%8E%E9%A3%9F.html>美食</a>
+<a href=https://matteo.eu.org/tags/%E8%8A%82%E6%97%A5.html>节日</a>
+<a href=https://matteo.eu.org/tags/%E8%AF%AD%E6%B3%95.html>语法</a>
+<a href=https://matteo.eu.org/tags/%E8%AF%BB%E5%90%8E%E6%84%9F.html>读后感</a></div></section><section class=widget><h3 class=widget-title>友情链接</h3><ul class=widget-list><li><a target=_blank href=https://www.flysnow.org/ title=飞雪无情的博客>飞雪无情的博客</a></li></ul></section><section class=widget><h3 class=widget-title>其它</h3><ul class=widget-list><li><a href=https://matteo.eu.org/index.xml>文章 RSS</a></li></ul></section></div></aside><div><input type=checkbox id=nav-toggle aria-hidden=true>
+<label for=nav-toggle class=nav-toggle><div class=nav-toggle-inner><span></span>
+<span></span>
+<span></span></div></label></div></div></body><script>const sidebarToggle=document.querySelector(".nav-toggle"),sidebar=document.querySelector(".sidebar_container");sidebarToggle.addEventListener("click",()=>{sidebar.classList.toggle("show"),main.classList.toggle("blur"),sidebarToggle.classList.toggle("open")});const sidebarMarginTop=sidebar.style.marginTop,toggleTop=sidebarToggle.getBoundingClientRect().top;window.addEventListener("scroll",()=>{var e=document.documentElement.scrollTop;sidebar.style.marginTop=e+sidebarMarginTop+"px"})</script></html>

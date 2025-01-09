@@ -1,0 +1,232 @@
+<!doctype html><html lang=zh-hans><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta content="yes" name=apple-mobile-web-app-capable><meta content="black-translucent" name=apple-mobile-web-app-status-bar-style><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>Markdown常用功能 | 奥国天空</title>
+<meta property="og:title" content="Markdown常用功能 - 奥国天空"><meta property="og:type" content="article"><meta property="article:published_time" content='2023-02-03T16:01:06+08:00'><meta property="article:modified_time" content='2023-02-03T16:01:06+08:00'><meta name=Keywords content><meta name=description content="Markdown常用功能"><meta name=author content><meta property="og:url" content="https://matteo.eu.org/2023/20230203160106.html"><link rel="shortcut icon" href=/favicon.ico type=image/x-icon><link rel=apple-touch-icon sizes=180x180 href=/icons/favicon-apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/icons/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/icons/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=stylesheet type=text/css href=/css/style.css><link rel=stylesheet type=text/css href=/css/friendly.css><link rel=stylesheet href=//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css><script type=text/javascript src=//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js></script></head><body><div id=body_container class=body_container><main id=main class=main_container><div id=header><div class=site-name><h1 class=hidden>奥国天空</h1><a id=logo href=/.>奥国天空</a><p class=description>Matteo's Daily Life and Reflections</p></div><div id=nav-menu><a class=current href=https://matteo.eu.org/><i class="fa fa-home">首页</i></a>
+<a href=https://matteo.eu.org/categories.html title=分类><i class='fa fa-folder'></i><span>分类</span></a>
+<a href=https://matteo.eu.org/tags.html title=标签><i class='fa fa-tag'></i><span>标签</span></a>
+<a href=https://matteo.eu.org/archives.html title=归档><i class='fa fa-archive'></i><span>归档</span></a></div></div><div class=content_container><div class=toc-article><h2 class=toc-title>文章目录</h2><div class=toc-content><nav id=TableOfContents><ol><li><a href=#一hugo-原生支持-markdown-语法>一、Hugo 原生支持 Markdown 语法</a><ol><li><a href=#11-标题>1.1 标题</a></li><li><a href=#12-段落格式>1.2 段落格式</a><ol><li><a href=#121-粗体斜体粗斜体>1.2.1 粗体、斜体、粗斜体</a></li><li><a href=#122-上标下标>1.2.2 上标下标</a></li></ol></li><li><a href=#13-列表>1.3 列表</a><ol><li><a href=#131-无序列表>1.3.1 无序列表</a></li><li><a href=#132-有序列表>1.3.2 有序列表</a></li><li><a href=#133-列表嵌套>1.3.3 列表嵌套</a></li><li><a href=#134-任务列表>1.3.4 任务列表</a></li></ol></li><li><a href=#14-表格>1.4 表格</a></li><li><a href=#15-区块引用>1.5 区块引用</a><ol><li><a href=#151-区块引用>1.5.1 区块引用</a></li><li><a href=#152-区块引用嵌套>1.5.2 区块引用嵌套</a></li></ol></li><li><a href=#16-代码>1.6 代码</a><ol><li><a href=#161-行内代码>1.6.1 行内代码</a></li><li><a href=#162-代码区块>1.6.2 代码区块</a></li></ol></li><li><a href=#17-普通链接>1.7 普通链接</a></li><li><a href=#18-锚点链接在文档的结尾为变量赋值>1.8 锚点链接（在文档的结尾为变量赋值）</a></li><li><a href=#19-图片链接>1.9 图片链接</a><ol><li><a href=#191-一般图片链接>1.9.1 一般图片链接</a></li><li><a href=#192设置图片大小>1.9.2设置图片大小</a></li><li><a href=#2-markdown-it-imsize插件>2. markdown-it-imsize插件</a></li></ol></li><li><a href=#横屏滑动幻灯片未验证>横屏滑动幻灯片（未验证）</a></li></ol></li><li><a href=#二hugo-高级技巧>二、Hugo 高级技巧</a><ol><li><a href=#21-折叠展开>2.1 折叠展开</a></li><li><a href=#22-重点标记>2.2 重点标记</a></li><li><a href=#23-块引用>2.3 块引用</a></li><li><a href=#支持的-html-元素>支持的 HTML 元素</a></li><li><a href=#转义>转义</a></li></ol></li></ol></nav></div></div><script type=text/javascript>var postToc=document.querySelector(".toc-article");if(postToc){const e=postToc.getBoundingClientRect().top;window.addEventListener("scroll",function(){var t=document.documentElement.scrollTop,t=t<188?0:t-188;postToc.style.top=t+e+"px"})}document.querySelector("#TableOfContents").children.length<1&&document.querySelector(".toc-article").remove()</script><article class=post><header><h1 class=post-title>Markdown常用功能</h1></header><time datetime=2023-02-03T15:01:06Z class="post-meta meta-date dt-published">2023年2月3日</time><div class=post-meta><span>&nbsp;|</span>
+<a href=/categories/markdown target=_blank>Markdown</a></div><div class=clear style=display:none><div class=toc-article><div class=toc-title>文章目录</div></div></div><div class=post-content><p>介绍 Hexo里的 Markdown 的基础功能和 Hugo 加持的高级功能。</p><h2 id=一hugo-原生支持-markdown-语法>一、Hugo 原生支持 Markdown 语法</h2><h3 id=11-标题>1.1 标题</h3><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-markdown data-lang=markdown><span class=line><span class=cl><span class=gh># 一级标题
+</span></span></span><span class=line><span class=cl><span class=gh></span>
+</span></span><span class=line><span class=cl><span class=gu>## 二级标题
+</span></span></span><span class=line><span class=cl><span class=gu></span>
+</span></span><span class=line><span class=cl><span class=gu>### 三级标题
+</span></span></span><span class=line><span class=cl><span class=gu></span>
+</span></span><span class=line><span class=cl><span class=gu>#### 四级标题
+</span></span></span><span class=line><span class=cl><span class=gu></span>
+</span></span><span class=line><span class=cl><span class=gu>##### 五级标题
+</span></span></span><span class=line><span class=cl><span class=gu></span>
+</span></span><span class=line><span class=cl><span class=gu>###### 六级标题  
+</span></span></span></code></pre></td></tr></table></div></div></div><h3 id=12-段落格式>1.2 段落格式</h3><h4 id=121-粗体斜体粗斜体>1.2.1 粗体、斜体、粗斜体</h4><ul><li><p>这是<code>*</code>包裹的<em>斜体</em>文本</p></li><li><p>这是<code>**</code>包裹的<strong>粗体</strong>文本</p></li><li><p>这是<code>***</code>包裹的<em><strong>粗斜体</strong></em>文本</p></li></ul><h4 id=122-上标下标>1.2.2 上标下标</h4><ul><li><p>上标：使用公式 <code>$X^2$</code> → $X^2$</p></li><li><p>下标：</p><ul><li>使用<code>&lt;sub></code>包裹文本，如 <code>H&lt;sub>2&lt;/sub>O</code> → H2O</li><li>使用公式 <code>$H_2O$</code> → $H_2O$</li></ul></li><li><p><del>高亮：使用<code>==</code>包裹文本，如<code>==highlight==</code> ==highlight==</del></p></li><li><p>删除线：使用<code>~~</code>包裹文本，如<code>~~删除线~~</code> <del>删除线</del></p></li><li><p>下划线：</p><ul><li><del>使用<code>&lt;u></code>包裹文本，如<code>&lt;u>带下划线文本&lt;/u></code> 带下划线文本</del></li><li><del>使用<code>++</code>包裹文本，如<code>++带下划线文本++</code> ++带下划线文本++</del></li></ul></li><li><p>表情：<del>使用<code>:</code>包裹表情，如<code>:+1:</code> :+1: <code>:u6e80:</code> :u6e80:</del>
+<a href=https://www.webfx.com/tools/emoji-cheat-sheet/>全部表情</a> <a href=https://gist.github.com/rxaviers/7360908>常用表情</a></p></li><li><p>脚注：</p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-markdown data-lang=markdown><span class=line><span class=cl>脚注[^脚注文本]
+</span></span><span class=line><span class=cl>[^脚注文本]: 脚注的内容
+</span></span></code></pre></td></tr></table></div></div></div><p>脚注<sup id=fnref:1><a href=#fn:1 class=footnote-ref role=doc-noteref>1</a></sup></p></li><li><p>分隔线：3 个及以上连续的<code>---</code></p></li></ul><hr><h3 id=13-列表>1.3 列表</h3><h4 id=131-无序列表>1.3.1 无序列表</h4><p>在<code>-</code>后面带一个空格，不推荐使用 <code>+</code> 和 <code>*</code>。</p><ul><li><p>无序列表 <code>-</code></p></li><li><p>无序列表 <code>-</code></p></li><li><p>无序列表 <code>-</code></p></li><li><p>无序列表 <code>*</code></p></li><li><p>无序列表 <code>+</code></p></li></ul><h4 id=132-有序列表>1.3.2 有序列表</h4><p>在阿拉伯数字后面带一个<code>.</code>和一个空格</p><ol><li>有序列表<code>1.</code></li><li>有序列表<code>2.</code></li></ol><h4 id=133-列表嵌套>1.3.3 列表嵌套</h4><ul><li><p>在无序列表中嵌套对象，需要在对象的行首放置 2 个空格。</p></li><li><p>在有序列表中嵌套对象，需要在对象的行首放置 3 个空格。</p></li><li><p>列表嵌套 <code>-</code></p><ol><li>列表嵌套 <code>-1.</code></li></ol><ul><li>列表嵌套 <code>--</code></li></ul></li></ul><ol><li>列表嵌套 <code>1.</code><ol><li>列表嵌套 <code>1.1.</code></li></ol><ul><li>列表嵌套 <code>1.-</code></li></ul></li></ol><h4 id=134-任务列表>1.3.4 任务列表</h4><p>在 <code>+</code> 后面带一个空格，在空格后再带一个 <code>[ ]</code> ， <code>[ ]</code> 的后面再带一个空格， <code>[ ]</code> 里面为一个空格时表示任务未完成， <code>[ ]</code> 里面为一个 <code>x</code> 时表示任务已完成。不推荐使用 <code>-</code> 和 <code>*</code>。</p><ul><li><p><input checked disabled type=checkbox> 已完成任务 <code>+ [x]</code></p></li><li><p><input disabled type=checkbox> 待完成任务 <code>+ [ ]</code></p><ul><li><input disabled type=checkbox> 待完成任务 <code>__+ [ ]</code></li></ul></li><li><p><input checked disabled type=checkbox> 已完成任务 <code>- [x]</code></p></li><li><p><input checked disabled type=checkbox> 已完成任务 <code>* [x]</code></p></li></ul><h3 id=14-表格>1.4 表格</h3><ul><li>用 <code>|</code> 分隔单元格，用 <code>-</code> 分隔表头和其他行，用 <code>:</code> 控制对齐方式</li></ul><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-markdown data-lang=markdown><span class=line><span class=cl>| 表头   | 左对齐 | 右对齐 | 居中对齐 |
+</span></span><span class=line><span class=cl>| ------ | :----- | -----: | :------: |
+</span></span><span class=line><span class=cl>| 单元格 | 单元格 | 单元格 |  单元格  |
+</span></span><span class=line><span class=cl>| 单元格 | 单元格 | 单元格 |  单元格  |
+</span></span></code></pre></td></tr></table></div></div></div><div class=table-container><table><thead><tr><th>表头</th><th style=text-align:left>左对齐</th><th style=text-align:right>右对齐</th><th style=text-align:center>居中对齐</th></tr></thead><tbody><tr><td>单元格</td><td style=text-align:left>单元格</td><td style=text-align:right>单元格</td><td style=text-align:center>单元格</td></tr><tr><td>单元格</td><td style=text-align:left>单元格</td><td style=text-align:right>单元格</td><td style=text-align:center>单元格</td></tr></tbody></table></div><h3 id=15-区块引用>1.5 区块引用</h3><h4 id=151-区块引用>1.5.1 区块引用</h4><ul><li>在行首放置 1 个 <code>></code></li></ul><blockquote><p>区块引用</p></blockquote><h4 id=152-区块引用嵌套>1.5.2 区块引用嵌套</h4><p>在行首放置多个 <code>></code> ，段落和列表的下一行放置 <code>></code> 时会自动对区块引用进行嵌套</p><blockquote><p>最一层</p><blockquote><p>第二层嵌套第二层嵌套第二层嵌套第二层嵌套第二层嵌套第二层嵌套第二层嵌套第二层嵌套第二层嵌套第二层嵌套第二层嵌套第二层嵌套第二层嵌套第二层嵌套第二层嵌套第二层嵌套第二层嵌套第二层嵌套第二层嵌套第二层嵌套第二层嵌套第二层嵌套第二层嵌套第二层嵌套第二层嵌套第二层嵌套第二层嵌套第二层嵌套第二层嵌套第二层嵌套</p><blockquote><p>第三层嵌套第三层嵌套第三层嵌套第三层嵌套第三层嵌套 第三层嵌套第三层嵌套第三层嵌套第三层嵌套第三层嵌套 第三层嵌套第三层嵌套第三层嵌套第三层嵌套第三层嵌套 第三层嵌套第三层嵌套第三层嵌套第三层嵌套第三层嵌套</p></blockquote></blockquote></blockquote><h3 id=16-代码>1.6 代码</h3><h4 id=161-行内代码>1.6.1 行内代码</h4><ul><li>用 ` 包裹行内代码</li></ul><h4 id=162-代码区块>1.6.2 代码区块</h4><p>用3个 ` 包裹代码，后面可以跟随代码块所使用的语言</p><p>段落和代码区块之间可以有空行</p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-css data-lang=css><span class=line><span class=cl><span class=c>/*css*/</span>
+</span></span><span class=line><span class=cl><span class=nt>h1</span>  <span class=p>{</span>
+</span></span><span class=line><span class=cl><span class=k>font-size</span><span class=p>:</span> <span class=mi>24</span><span class=kt>px</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>text-align</span><span class=p>:</span> <span class=kc>left</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>background-repeat</span><span class=p>:</span> <span class=kc>no-repeat</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>background-position</span><span class=p>:</span><span class=kc>center</span> <span class=kc>left</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></div><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=c1>// java</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=c1>// FileName: HelloWorld.java</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=kd>public</span><span class=w> </span><span class=kd>class</span> <span class=nc>HelloWorld</span><span class=w> </span><span class=p>{</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=c1>// Java 入口程序，程序从此入口</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=kd>public</span><span class=w> </span><span class=kd>static</span><span class=w> </span><span class=kt>void</span><span class=w> </span><span class=nf>main</span><span class=p>(</span><span class=n>String</span><span class=o>[]</span><span class=w> </span><span class=n>args</span><span class=p>)</span><span class=w> </span><span class=p>{</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=n>System</span><span class=p>.</span><span class=na>out</span><span class=p>.</span><span class=na>println</span><span class=p>(</span><span class=s>&#34;Hello,World!&#34;</span><span class=p>);</span><span class=w> </span><span class=c1>// 向控制台打印一条语句</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=p>}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=p>}</span><span class=w>
+</span></span></span></code></pre></td></tr></table></div></div></div><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-diff data-lang=diff><span class=line><span class=cl># diff
+</span></span><span class=line><span class=cl><span class=gi>+ 新增项
+</span></span></span><span class=line><span class=cl><span class=gi></span><span class=gd>- 删除项
+</span></span></span></code></pre></td></tr></table></div></div></div><p>支持以下语言种类：</p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-tex data-lang=tex><span class=line><span class=cl>bash
+</span></span><span class=line><span class=cl>clojure，cpp，cs，css
+</span></span><span class=line><span class=cl>dart，dockerfile, diff
+</span></span><span class=line><span class=cl>erlang
+</span></span><span class=line><span class=cl>go，gradle，groovy
+</span></span><span class=line><span class=cl>haskell
+</span></span><span class=line><span class=cl>java，javascript，json，julia
+</span></span><span class=line><span class=cl>kotlin
+</span></span><span class=line><span class=cl>lisp，lua
+</span></span><span class=line><span class=cl>makefile，markdown，matlab
+</span></span><span class=line><span class=cl>objectivec
+</span></span><span class=line><span class=cl>perl，php，python
+</span></span><span class=line><span class=cl>r，ruby，rust
+</span></span><span class=line><span class=cl>scala，shell，sql，swift
+</span></span><span class=line><span class=cl>tex，typescript
+</span></span><span class=line><span class=cl>verilog，vhdl
+</span></span><span class=line><span class=cl>xml
+</span></span><span class=line><span class=cl>yaml
+</span></span></code></pre></td></tr></table></div></div></div><h3 id=17-普通链接>1.7 普通链接</h3><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-markdown data-lang=markdown><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>链接地址</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>[<span class=nt>链接名称</span>](<span class=na>链接地址</span>)
+</span></span><span class=line><span class=cl>[<span class=nt>链接名称</span>](<span class=na>链接地址 &#34;可选标题&#34;</span>)
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>https:</span><span class=err>//</span><span class=na>markdown-here</span><span class=err>.</span><span class=na>com</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>[<span class=nt>Markdown Here</span>](<span class=na>https://markdown-here.com</span>)
+</span></span><span class=line><span class=cl>[<span class=nt>Markdown Here</span>](<span class=na>https://markdown-here.com &#34;Markdown Here 标题&#34;</span>)
+</span></span></code></pre></td></tr></table></div></div></div><p><a href=https://markdown-here.com>https://markdown-here.com</a></p><p><a href=https://markdown-here.com>Markdown Here</a></p><p><a href=https://markdown-here.com title="Markdown Here 标题">Markdown Here</a></p><h3 id=18-锚点链接在文档的结尾为变量赋值>1.8 锚点链接（在文档的结尾为变量赋值）</h3><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-markdown data-lang=markdown><span class=line><span class=cl>[链接名称][网址变量]
+</span></span><span class=line><span class=cl>[网址变量]:链接地址
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>[Markdown Here][markdown_here_url]
+</span></span><span class=line><span class=cl>[Markdown_Here_url]:https://markdown-here.com
+</span></span></code></pre></td></tr></table></div></div></div><p><del>[Markdown Here][markdown_here_url]</del></p><p><del>[点击这里跳转到“1.4 表格”]({{ &lt; relref &ldquo;#1.4表格&rdquo; > }})</del></p><h3 id=19-图片链接>1.9 图片链接</h3><h4 id=191-一般图片链接>1.9.1 一般图片链接</h4><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-markdown data-lang=markdown><span class=line><span class=cl>![<span class=nt>alt 属性文本</span>](<span class=na>图片地址</span>)
+</span></span><span class=line><span class=cl>![<span class=nt>alt 属性文本</span>](<span class=na>图片地址 &#39;可选标题&#39;</span>)
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>![<span class=nt>梦幻之心星</span>](<span class=na>https://img.skyseeker.eu.org/icon/dream-seeker.jpg</span>)
+</span></span><span class=line><span class=cl>![<span class=nt>梦幻之心星</span>](<span class=na>https://img.skyseeker.eu.org/icon/dream-seeker.jpg &#39;梦幻之心星标题&#39;</span>))
+</span></span></code></pre></td></tr></table></div></div></div><hr><details><summary>点击打开显示效果🎁</summary><p><img class=mx-auto alt=梦幻之心星 src=https://img.skyseeker.eu.org/icon/dream-seeker.jpg></p><p><figure class="max-w-2xl mx-auto overflow-hidden"><img alt=梦幻之心星 src=https://img.skyseeker.eu.org/icon/dream-seeker.jpg><figcaption class="p-2 text-center">梦幻之心星标题</figcaption></figure></p></details><h4 id=192设置图片大小>1.9.2设置图片大小</h4><p>两种方法，第一种用<code>html</code>语法，第二种用<code>markdown-it-imsize</code>插件</p><ul><li>Hugo 自带 shortcodes</li></ul><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-tex data-lang=tex><span class=line><span class=cl><span class=nb>{{</span>&lt;  figure src=&#34;pic.png&#34; width=&#34;20<span class=c>%&#34; title=&#34;图1&#34;  &gt;}}
+</span></span></span></code></pre></td></tr></table></div></div></div><details><summary>点击打开显示效果</summary></details><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-tex data-lang=tex><span class=line><span class=cl>&lt;img src=&#34;https://img.skyseeker.eu.org/icon/dream-seeker.jpg&#34; width=&#34;20<span class=c>%&#34;&gt;
+</span></span></span></code></pre></td></tr></table></div></div></div><ul><li>html方式</li></ul><details><summary>点击打开显示效果🎁</summary></details><hr><h4 id=2-markdown-it-imsize插件>2. markdown-it-imsize插件</h4><p>语法：（注意：=100x200 前面有一个空格）</p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-tex data-lang=tex><span class=line><span class=cl>![指定高宽](https://img.skyseeker.eu.org/icon/dream-seeker.jpg =50x50)
+</span></span></code></pre></td></tr></table></div></div></div><details><summary>点击打开显示效果</summary>![指定高宽](<a href=https://img.skyseeker.eu.org/icon/dream-seeker.jpg>https://img.skyseeker.eu.org/icon/dream-seeker.jpg</a> =50x50)</details><h3 id=横屏滑动幻灯片未验证>横屏滑动幻灯片（未验证）</h3><p>通过<code>&lt;![](url),![](url)></code>这种语法设置横屏滑动滑动片，具体用法如下：</p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-tex data-lang=tex><span class=line><span class=cl>&lt;![蓝1](https://markdown.com.cn/images/blue.jpg),![绿2](https://markdown.com.cn/images/green.jpg),![红3](https://markdown.com.cn/images/red.jpg)&gt;
+</span></span></code></pre></td></tr></table></div></div></div><details><summary>点击打开显示效果</summary>&lt;
+<img class=mx-auto alt=蓝1 src=https://markdown.com.cn/images/blue.jpg>
+,
+<img class=mx-auto alt=绿2 src=https://markdown.com.cn/images/green.jpg>
+,
+<img class=mx-auto alt=红3 src=https://markdown.com.cn/images/red.jpg>
+></details><h2 id=二hugo-高级技巧>二、Hugo 高级技巧</h2><h3 id=21-折叠展开>2.1 折叠展开</h3><ul><li>创建 detail.html 文件，拷贝其中内容：</li></ul><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>details</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>summary</span><span class=p>&gt;</span>{{ (.Get 0) | markdownify }}<span class=p>&lt;/</span><span class=nt>summary</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    {{ .Inner | markdownify }}
+</span></span><span class=line><span class=cl><span class=p>&lt;/</span><span class=nt>details</span><span class=p>&gt;</span>
+</span></span></code></pre></td></tr></table></div></div></div><ul><li>使用：</li></ul><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-tex data-lang=tex><span class=line><span class=cl><span class=nb>{{</span>&lt; detail &#34;点我打开&#34; &gt;<span class=nb>}}</span>
+</span></span><span class=line><span class=cl>隐藏的文字
+</span></span><span class=line><span class=cl><span class=nb>{{</span>&lt; /detail &gt;<span class=nb>}}</span>
+</span></span></code></pre></td></tr></table></div></div></div><ul><li>样式<details><summary>点我打开</summary>隐藏的文字</details></li></ul><h3 id=22-重点标记>2.2 重点标记</h3><ul><li>创建 mark.html 文件，其中内容编写：</li></ul><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>mark</span><span class=p>&gt;</span>{{ .Get &#34;text&#34; }}<span class=p>&lt;/</span><span class=nt>mark</span><span class=p>&gt;</span>
+</span></span></code></pre></td></tr></table></div></div></div><ul><li>这样一个简单的短代码便实现啦，但默认的高亮为荧光黄色，看起来有点刺眼，那么可以在~~./assets/scss/custom.css ~~中增加 mark 标记的样式🤭。</li></ul><p>注意：./assets/scss/custom.css 为我使用主题的自定义 css 文件，其他主题可能不相同。</p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-tex data-lang=tex><span class=line><span class=cl>mark<span class=nb>{</span>
+</span></span><span class=line><span class=cl>    background: hsla(332, 81<span class=c>%, 58%, 0.879);
+</span></span></span><span class=line><span class=cl><span class=c></span><span class=nb>}</span>
+</span></span></code></pre></td></tr></table></div></div></div><ul><li>使用：</li></ul><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-tex data-lang=tex><span class=line><span class=cl><span class=nb>{{</span>&lt; mark text=&#34;这是一个重点标记&#34; &gt;<span class=nb>}}</span>
+</span></span></code></pre></td></tr></table></div></div></div><ul><li>样式</li></ul><mark>这是一个重点标记</mark><h3 id=23-块引用>2.3 块引用</h3><p>{{/<em>&lt; blockquote author=&ldquo;电影&rdquo; link=&ldquo;<a href=https://irithys.com>https://irithys.com</a>&rdquo; title="《寻梦环游记》" ></em>/}}
+死亡不是一切的 终点，遗忘才是
+{{/<em>&lt; /blockquote ></em>/}}</p><h3 id=支持的-html-元素>支持的 HTML 元素</h3><p>[markup.goldmark.renderer]
+** unsafe = true # 默认值不支持在 markdown 中写 html，需改成 true 开启**</p><ul><li>不在 Markdown 涵盖范围内的标签，都能直接使用。目前支持的 HTML 元素有：<code>&lt;kbd> &lt;b> &lt;i> &lt;em> &lt;sup> &lt;sub> &lt;br></code>等。</li></ul><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-tex data-lang=tex><span class=line><span class=cl>  1. 使用 &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Alt&lt;/kbd&gt;+&lt;kbd&gt;Del&lt;/kbd&gt; 重启电脑
+</span></span><span class=line><span class=cl>  2. 特殊符号 <span class=nb>&amp;</span>copy; <span class=nb>&amp;</span>trade; <span class=nb>&amp;</span>amp; 18<span class=nb>&amp;</span>ordm;C
+</span></span><span class=line><span class=cl>  3. &lt;span style=&#34;color: red;&#34;&gt;这是一行红色的文字&lt;/span&gt;
+</span></span></code></pre></td></tr></table></div></div></div><ol><li>使用 Ctrl+Alt+Del 重启电脑</li><li>特殊符号 © ™ & 18ºC</li><li>这是一行红色的文字</li></ol><h3 id=转义>转义</h3><ul><li>Markdown 使用了很多特殊符号来表示特定的意义，如果需要显示特定的符号则需要使用转义字符，Markdown 使用反斜杠<code>\</code>转义特殊字符。</li></ul><div class=footnotes role=doc-endnotes><hr><ol><li id=fn:1><p>脚注的内容&#160;<a href=#fnref:1 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li></ol></div></div><div class=post-archive><h2>相关文章</h2><ul class=listing><li><a href=/2023/20230203130406.html>Markdown用Mermaid显示流程图等图形</a></li><li><a href=/2023/20230202230406.html>Markdown插入视频</a></li><li><a href=/2023/20230201154300.html>Markdown用Mathjax编译公式</a></li></ul></div><div class="post-meta meta-tags"><ul class=clearfix><li><a href=/tags/markdown.html target=_blank>Markdown</a></li></ul></div></article><div id=remark42></div><script>var remark_config={host:"https://remark42.matteo.eu.org",site_id:"matteo",locale:"zh",simple_view:!1,no_footer:!1}</script><script>!function(e,t){for(s=0;s<e.length;s++){var s,n=t.createElement("script"),o=".js",i=t.head||t.body;"noModule"in n?(n.type="module",o=".mjs"):n.async=!0,n.defer=!0,n.src=remark_config.host+"/web/"+e[s]+o,i.appendChild(n)}}(remark_config.components||["embed"],document)</script></div><footer id=footer><div>&copy; 2025 <a href=https://matteo.eu.org/>奥国天空 By</a></div><br><div><div class=github-badge><a href=https://gohugo.io/ target=_black rel=nofollow><span class=badge-subject>Powered by</span><span class="badge-value bg-blue">Hugo</span></a></div><div class=github-badge><a href=https://www.flysnow.org/ target=_black><span class=badge-subject>Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a></div><div class=github-badge><a href=https://github.com/flysnow-org/maupassant-hugo target=_black><span class=badge-subject>Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a></div></div></footer><script type=text/javascript>window.MathJax={tex2jax:{inlineMath:[["$","$"]],processEscapes:!0}}</script><script src='//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script><a id=rocket href=#top></a><script type=text/javascript src='/js/totop.js?v=0.0.0' async></script><style type=text/css>div.highlight{position:relative;margin:1em 0}.copy-code{display:none;position:absolute;top:4px;right:4px;color:rgba(255,255,255,.8);background:rgba(78,78,78,.8);border-radius:var(--radius);padding:0 5px;font:inherit;user-select:none;cursor:pointer;border:0;--radius:8px}div.highlight:hover .copy-code,pre:hover .copy-code{display:block}</style><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script><script>window.addEventListener("load",function(){var t,e=document.querySelector(".sidebar_container");Lightense("img:not(.no-lightense),.lightense",{beforeShow(){t=window.getComputedStyle(e).getPropertyValue("display"),e.style.display="none"},afterHide(){e.style.display=t}})},!1);function getZindex(e){var t=document.querySelector(e);return window.getComputedStyle(t).getPropertyValue("z-index")}function getDisplay(e){var t=document.querySelector(e);return window.getComputedStyle(t).getPropertyValue("display")}function getPosition(e){var t=document.querySelector(e);return window.getComputedStyle(t).getPropertyValue("position")}</script><script src=/js/lightense.min.js></script></main><aside id=sidebar_container class=sidebar_container><div id=sidebar><div class=widget><figure><img class=no-lightense src=/icons/favicon-192x192.png width=100 height=100><figcaption><h4>Matteo</h4></figcaption></figure></div><div class=widget><div class=widget-title><i class="fa fa-search">搜索</a></i></div><div class=search-form><input id=local-search-input placeholder=Search type=text name=q results=0><div id=local-search-result></div><p>文章数量: 30</p></div></div><div class=widget><div class=widget-title><i class="fa fa-folder-o"><a href=/categories.html>分类</a></i></div><ul class=tree-sections><ul><li><a href=https://matteo.eu.org/post/01net.html>①网海拾贝</a><ul><li><a href=https://matteo.eu.org/post/01net/wen.html>网络文摘</a>
+<span class=category-count>(1)</span><ul></ul></li></ul></li><li><a href=https://matteo.eu.org/post/02pr.html>②编程语言</a><ul><li><a href=https://matteo.eu.org/post/02pr/cplus.html>C++</a>
+<span class=category-count>(4)</span><ul></ul></li></ul></li><li><a href=https://matteo.eu.org/post/03it.html>③IT世界</a><ul><li><a href=https://matteo.eu.org/post/03it/blog.html>Blog相关</a>
+<span class=category-count>(6)</span><ul></ul></li><li><a href=https://matteo.eu.org/post/03it/mark.html>Markdown</a>
+<span class=category-count>(4)</span><ul></ul></li><li><a href=https://matteo.eu.org/post/03it/exp.html>奇巧经验</a>
+<span class=category-count>(2)</span><ul></ul></li><li><a href=https://matteo.eu.org/post/03it/tech.html>前沿技术</a>
+<span class=category-count>(1)</span><ul></ul></li></ul></li><li><a href=https://matteo.eu.org/post/04deut.html>④德语学习</a><ul><li><a href=https://matteo.eu.org/post/04deut/gram.html>语法</a>
+<span class=category-count>(6)</span><ul></ul></li></ul></li><li><a href=https://matteo.eu.org/post/05life.html>⑤人生百味</a><ul><li><a href=https://matteo.eu.org/post/05life/talk.html>胡言乱语</a>
+<span class=category-count>(6)</span><ul></ul></li></ul></li></ul></ul></div><div class=widget><div class=widget-title><i class="fa fa-files-o">最近文章</i></div><ul class=recent_post><li><a href=https://matteo.eu.org/2024/20241022005306.html title="在 Visual Studio Code（VSCode) 中通过 CMake 和 vcpkg 安装和使用包">在 Visual Studio Code（VSCode) 中通过 CMake 和 vcpkg 安装和使用包</a></li><li><a href=https://matteo.eu.org/2023/20230313153822.html title=C++中const的各种用法的详解>C++中const的各种用法的详解</a></li><li><a href=https://matteo.eu.org/2023/20230313020157.html title=德语中只接第三格Dativ的动词>德语中只接第三格Dativ的动词</a></li><li><a href=https://matteo.eu.org/2023/20230313011111.html title=德语中的人三物四>德语中的人三物四</a></li><li><a href=https://matteo.eu.org/2023/20230311215201.html title=古今中外时间对照表，系统详细，方便记忆查询>古今中外时间对照表，系统详细，方便记忆查询</a></li><li><a href=https://matteo.eu.org/2023/20230218191559.html title=调整美化Hugo的maupassant主题>调整美化Hugo的maupassant主题</a></li><li><a href=https://matteo.eu.org/2023/20230217181620.html title=开源C++库列表>开源C++库列表</a></li><li><a href=https://matteo.eu.org/2023/20230216233051.html title="Github 使用 rsync 同步网站到个人服务器">Github 使用 rsync 同步网站到个人服务器</a></li><li><a href=https://matteo.eu.org/2023/20230214151418.html title=情人节的起源和风行世界的原因>情人节的起源和风行世界的原因</a></li><li><a href=https://matteo.eu.org/2023/20230214001310.html title=一个直径60米的气球在18000米高空需要多少氦气？>一个直径60米的气球在18000米高空需要多少氦气？</a></li></ul></div><section class=widget><div class=widget-title><i class="fa fa-star-o">标签</i></div><div class=tagcloud><a href=https://matteo.eu.org/tags/a2.html>A2</a>
+<a href=https://matteo.eu.org/tags/blog.html>Blog</a>
+<a href=https://matteo.eu.org/tags/c++.html>C++</a>
+<a href=https://matteo.eu.org/tags/c++%E5%9F%BA%E7%A1%80.html>C++基础</a>
+<a href=https://matteo.eu.org/tags/cmake.html>CMake</a>
+<a href=https://matteo.eu.org/tags/email.html>Email</a>
+<a href=https://matteo.eu.org/tags/hugo.html>Hugo</a>
+<a href=https://matteo.eu.org/tags/markdown.html>Markdown</a>
+<a href=https://matteo.eu.org/tags/maupassant.html>Maupassant</a>
+<a href=https://matteo.eu.org/tags/vcpkg.html>Vcpkg</a>
+<a href=https://matteo.eu.org/tags/vscode.html>VSCode</a>
+<a href=https://matteo.eu.org/tags/%E4%B8%BB%E9%A2%98.html>主题</a>
+<a href=https://matteo.eu.org/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD.html>人工智能</a>
+<a href=https://matteo.eu.org/tags/%E4%BB%A3%E8%AF%8D.html>代词</a>
+<a href=https://matteo.eu.org/tags/%E5%86%A0%E8%AF%8D.html>冠词</a>
+<a href=https://matteo.eu.org/tags/%E5%8A%A8%E8%AF%8D.html>动词</a>
+<a href=https://matteo.eu.org/tags/%E5%90%8D%E8%AF%8D.html>名词</a>
+<a href=https://matteo.eu.org/tags/%E5%9F%9F%E5%90%8D.html>域名</a>
+<a href=https://matteo.eu.org/tags/%E5%AE%89%E8%A3%85.html>安装</a>
+<a href=https://matteo.eu.org/tags/%E5%BC%80%E6%BA%90.html>开源</a>
+<a href=https://matteo.eu.org/tags/%E5%BE%B7%E8%AF%AD.html>德语</a>
+<a href=https://matteo.eu.org/tags/%E6%97%B6%E9%97%B4.html>时间</a>
+<a href=https://matteo.eu.org/tags/%E7%83%AD%E7%82%B9.html>热点</a>
+<a href=https://matteo.eu.org/tags/%E7%A7%91%E5%AD%A6.html>科学</a>
+<a href=https://matteo.eu.org/tags/%E7%BE%8E%E9%A3%9F.html>美食</a>
+<a href=https://matteo.eu.org/tags/%E8%8A%82%E6%97%A5.html>节日</a>
+<a href=https://matteo.eu.org/tags/%E8%AF%AD%E6%B3%95.html>语法</a>
+<a href=https://matteo.eu.org/tags/%E8%AF%BB%E5%90%8E%E6%84%9F.html>读后感</a></div></section><section class=widget><h3 class=widget-title>友情链接</h3><ul class=widget-list><li><a target=_blank href=https://www.flysnow.org/ title=飞雪无情的博客>飞雪无情的博客</a></li></ul></section><section class=widget><h3 class=widget-title>其它</h3><ul class=widget-list><li><a href=https://matteo.eu.org/index.xml>文章 RSS</a></li></ul></section></div></aside><div><input type=checkbox id=nav-toggle aria-hidden=true>
+<label for=nav-toggle class=nav-toggle><div class=nav-toggle-inner><span></span>
+<span></span>
+<span></span></div></label></div></div></body><script>const sidebarToggle=document.querySelector(".nav-toggle"),sidebar=document.querySelector(".sidebar_container");sidebarToggle.addEventListener("click",()=>{sidebar.classList.toggle("show"),main.classList.toggle("blur"),sidebarToggle.classList.toggle("open")});const sidebarMarginTop=sidebar.style.marginTop,toggleTop=sidebarToggle.getBoundingClientRect().top;window.addEventListener("scroll",()=>{var e=document.documentElement.scrollTop;sidebar.style.marginTop=e+sidebarMarginTop+"px"})</script></html>

@@ -1,0 +1,344 @@
+<!doctype html><html lang=zh-hans><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta content="yes" name=apple-mobile-web-app-capable><meta content="black-translucent" name=apple-mobile-web-app-status-bar-style><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>在 Visual Studio Code（VSCode) 中通过 CMake 和 vcpkg 安装和使用包 | 奥国天空</title>
+<meta property="og:title" content="在 Visual Studio Code（VSCode) 中通过 CMake 和 vcpkg 安装和使用包 - 奥国天空"><meta property="og:type" content="article"><meta property="article:published_time" content='2024-10-22T00:53:06+08:00'><meta property="article:modified_time" content='2024-10-22T00:53:06+08:00'><meta name=Keywords content><meta name=description content="在 Visual Studio Code（VSCode) 中通过 CMake 和 vcpkg 安装和使用包"><meta name=author content><meta property="og:url" content="https://matteo.eu.org/2024/20241022005306.html"><link rel="shortcut icon" href=/favicon.ico type=image/x-icon><link rel=apple-touch-icon sizes=180x180 href=/icons/favicon-apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/icons/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/icons/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=stylesheet type=text/css href=/css/style.css><link rel=stylesheet type=text/css href=/css/friendly.css><link rel=stylesheet href=//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css><script type=text/javascript src=//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js></script></head><body><div id=body_container class=body_container><main id=main class=main_container><div id=header><div class=site-name><h1 class=hidden>奥国天空</h1><a id=logo href=/.>奥国天空</a><p class=description>Matteo's Daily Life and Reflections</p></div><div id=nav-menu><a class=current href=https://matteo.eu.org/><i class="fa fa-home">首页</i></a>
+<a href=https://matteo.eu.org/categories.html title=分类><i class='fa fa-folder'></i><span>分类</span></a>
+<a href=https://matteo.eu.org/tags.html title=标签><i class='fa fa-tag'></i><span>标签</span></a>
+<a href=https://matteo.eu.org/archives.html title=归档><i class='fa fa-archive'></i><span>归档</span></a></div></div><div class=content_container><div class=toc-article><h2 class=toc-title>文章目录</h2><div class=toc-content><nav id=TableOfContents><ol><li><ol><li><a href=#前提条件>前提条件</a></li></ol></li><li><a href=#一设置-vcpkg>一、设置 vcpkg</a><ol><li><a href=#11-克隆存储库>1.1 克隆存储库</a></li><li><a href=#12-运行启动脚本>1.2 运行启动脚本</a></li><li><a href=#13-在-vcpkg-安装-qt5-库>1.3 在 vcpkg 安装 Qt5 库</a></li><li><a href=#14-设置环境变量>1.4 设置环境变量</a></li></ol></li><li><a href=#二安装-visual-studio-code-扩展>二、安装 Visual Studio Code 扩展</a></li><li><a href=#三创建项目>三、创建项目</a><ol><li><a href=#31-创建项目文件夹>3.1 创建项目文件夹</a></li><li><a href=#32-生成清单文件并添加依赖项>3.2 生成清单文件并添加依赖项</a></li><li><a href=#33-创建-cmake-配置文件>3.3 创建 CMake 配置文件</a></li><li><a href=#34-编写-ui-和源代码>3.4 编写 UI 和源代码</a></li><li><a href=#35-用-cmakepresetsjson-定义构建设置>3.5 用 CMakePresets.json 定义构建设置</a></li><li><a href=#36-生成和运行项目>3.6 生成和运行项目</a></li></ol></li></ol></nav></div></div><script type=text/javascript>var postToc=document.querySelector(".toc-article");if(postToc){const e=postToc.getBoundingClientRect().top;window.addEventListener("scroll",function(){var t=document.documentElement.scrollTop,t=t<188?0:t-188;postToc.style.top=t+e+"px"})}document.querySelector("#TableOfContents").children.length<1&&document.querySelector(".toc-article").remove()</script><article class=post><header><h1 class=post-title>在 Visual Studio Code（VSCode) 中通过 CMake 和 vcpkg 安装和使用包</h1></header><time datetime=2024-10-21T23:53:06Z class="post-meta meta-date dt-published">2024年10月22日</time><div class=post-meta><span>&nbsp;|</span>
+<a href=/categories/c++ target=_blank>C++</a></div><div class=clear style=display:none><div class=toc-article><div class=toc-title>文章目录</div></div></div><div class=post-content><h3 id=前提条件>前提条件</h3><ul><li>安装 <a href=https://code.visualstudio.com/>Visual Studio Code</a></li><li>安装 <a href=https://code.visualstudio.com/docs/languages/cpp#_install-a-compiler>C++ 编译器</a>，这里选用msvc。</li><li>Windows 7 或更高版本</li></ul><h2 id=一设置-vcpkg>一、设置 vcpkg</h2><h3 id=11-克隆存储库>1.1 克隆存储库</h3><p>第一步是从 GitHub 克隆 vcpkg 存储库。 存储库包含用于获取 vcpkg 可执行文件的脚本，以及由 vcpkg 社区维护的特选开放源代码库的注册表。 要执行此操作，请运行：</p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>git clone https://github.com/microsoft/vcpkg.git
+</span></span></code></pre></td></tr></table></div></div></div><p>vcpkg 特选注册表是一组数量超过 2000 个的开源库。 这些库已通过 vcpkg 的持续集成管道进行验证，可以协同工作。 虽然 vcpkg 存储库不包含这些库的源代码，但它保存方案和元数据，以便在系统中生成和安装它们。</p><h3 id=12-运行启动脚本>1.2 运行启动脚本</h3><p>现在，你已经克隆了 vcpkg 存储库，请导航到 vcpkg 目录并执行启动脚本：</p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>cd vcpkg; 
+</span></span><span class=line><span class=cl>.\bootstrap-vcpkg.bat
+</span></span></code></pre></td></tr></table></div></div></div><p>启动脚本执行先决条件检查并下载 vcpkg 可执行文件。</p><p>就这么简单！ vcpkg 已安装并可供使用。</p><h3 id=13-在-vcpkg-安装-qt5-库>1.3 在 vcpkg 安装 Qt5 库</h3><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>vcpkg install qt5-base:x64-windows
+</span></span></code></pre></td></tr></table></div></div></div><h3 id=14-设置环境变量>1.4 设置环境变量</h3><p><img class=mx-auto alt src=https://raw.githubusercontent.com/lthcweb/BlogImg/main/environment-vars.webp></p><h2 id=二安装-visual-studio-code-扩展>二、安装 Visual Studio Code 扩展</h2><p>导航到“扩展”视图并安装 <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools">C++ 扩展</a>。 此操作将启用 C++ IntelliSense 和代码导航。</p><p><img class=mx-auto alt src=https://raw.githubusercontent.com/lthcweb/BlogImg/main/vscode-c-extension.webp></p><p>安装 <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools">CMake 工具扩展</a>。 这将在 Visual Studio Code 中启用 CMake 支持。</p><p><img class=mx-auto alt src=https://raw.githubusercontent.com/lthcweb/BlogImg/main/vscode-cmake-extension.webp></p><h2 id=三创建项目>三、创建项目</h2><h3 id=31-创建项目文件夹>3.1 创建项目文件夹</h3><p>首先，在一个新目录中创建项目文件夹，例如 MyQtApp。</p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>mkdir MyQtApp
+</span></span><span class=line><span class=cl>cd MyQtApp
+</span></span></code></pre></td></tr></table></div></div></div><h3 id=32-生成清单文件并添加依赖项>3.2 生成清单文件并添加依赖项</h3><p><strong>非必须，但使用 vcpkg.json 可以自动管理依赖项，编译时如果库不存在，会自动用 vcpkg 安装。</strong></p><p>运行以下命令，在 helloworld 文件夹的根目录中创建 vcpkg 清单文件 (vcpkg.json)：</p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>vcpkg new --application
+</span></span></code></pre></td></tr></table></div></div></div><p>vcpkg new 命令在项目的目录中添加一个 vcpkg.json 文件和一个 vcpkg-configuration.json 文件。</p><p>添加 fmt 和 qt5-base 包作为依赖项：</p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>vcpkg add port fmt
+</span></span><span class=line><span class=cl>vcpkg add port qt5-base
+</span></span></code></pre></td></tr></table></div></div></div><p>vcpkg.json 中加上版本信息，如下：</p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>{
+</span></span><span class=line><span class=cl>    &#34;name&#34;: &#34;myqtapp&#34;,
+</span></span><span class=line><span class=cl>    &#34;version-string&#34;: &#34;0.1.0&#34;,
+</span></span><span class=line><span class=cl>    &#34;dependencies&#34;: [
+</span></span><span class=line><span class=cl>      &#34;qt5-base&#34;,
+</span></span><span class=line><span class=cl>      &#34;poco&#34;,
+</span></span><span class=line><span class=cl>      &#34;fmt&#34;
+</span></span><span class=line><span class=cl>    ]
+</span></span><span class=line><span class=cl>}
+</span></span></code></pre></td></tr></table></div></div></div><p>生成的 vcpkg-configuration.json 文件引入了一个<a href=https://learn.microsoft.com/zh-cn/vcpkg/reference/vcpkg-configuration-json#registry-baseline>基线</a>，用于对项目的依赖项设置<a href=https://learn.microsoft.com/zh-cn/vcpkg/users/versioning>最低版本约束</a>。 修改此文件超出了本教程的范围。 虽然在本教程中不适用，但建议将 vcpkg-configuration.json 文件保留在源代码管理之下，以确保不同开发环境中的版本一致性。</p><h3 id=33-创建-cmake-配置文件>3.3 创建 CMake 配置文件</h3><p>在你的项目根目录下创建 CMakeLists.txt 文件，用于配置 CMake 构建系统。</p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>cmake_minimum_required(VERSION 3.5)
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>project(QtApp VERSION 0.1 LANGUAGES CXX)
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>set(CMAKE_AUTOUIC ON)
+</span></span><span class=line><span class=cl>set(CMAKE_AUTOMOC ON)
+</span></span><span class=line><span class=cl>set(CMAKE_AUTORCC ON)
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>set(CMAKE_CXX_STANDARD 17)
+</span></span><span class=line><span class=cl>set(CMAKE_CXX_STANDARD_REQUIRED ON)
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>find_package(Qt5 COMPONENTS Widgets REQUIRED)
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>aux_source_directory(./src PROJECT_SOURCES)
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>add_executable(${PROJECT_NAME}
+</span></span><span class=line><span class=cl>    ${PROJECT_SOURCES}
+</span></span><span class=line><span class=cl>    )
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::Widgets)
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>set_target_properties(${PROJECT_NAME} PROPERTIES
+</span></span><span class=line><span class=cl>    MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
+</span></span><span class=line><span class=cl>    MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
+</span></span><span class=line><span class=cl>    MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+</span></span><span class=line><span class=cl>    MACOSX_BUNDLE TRUE
+</span></span><span class=line><span class=cl>    WIN32_EXECUTABLE TRUE
+</span></span><span class=line><span class=cl>)
+</span></span></code></pre></td></tr></table></div></div></div><h3 id=34-编写-ui-和源代码>3.4 编写 UI 和源代码</h3><p>你需要一个 UI 和对应的 C++ 文件。首先编写一个简单的主窗口 UI。</p><p><code>mainwindow.ui</code></p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-xml data-lang=xml><span class=line><span class=cl><span class=cp>&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;ui</span> <span class=na>version=</span><span class=s>&#34;4.0&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl> <span class=nt>&lt;class&gt;</span>MainWindow<span class=nt>&lt;/class&gt;</span>
+</span></span><span class=line><span class=cl> <span class=nt>&lt;widget</span> <span class=na>class=</span><span class=s>&#34;QMainWindow&#34;</span> <span class=na>name=</span><span class=s>&#34;MainWindow&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;property</span> <span class=na>name=</span><span class=s>&#34;geometry&#34;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>   <span class=nt>&lt;rect&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;x&gt;</span>0<span class=nt>&lt;/x&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;y&gt;</span>0<span class=nt>&lt;/y&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;width&gt;</span>400<span class=nt>&lt;/width&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;height&gt;</span>300<span class=nt>&lt;/height&gt;</span>
+</span></span><span class=line><span class=cl>   <span class=nt>&lt;/rect&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;/property&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;widget</span> <span class=na>class=</span><span class=s>&#34;QWidget&#34;</span> <span class=na>name=</span><span class=s>&#34;centralwidget&#34;</span><span class=nt>/&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;widget</span> <span class=na>class=</span><span class=s>&#34;QMenuBar&#34;</span> <span class=na>name=</span><span class=s>&#34;menubar&#34;</span><span class=nt>/&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;widget</span> <span class=na>class=</span><span class=s>&#34;QStatusBar&#34;</span> <span class=na>name=</span><span class=s>&#34;statusbar&#34;</span><span class=nt>/&gt;</span>
+</span></span><span class=line><span class=cl> <span class=nt>&lt;/widget&gt;</span>
+</span></span><span class=line><span class=cl> <span class=nt>&lt;resources/&gt;</span>
+</span></span><span class=line><span class=cl> <span class=nt>&lt;connections/&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;/ui&gt;</span>
+</span></span></code></pre></td></tr></table></div></div></div><p><code>mainwindow.h</code></p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=cp>##ifndef MAINWINDOW_H
+</span></span></span><span class=line><span class=cl><span class=cp>#define MAINWINDOW_H
+</span></span></span><span class=line><span class=cl><span class=cp></span>
+</span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;QMainWindow&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp></span>
+</span></span><span class=line><span class=cl><span class=n>QT_BEGIN_NAMESPACE</span>
+</span></span><span class=line><span class=cl><span class=k>namespace</span> <span class=n>Ui</span> <span class=p>{</span> <span class=k>class</span> <span class=nc>MainWindow</span><span class=p>;</span> <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=n>QT_END_NAMESPACE</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>MainWindow</span> <span class=o>:</span> <span class=k>public</span> <span class=n>QMainWindow</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>Q_OBJECT</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>public</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>MainWindow</span><span class=p>(</span><span class=n>QWidget</span> <span class=o>*</span><span class=n>parent</span> <span class=o>=</span> <span class=k>nullptr</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=o>~</span><span class=n>MainWindow</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>private</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>Ui</span><span class=o>::</span><span class=n>MainWindow</span> <span class=o>*</span><span class=n>ui</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl><span class=cp>#endif </span><span class=c1>// MAINWINDOW_H
+</span></span></span></code></pre></td></tr></table></div></div></div><p><code>mainwindow.cpp</code></p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;mainwindow.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;./ui_mainwindow.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp></span>
+</span></span><span class=line><span class=cl><span class=n>MainWindow</span><span class=o>::</span><span class=n>MainWindow</span><span class=p>(</span><span class=n>QWidget</span> <span class=o>*</span><span class=n>parent</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=o>:</span> <span class=n>QMainWindow</span><span class=p>(</span><span class=n>parent</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=p>,</span> <span class=n>ui</span><span class=p>(</span><span class=k>new</span> <span class=n>Ui</span><span class=o>::</span><span class=n>MainWindow</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>ui</span><span class=o>-&gt;</span><span class=n>setupUi</span><span class=p>(</span><span class=k>this</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>MainWindow</span><span class=o>::~</span><span class=n>MainWindow</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>delete</span> <span class=n>ui</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></div><p><code>main.cpp</code></p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;QApplication&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;mainwindow.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp></span>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=nf>main</span><span class=p>(</span><span class=kt>int</span> <span class=n>argc</span><span class=p>,</span> <span class=kt>char</span> <span class=o>*</span><span class=n>argv</span><span class=p>[])</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>QApplication</span> <span class=n>app</span><span class=p>(</span><span class=n>argc</span><span class=p>,</span> <span class=n>argv</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>MainWindow</span> <span class=n>window</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>window</span><span class=p>.</span><span class=n>show</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>app</span><span class=p>.</span><span class=n>exec</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></div><h3 id=35-用-cmakepresetsjson-定义构建设置>3.5 用 CMakePresets.json 定义构建设置</h3><p>在项目根目录中创建 CMakePresets.json，用于管理 CMake 预设，包括 vcpkg 集成。</p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-gdscript3 data-lang=gdscript3><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;version&#34;</span><span class=p>:</span> <span class=mi>3</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;cmakeMinimumRequired&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;major&#34;</span><span class=p>:</span> <span class=mi>3</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;minor&#34;</span><span class=p>:</span> <span class=mi>19</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;patch&#34;</span><span class=p>:</span> <span class=mi>0</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;configurePresets&#34;</span><span class=p>:</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>        <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;vs2019&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;displayName&#34;</span><span class=p>:</span> <span class=s2>&#34;Visual Studio Community 2019 Release - x86_amd64&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;description&#34;</span><span class=p>:</span> <span class=s2>&#34;Using compilers for Visual Studio 16 2019 (x86_x64 architecture)&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;generator&#34;</span><span class=p>:</span> <span class=s2>&#34;Visual Studio 16 2019&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;toolset&#34;</span><span class=p>:</span> <span class=s2>&#34;host=x86&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;architecture&#34;</span><span class=p>:</span> <span class=s2>&#34;x64&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;binaryDir&#34;</span><span class=p>:</span> <span class=s2>&#34;${sourceDir}/out/build/${presetName}&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;cacheVariables&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=s2>&#34;CMAKE_INSTALL_PREFIX&#34;</span><span class=p>:</span> <span class=s2>&#34;${sourceDir}/out/install/${presetName}&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                <span class=s2>&#34;CMAKE_C_COMPILER&#34;</span><span class=p>:</span> <span class=s2>&#34;cl.exe&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                <span class=s2>&#34;CMAKE_CXX_COMPILER&#34;</span><span class=p>:</span> <span class=s2>&#34;cl.exe&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                <span class=s2>&#34;CMAKE_TOOLCHAIN_FILE&#34;</span><span class=p>:</span> <span class=s2>&#34;D:/Development/vcpkg/scripts/buildsystems/vcpkg.cmake&#34;</span>
+</span></span><span class=line><span class=cl>            <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=p>],</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;buildPresets&#34;</span><span class=p>:</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>        <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;vs2019-debug&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;displayName&#34;</span><span class=p>:</span> <span class=s2>&#34;Visual Studio Community 2019 Release - x86_amd64 - Debug&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;configurePreset&#34;</span><span class=p>:</span> <span class=s2>&#34;vs2019&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;configuration&#34;</span><span class=p>:</span> <span class=s2>&#34;Debug&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=p>]</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></div><p>在项目根目录中创建 CMakeUserPresets.json 文件（可选），格式和CMakePresets.json一样，可以继承。一般CMakePresets.json用于通用配置，CMakeUserPresets.json用于特殊配置。</p><p>可配置的presets有：</p><ul><li>configurePresets：用于cmake &ndash;preset configurePreset_name</li><li>buildPresets：用于cmake &ndash;build &ndash;preset buildPreset_name命令</li><li>testPresets: 用于ctest &ndash;preset testPresets_name</li><li>packagePresets：用于cpack &ndash;preset packagePresets_name</li><li>workflowPresets：用于一键式运行cmake &ndash;workflow &ndash;preset workflowPresets_name (VSCode 目前不支持)</li></ul><h3 id=36-生成和运行项目>3.6 生成和运行项目</h3><p>打开 VSCode，按 F1，按下面顺序操作：</p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-mysql data-lang=mysql><span class=line><span class=cl><span class=n>CMake</span><span class=p>:</span><span class=k>Select</span><span class=w> </span><span class=n>Configure</span><span class=w> </span><span class=n>Preset</span><span class=w> </span><span class=o>//</span><span class=err>选择</span><span class=w> </span><span class=o>``</span><span class=n>msvc</span><span class=o>``</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=n>Cmake</span><span class=p>:</span><span class=n>Configure</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=n>Cmake</span><span class=p>:</span><span class=k>Select</span><span class=w> </span><span class=n>Build</span><span class=w> </span><span class=n>Preset</span><span class=w> </span><span class=o>//</span><span class=err>选择</span><span class=w> </span><span class=o>``</span><span class=n>msvc</span><span class=o>-</span><span class=n>debug</span><span class=o>``</span><span class=w> </span><span class=err>或</span><span class=w> </span><span class=o>``</span><span class=n>msvc</span><span class=o>-</span><span class=k>release</span><span class=o>``</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=n>CMake</span><span class=p>:</span><span class=n>Build</span><span class=w>
+</span></span></span></code></pre></td></tr></table></div></div></div></div><div class=post-archive><h2>相关文章</h2><ul class=listing><li><a href=/2023/20230313153822.html>C++中const的各种用法的详解</a></li><li><a href=/2023/20230217181620.html>开源C++库列表</a></li></ul></div><div class="post-meta meta-tags"><ul class=clearfix><li><a href=/tags/c++.html target=_blank>C++</a></li><li><a href=/tags/vscode.html target=_blank>VSCode</a></li><li><a href=/tags/cmake.html target=_blank>CMake</a></li><li><a href=/tags/vcpkg.html target=_blank>vcpkg</a></li></ul></div></article><div id=remark42></div><script>var remark_config={host:"https://remark42.matteo.eu.org",site_id:"matteo",locale:"zh",simple_view:!1,no_footer:!1}</script><script>!function(e,t){for(s=0;s<e.length;s++){var s,n=t.createElement("script"),o=".js",i=t.head||t.body;"noModule"in n?(n.type="module",o=".mjs"):n.async=!0,n.defer=!0,n.src=remark_config.host+"/web/"+e[s]+o,i.appendChild(n)}}(remark_config.components||["embed"],document)</script></div><footer id=footer><div>&copy; 2025 <a href=https://matteo.eu.org/>奥国天空 By</a></div><br><div><div class=github-badge><a href=https://gohugo.io/ target=_black rel=nofollow><span class=badge-subject>Powered by</span><span class="badge-value bg-blue">Hugo</span></a></div><div class=github-badge><a href=https://www.flysnow.org/ target=_black><span class=badge-subject>Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a></div><div class=github-badge><a href=https://github.com/flysnow-org/maupassant-hugo target=_black><span class=badge-subject>Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a></div></div></footer><script type=text/javascript>window.MathJax={tex2jax:{inlineMath:[["$","$"]],processEscapes:!0}}</script><script src='//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script><a id=rocket href=#top></a><script type=text/javascript src='/js/totop.js?v=0.0.0' async></script><style type=text/css>div.highlight{position:relative;margin:1em 0}.copy-code{display:none;position:absolute;top:4px;right:4px;color:rgba(255,255,255,.8);background:rgba(78,78,78,.8);border-radius:var(--radius);padding:0 5px;font:inherit;user-select:none;cursor:pointer;border:0;--radius:8px}div.highlight:hover .copy-code,pre:hover .copy-code{display:block}</style><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script><script>window.addEventListener("load",function(){var t,e=document.querySelector(".sidebar_container");Lightense("img:not(.no-lightense),.lightense",{beforeShow(){t=window.getComputedStyle(e).getPropertyValue("display"),e.style.display="none"},afterHide(){e.style.display=t}})},!1);function getZindex(e){var t=document.querySelector(e);return window.getComputedStyle(t).getPropertyValue("z-index")}function getDisplay(e){var t=document.querySelector(e);return window.getComputedStyle(t).getPropertyValue("display")}function getPosition(e){var t=document.querySelector(e);return window.getComputedStyle(t).getPropertyValue("position")}</script><script src=/js/lightense.min.js></script></main><aside id=sidebar_container class=sidebar_container><div id=sidebar><div class=widget><figure><img class=no-lightense src=/icons/favicon-192x192.png width=100 height=100><figcaption><h4>Matteo</h4></figcaption></figure></div><div class=widget><div class=widget-title><i class="fa fa-search">搜索</a></i></div><div class=search-form><input id=local-search-input placeholder=Search type=text name=q results=0><div id=local-search-result></div><p>文章数量: 30</p></div></div><div class=widget><div class=widget-title><i class="fa fa-folder-o"><a href=/categories.html>分类</a></i></div><ul class=tree-sections><ul><li><a href=https://matteo.eu.org/post/01net.html>①网海拾贝</a><ul><li><a href=https://matteo.eu.org/post/01net/wen.html>网络文摘</a>
+<span class=category-count>(1)</span><ul></ul></li></ul></li><li><a href=https://matteo.eu.org/post/02pr.html>②编程语言</a><ul><li><a href=https://matteo.eu.org/post/02pr/cplus.html>C++</a>
+<span class=category-count>(4)</span><ul></ul></li></ul></li><li><a href=https://matteo.eu.org/post/03it.html>③IT世界</a><ul><li><a href=https://matteo.eu.org/post/03it/blog.html>Blog相关</a>
+<span class=category-count>(6)</span><ul></ul></li><li><a href=https://matteo.eu.org/post/03it/mark.html>Markdown</a>
+<span class=category-count>(4)</span><ul></ul></li><li><a href=https://matteo.eu.org/post/03it/exp.html>奇巧经验</a>
+<span class=category-count>(2)</span><ul></ul></li><li><a href=https://matteo.eu.org/post/03it/tech.html>前沿技术</a>
+<span class=category-count>(1)</span><ul></ul></li></ul></li><li><a href=https://matteo.eu.org/post/04deut.html>④德语学习</a><ul><li><a href=https://matteo.eu.org/post/04deut/gram.html>语法</a>
+<span class=category-count>(6)</span><ul></ul></li></ul></li><li><a href=https://matteo.eu.org/post/05life.html>⑤人生百味</a><ul><li><a href=https://matteo.eu.org/post/05life/talk.html>胡言乱语</a>
+<span class=category-count>(6)</span><ul></ul></li></ul></li></ul></ul></div><div class=widget><div class=widget-title><i class="fa fa-files-o">最近文章</i></div><ul class=recent_post><li><a href=https://matteo.eu.org/2024/20241022005306.html title="在 Visual Studio Code（VSCode) 中通过 CMake 和 vcpkg 安装和使用包">在 Visual Studio Code（VSCode) 中通过 CMake 和 vcpkg 安装和使用包</a></li><li><a href=https://matteo.eu.org/2023/20230313153822.html title=C++中const的各种用法的详解>C++中const的各种用法的详解</a></li><li><a href=https://matteo.eu.org/2023/20230313020157.html title=德语中只接第三格Dativ的动词>德语中只接第三格Dativ的动词</a></li><li><a href=https://matteo.eu.org/2023/20230313011111.html title=德语中的人三物四>德语中的人三物四</a></li><li><a href=https://matteo.eu.org/2023/20230311215201.html title=古今中外时间对照表，系统详细，方便记忆查询>古今中外时间对照表，系统详细，方便记忆查询</a></li><li><a href=https://matteo.eu.org/2023/20230218191559.html title=调整美化Hugo的maupassant主题>调整美化Hugo的maupassant主题</a></li><li><a href=https://matteo.eu.org/2023/20230217181620.html title=开源C++库列表>开源C++库列表</a></li><li><a href=https://matteo.eu.org/2023/20230216233051.html title="Github 使用 rsync 同步网站到个人服务器">Github 使用 rsync 同步网站到个人服务器</a></li><li><a href=https://matteo.eu.org/2023/20230214151418.html title=情人节的起源和风行世界的原因>情人节的起源和风行世界的原因</a></li><li><a href=https://matteo.eu.org/2023/20230214001310.html title=一个直径60米的气球在18000米高空需要多少氦气？>一个直径60米的气球在18000米高空需要多少氦气？</a></li></ul></div><section class=widget><div class=widget-title><i class="fa fa-star-o">标签</i></div><div class=tagcloud><a href=https://matteo.eu.org/tags/a2.html>A2</a>
+<a href=https://matteo.eu.org/tags/blog.html>Blog</a>
+<a href=https://matteo.eu.org/tags/c++.html>C++</a>
+<a href=https://matteo.eu.org/tags/c++%E5%9F%BA%E7%A1%80.html>C++基础</a>
+<a href=https://matteo.eu.org/tags/cmake.html>CMake</a>
+<a href=https://matteo.eu.org/tags/email.html>Email</a>
+<a href=https://matteo.eu.org/tags/hugo.html>Hugo</a>
+<a href=https://matteo.eu.org/tags/markdown.html>Markdown</a>
+<a href=https://matteo.eu.org/tags/maupassant.html>Maupassant</a>
+<a href=https://matteo.eu.org/tags/vcpkg.html>Vcpkg</a>
+<a href=https://matteo.eu.org/tags/vscode.html>VSCode</a>
+<a href=https://matteo.eu.org/tags/%E4%B8%BB%E9%A2%98.html>主题</a>
+<a href=https://matteo.eu.org/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD.html>人工智能</a>
+<a href=https://matteo.eu.org/tags/%E4%BB%A3%E8%AF%8D.html>代词</a>
+<a href=https://matteo.eu.org/tags/%E5%86%A0%E8%AF%8D.html>冠词</a>
+<a href=https://matteo.eu.org/tags/%E5%8A%A8%E8%AF%8D.html>动词</a>
+<a href=https://matteo.eu.org/tags/%E5%90%8D%E8%AF%8D.html>名词</a>
+<a href=https://matteo.eu.org/tags/%E5%9F%9F%E5%90%8D.html>域名</a>
+<a href=https://matteo.eu.org/tags/%E5%AE%89%E8%A3%85.html>安装</a>
+<a href=https://matteo.eu.org/tags/%E5%BC%80%E6%BA%90.html>开源</a>
+<a href=https://matteo.eu.org/tags/%E5%BE%B7%E8%AF%AD.html>德语</a>
+<a href=https://matteo.eu.org/tags/%E6%97%B6%E9%97%B4.html>时间</a>
+<a href=https://matteo.eu.org/tags/%E7%83%AD%E7%82%B9.html>热点</a>
+<a href=https://matteo.eu.org/tags/%E7%A7%91%E5%AD%A6.html>科学</a>
+<a href=https://matteo.eu.org/tags/%E7%BE%8E%E9%A3%9F.html>美食</a>
+<a href=https://matteo.eu.org/tags/%E8%8A%82%E6%97%A5.html>节日</a>
+<a href=https://matteo.eu.org/tags/%E8%AF%AD%E6%B3%95.html>语法</a>
+<a href=https://matteo.eu.org/tags/%E8%AF%BB%E5%90%8E%E6%84%9F.html>读后感</a></div></section><section class=widget><h3 class=widget-title>友情链接</h3><ul class=widget-list><li><a target=_blank href=https://www.flysnow.org/ title=飞雪无情的博客>飞雪无情的博客</a></li></ul></section><section class=widget><h3 class=widget-title>其它</h3><ul class=widget-list><li><a href=https://matteo.eu.org/index.xml>文章 RSS</a></li></ul></section></div></aside><div><input type=checkbox id=nav-toggle aria-hidden=true>
+<label for=nav-toggle class=nav-toggle><div class=nav-toggle-inner><span></span>
+<span></span>
+<span></span></div></label></div></div></body><script>const sidebarToggle=document.querySelector(".nav-toggle"),sidebar=document.querySelector(".sidebar_container");sidebarToggle.addEventListener("click",()=>{sidebar.classList.toggle("show"),main.classList.toggle("blur"),sidebarToggle.classList.toggle("open")});const sidebarMarginTop=sidebar.style.marginTop,toggleTop=sidebarToggle.getBoundingClientRect().top;window.addEventListener("scroll",()=>{var e=document.documentElement.scrollTop;sidebar.style.marginTop=e+sidebarMarginTop+"px"})</script></html>

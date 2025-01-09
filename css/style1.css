@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.main {
+  flex: 1;
+  padding: 20px;
+}
+
+.sidebar {
+  display: none;
+  flex-basis: 100%;
+  padding: 20px;
+}
+
+.sidebar-toggle {
+  display: block;
+  margin-bottom: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .sidebar {
+    display: block;
+    flex-basis: auto;
+    width: 25%;
+  }
+
+  .sidebar-nav {
+    display: block;
+  }
+
+  .sidebar-toggle {
+    display: none;
+  }
+}

@@ -1,0 +1,372 @@
+<!doctype html><html lang=zh-hans><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta content="yes" name=apple-mobile-web-app-capable><meta content="black-translucent" name=apple-mobile-web-app-status-bar-style><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>Github Pages建立过程和详细教程 | 奥国天空</title>
+<meta property="og:title" content="Github Pages建立过程和详细教程 - 奥国天空"><meta property="og:type" content="article"><meta property="article:published_time" content='2022-05-24T01:04:06+08:00'><meta property="article:modified_time" content='2022-05-24T01:04:06+08:00'><meta name=Keywords content><meta name=description content="Github Pages建立过程和详细教程"><meta name=author content><meta property="og:url" content="https://matteo.eu.org/2022/20220524010406.html"><link rel="shortcut icon" href=/favicon.ico type=image/x-icon><link rel=apple-touch-icon sizes=180x180 href=/icons/favicon-apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/icons/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/icons/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=stylesheet type=text/css href=/css/style.css><link rel=stylesheet type=text/css href=/css/friendly.css><link rel=stylesheet href=//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css><script type=text/javascript src=//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js></script></head><body><div id=body_container class=body_container><main id=main class=main_container><div id=header><div class=site-name><h1 class=hidden>奥国天空</h1><a id=logo href=/.>奥国天空</a><p class=description>Matteo's Daily Life and Reflections</p></div><div id=nav-menu><a class=current href=https://matteo.eu.org/><i class="fa fa-home">首页</i></a>
+<a href=https://matteo.eu.org/categories.html title=分类><i class='fa fa-folder'></i><span>分类</span></a>
+<a href=https://matteo.eu.org/tags.html title=标签><i class='fa fa-tag'></i><span>标签</span></a>
+<a href=https://matteo.eu.org/archives.html title=归档><i class='fa fa-archive'></i><span>归档</span></a></div></div><div class=content_container><div class=toc-article><h2 class=toc-title>文章目录</h2><div class=toc-content><nav id=TableOfContents><ol><li><ol><li><a href=#一在github创建github-pages站点>一、在Github创建Github Pages站点</a></li><li><a href=#二安装建站工具>二、安装建站工具</a></li><li><a href=#三更换渲染器>三、更换渲染器</a></li><li><a href=#四安装主题>四、安装主题</a></li><li><a href=#五自动部署>五、自动部署</a></li><li><a href=#六编辑工具和图床>六、编辑工具和图床</a></li><li><a href=#七文章使用父子分类>七、文章使用父子分类</a></li></ol></li></ol></nav></div></div><script type=text/javascript>var postToc=document.querySelector(".toc-article");if(postToc){const e=postToc.getBoundingClientRect().top;window.addEventListener("scroll",function(){var t=document.documentElement.scrollTop,t=t<188?0:t-188;postToc.style.top=t+e+"px"})}document.querySelector("#TableOfContents").children.length<1&&document.querySelector(".toc-article").remove()</script><article class=post><header><h1 class=post-title>Github Pages建立过程和详细教程</h1></header><time datetime=2022-05-24T00:04:06Z class="post-meta meta-date dt-published">2022年5月24日</time><div class=post-meta><span>&nbsp;|</span>
+<a href=/categories/it%E4%B8%96%E7%95%8C target=_blank>③IT世界</a>
+<a href=/categories/blog%E7%9B%B8%E5%85%B3 target=_blank>Blog相关</a></div><div class=clear style=display:none><div class=toc-article><div class=toc-title>文章目录</div></div></div><div class=post-content><p>原因不多说，总之下决心把Blog从Blogger迁移到Github。</p><p>具体过程：</p><h3 id=一在github创建github-pages站点>一、在Github创建Github Pages站点</h3><p>按<a href=https://docs.github.com/cn/pages>官网教程</a>操作就行，这里有个<a href=https://blog.csdn.net/yaorongke/article/details/119089190>史上最全教程</a>。</p><h3 id=二安装建站工具>二、安装建站工具</h3><p>官网推荐用<a href=https://jekyllrb.com/>Jekyll</a>，我用的 <a href=https://hexo.io/zh-cn/>Hexo</a>，原因是上面史上最全教程推荐的。</p><h3 id=三更换渲染器>三、更换渲染器</h3><p>Hexo默认的Markdown渲染器是<code>hexo-renderer-marked</code>，不支持<code>Mathjax</code>公式和<code>emoji</code>表情，拟将渲染器更换为<code>hexo-renderer-markdown-it</code>。</p><p>Hexo常见的Markdown渲染器有：<code>hexo-renderer-marked</code>，<code>hexo-renderer-kramed</code>，<code>hexo-renderer-pandoc</code>，<code>hexo-renderer-markdown-it</code>，<code>hexo-renderer-markdown-it-plus</code>，其简单对比如下（参考于：Hexo的多种Markdown渲染器对比分析）</p><div class=table-container><table><thead><tr><th>渲染器</th><th>Mathjax</th><th>插件扩展</th><th>emoji表情</th></tr></thead><tbody><tr><td>hexo-renderer-marked</td><td>❌</td><td>❌</td><td>❌</td></tr><tr><td>hexo-renderer-kramed</td><td>✔️</td><td>❌</td><td>❌</td></tr><tr><td>hexo-renderer-pandoc</td><td>✔️</td><td></td><td></td></tr><tr><td>hexo-renderer-markdown-it</td><td>✔️(需插件支持)</td><td>✔️</td><td>✔️</td></tr><tr><td>hexo-renderer-markdown-it-plus</td><td>✔️</td><td>✔️</td><td>✔️</td></tr></tbody></table></div><p><strong>1. 安装渲染器</strong></p><p>卸载已有渲染器</p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>npm un 渲染器名称 --save
+</span></span></code></pre></td></tr></table></div></div></div><p>如：</p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>npm un hexo-renderer-marked --save
+</span></span></code></pre></td></tr></table></div></div></div><p>安装新渲染器<code>hexo-renderer-markdown-it</code></p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>npm i hexo-renderer-markdown-it --save
+</span></span></code></pre></td></tr></table></div></div></div><p><strong>2. 安装插件</strong></p><p>安装<code>hexo-renderer-markdown-it</code>不自带的四个常用插件</p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>npm i markdown-it-checkbox 
+</span></span><span class=line><span class=cl>npm i markdown-it-imsize 
+</span></span><span class=line><span class=cl>npm i markdown-it-expandable 
+</span></span><span class=line><span class=cl>npm install hexo-filter-mathjax
+</span></span></code></pre></td></tr></table></div></div></div><p><strong>3. 配置</strong></p><p>将如下文本复制粘贴到 Hexo 的配置文件 _config.yml 的尾部</p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>markdown:
+</span></span><span class=line><span class=cl>  preset: &#34;default&#34;
+</span></span><span class=line><span class=cl>  render:
+</span></span><span class=line><span class=cl>    html: true
+</span></span><span class=line><span class=cl>    xhtmlOut: false
+</span></span><span class=line><span class=cl>    langPrefix: &#34;language-&#34;
+</span></span><span class=line><span class=cl>    breaks: true
+</span></span><span class=line><span class=cl>    linkify: true
+</span></span><span class=line><span class=cl>    typographer: true
+</span></span><span class=line><span class=cl>    quotes: &#34;“”‘’&#34;
+</span></span><span class=line><span class=cl>  enable_rules:
+</span></span><span class=line><span class=cl>  disable_rules:
+</span></span><span class=line><span class=cl>  plugins:
+</span></span><span class=line><span class=cl>    - markdown-it-abbr
+</span></span><span class=line><span class=cl>    - markdown-it-cjk-breaks
+</span></span><span class=line><span class=cl>    - markdown-it-deflist
+</span></span><span class=line><span class=cl>    - markdown-it-emoji
+</span></span><span class=line><span class=cl>    - markdown-it-footnote
+</span></span><span class=line><span class=cl>    - markdown-it-ins
+</span></span><span class=line><span class=cl>    - markdown-it-mark
+</span></span><span class=line><span class=cl>    - markdown-it-sub
+</span></span><span class=line><span class=cl>    - markdown-it-sup
+</span></span><span class=line><span class=cl>    - markdown-it-checkbox
+</span></span><span class=line><span class=cl>    - markdown-it-imsize
+</span></span><span class=line><span class=cl>    - markdown-it-expandable
+</span></span><span class=line><span class=cl>    - name: markdown-it-container
+</span></span><span class=line><span class=cl>      options: success
+</span></span><span class=line><span class=cl>    - name: markdown-it-container
+</span></span><span class=line><span class=cl>      options: tips
+</span></span><span class=line><span class=cl>    - name: markdown-it-container
+</span></span><span class=line><span class=cl>      options: warning
+</span></span><span class=line><span class=cl>    - name: markdown-it-container
+</span></span><span class=line><span class=cl>      options: danger
+</span></span><span class=line><span class=cl>  anchors:
+</span></span><span class=line><span class=cl>    level: 2
+</span></span><span class=line><span class=cl>    collisionSuffix: &#34;&#34;
+</span></span><span class=line><span class=cl>    permalink: false
+</span></span><span class=line><span class=cl>    permalinkClass: &#34;header-anchor&#34;
+</span></span><span class=line><span class=cl>    permalinkSide: &#34;left&#34;
+</span></span><span class=line><span class=cl>    permalinkSymbol: &#34;¶&#34;
+</span></span><span class=line><span class=cl>    case: 0
+</span></span><span class=line><span class=cl>    separator: &#34;-&#34;
+</span></span></code></pre></td></tr></table></div></div></div><p><strong>4. 渲染器（render）配置详解</strong></p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl># Markdown-it config
+</span></span><span class=line><span class=cl>markdown:
+</span></span><span class=line><span class=cl>  render:
+</span></span><span class=line><span class=cl>    html: true
+</span></span><span class=line><span class=cl>    xhtmlOut: false
+</span></span><span class=line><span class=cl>    breaks: true
+</span></span><span class=line><span class=cl>    linkify: true
+</span></span><span class=line><span class=cl>    typographer: true
+</span></span><span class=line><span class=cl>    quotes: &#39;“”‘’&#39;
+</span></span></code></pre></td></tr></table></div></div></div><ul><li>html：定义文档中的HTML内容是否应转义或传递给最终结果。</li></ul><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>html: true # 不转义 HTML 内容
+</span></span><span class=line><span class=cl>html: false # 转义 HTML 内容，使标签作为文本输出
+</span></span></code></pre></td></tr></table></div></div></div><ul><li>xhtmlOut：定义解析器是否将导出完全兼容XHTML的标记。</li></ul><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>xhtmlOut: true # 必须使用完全的 XHTML 代码，换行必须为 &lt;br/&gt;
+</span></span><span class=line><span class=cl>xhtmlOut: false # 不必必使用完全的 XHTML 代码，换行可以为 &lt;br&gt;
+</span></span></code></pre></td></tr></table></div></div></div><ul><li>breaks：使源文件中的换行符被解析为标记。每次按Enter键都会创建换行符。</li></ul><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>breaks: true # 每次会车换行相当于一个 &lt;br/&gt; 标签
+</span></span><span class=line><span class=cl>breaks: false # Pa每次会车换行会被忽略
+</span></span></code></pre></td></tr></table></div></div></div><ul><li>linkify：解析器能够将直接粘贴到文本中的链接内联。</li></ul><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>linkify: true # 类似链接的文本，作为链接输出
+</span></span><span class=line><span class=cl>linkify: false # 类似链接的文本，依然作为文本输出
+</span></span></code></pre></td></tr></table></div></div></div><ul><li>typographer：可以替换常见的排版元素。</li></ul><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>typographer: true # 替换常见的排版元素
+</span></span><span class=line><span class=cl>typographer: false # 不替换常见的排版元素
+</span></span></code></pre></td></tr></table></div></div></div><ul><li>quotes：单引号、双引号如何被替换</li></ul><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>quotes: &#39;“”‘’&#39; # &#39;single&#39;、&#34;double&#34; 变成 ‘single’、“double”
+</span></span><span class=line><span class=cl>quotes: &#39;«»“”&#39; # &#39;single&#39;、&#34;double&#34; 变成 “single”、«single»
+</span></span></code></pre></td></tr></table></div></div></div><p><strong>5. 插件用法</strong></p><p>如果不想启用某个插件，可以直接注释掉</p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>plugins:
+</span></span><span class=line><span class=cl>  - markdown-it-abbr
+</span></span><span class=line><span class=cl>  # - markdown-it-deflist
+</span></span></code></pre></td></tr></table></div></div></div><div class=table-container><table><thead><tr><th>名称</th><th>描述</th><th>语法</th><th>示例</th></tr></thead><tbody><tr><td>markdown-it-abbr</td><td>注释</td><td><code>*[HTML]: 超文本标记语言</code></td><td>*[HTML]: 超文本标记语言</td></tr><tr><td>markdown-it-emoji</td><td>表情</td><td><code>:)</code></td><td>:)</td></tr><tr><td>markdown-it-footnote</td><td>脚注</td><td><code>参考文献[^脚注]</code> <code>[^脚注]:脚注的内容</code></td><td>参考文献<sup id=fnref:1><a href=#fn:1 class=footnote-ref role=doc-noteref>1</a></sup></td></tr><tr><td>markdown-it-ins</td><td>下划线</td><td><code>++下划线++</code></td><td>++下划线++</td></tr><tr><td>markdown-it-mark</td><td>突出显示</td><td><code>==标记==</code></td><td>==标记==</td></tr><tr><td>markdown-it-sub</td><td>下标</td><td><code>H~2~O</code></td><td>H<del>2</del>O</td></tr><tr><td>markdown-it-sup</td><td>上标</td><td><code>X^2^</code></td><td>X^2^</td></tr><tr><td>markdown-it-checkbox</td><td>复选框</td><td>未选：<code>+ [ ]</code>选中：<code>+ [x]</code></td><td>+ [ ] 未完成+ [x] 已完成</td></tr><tr><td>hexo-filter-mathjax</td><td>数学公式</td><td><code>$z^2 = x^2 + y^2$</code></td><td>$z^2 = x^2 + y^2$</td></tr></tbody></table></div><ul><li><p><strong>markdown-it-imsize：自定义图片宽高</strong></p><blockquote><blockquote><blockquote><p>点击打开详细说明
+语法：（注意：=100x200 前面有一个空格）</p></blockquote></blockquote></blockquote><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>![test](image.png =100x200)
+</span></span></code></pre></td></tr></table></div></div></div><p>输出：</p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>&lt;p&gt;&lt;img src=&#34;image.png&#34; alt=&#34;test&#34; width=&#34;100&#34; height=&#34;200&#34; /&gt;&lt;/p&gt;
+</span></span></code></pre></td></tr></table></div></div></div><blockquote><blockquote><blockquote></blockquote></blockquote></blockquote></li><li><p><strong>markdown-it-expandable：折叠/展开内容</strong></p><blockquote><blockquote><blockquote><p>点击打开详细说明
+语法：+++ 初始打开 &#187;> 初始隐藏</p></blockquote></blockquote></blockquote><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>+++ **点击折叠**
+</span></span><span class=line><span class=cl>这是被隐藏的内容
+</span></span><span class=line><span class=cl>+++
+</span></span></code></pre></td></tr></table></div></div></div><p>效果：</p><p>+++ <strong>点击折叠</strong>
+这是被隐藏的内容
++++</p><blockquote><blockquote><blockquote></blockquote></blockquote></blockquote></li><li><p><strong>markdown-it-container：自定义容器</strong> ==有的主题无效==</p><blockquote><blockquote><blockquote><p>点击打开详细说明
+语法：</p></blockquote></blockquote></blockquote><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>::: tips
+</span></span><span class=line><span class=cl>**提示**
+</span></span><span class=line><span class=cl>这是一个提示
+</span></span><span class=line><span class=cl>:::
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>::: warning
+</span></span><span class=line><span class=cl>**注意**
+</span></span><span class=line><span class=cl>这是一个警告
+</span></span><span class=line><span class=cl>:::
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>::: danger
+</span></span><span class=line><span class=cl>**警告**
+</span></span><span class=line><span class=cl>这是一个危险信号
+</span></span><span class=line><span class=cl>:::
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>::: success
+</span></span><span class=line><span class=cl>**成功**
+</span></span><span class=line><span class=cl>这是一个成功信号
+</span></span><span class=line><span class=cl>:::
+</span></span></code></pre></td></tr></table></div></div></div><p>效果:</p><p>::: tips
+<strong>提示</strong>
+这是一个提示
+:::</p><p>::: warning
+<strong>注意</strong>
+这是一个警告
+:::</p><p>::: danger
+<strong>警告</strong>
+这是一个危险信号
+:::</p><p>::: success
+<strong>成功</strong>
+这是一个成功信号
+:::</p><pre><code>  自定义容器还需要在 Hexo 的主题下的控制 Markdown 渲染样式文件中配置如下 CSS 内容：（否则不会显示背景色填充效果）
+</code></pre><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>.tips {
+</span></span><span class=line><span class=cl>padding-left: 10px;
+</span></span><span class=line><span class=cl>background-color rgba(52,152,219,.3);
+</span></span><span class=line><span class=cl>border-left 4px solid rgb(52,152,219);
+</span></span><span class=line><span class=cl>color: darken(rgb(52,152,219),20%);
+</span></span><span class=line><span class=cl>}
+</span></span><span class=line><span class=cl>.success {
+</span></span><span class=line><span class=cl>    padding-left: 10px;
+</span></span><span class=line><span class=cl>    background-color rgba(46,204,113,.3);
+</span></span><span class=line><span class=cl>    border-left 4px solid rgb(46,204,113);
+</span></span><span class=line><span class=cl>    color: darken(rgb(46,204,113),20%);
+</span></span><span class=line><span class=cl>}
+</span></span><span class=line><span class=cl>.warning {
+</span></span><span class=line><span class=cl>    padding-left: 10px;
+</span></span><span class=line><span class=cl>    background-color rgba(241,196,15,.3);
+</span></span><span class=line><span class=cl>    border-left 4px solid rgb(241,196,15);
+</span></span><span class=line><span class=cl>    color: darken(rgb(241,196,15),20%);
+</span></span><span class=line><span class=cl>}
+</span></span><span class=line><span class=cl>.danger {
+</span></span><span class=line><span class=cl>    padding-left: 10px;
+</span></span><span class=line><span class=cl>    background-color rgba(231,76,60,.3);
+</span></span><span class=line><span class=cl>    border-left 4px solid rgb(231,76,60);
+</span></span><span class=line><span class=cl>    color: darken(rgb(231,76,60),20%);
+</span></span><span class=line><span class=cl>}
+</span></span></code></pre></td></tr></table></div></div></div><blockquote><blockquote><blockquote></blockquote></blockquote></blockquote></li><li><p><strong>hexo-filter-mathjax 公式</strong></p><blockquote><blockquote><blockquote><p>点击打开详细说明
+用法：
+把下面代码加入 Hexo的 _config.yml中</p></blockquote></blockquote></blockquote><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-mysql data-lang=mysql><span class=line><span class=cl><span class=n>mathjax</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=n>tags</span><span class=p>:</span><span class=w> </span><span class=n>none</span><span class=w> </span><span class=c1># or &#39;ams&#39; or &#39;all&#39;
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>single_dollars</span><span class=p>:</span><span class=w> </span><span class=no>true</span><span class=w> </span><span class=c1># enable single dollar signs as in-line math delimiters
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>cjk_width</span><span class=p>:</span><span class=w> </span><span class=mi>0</span><span class=p>.</span><span class=mi>9</span><span class=w> </span><span class=c1># relative CJK char width
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>normal_width</span><span class=p>:</span><span class=w> </span><span class=mi>0</span><span class=p>.</span><span class=mi>6</span><span class=w> </span><span class=c1># relative normal (monospace) width
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>append_css</span><span class=p>:</span><span class=w> </span><span class=no>true</span><span class=w> </span><span class=c1># add CSS to pages rendered by MathJax
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>every_page</span><span class=p>:</span><span class=w> </span><span class=no>false</span><span class=w> </span><span class=c1># if true, every page will be rendered by MathJax regardless the `mathjax` setting in Front-matter
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>packages</span><span class=p>:</span><span class=w> </span><span class=c1># extra packages to load
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>extension_options</span><span class=p>:</span><span class=w> </span><span class=err>{}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=c1># you can put your extension options here
+</span></span></span><span class=line><span class=cl><span class=c1># see http://docs.mathjax.org/en/latest/options/input/tex.html#tex-extension-options for more detail
+</span></span></span></code></pre></td></tr></table></div></div></div><pre><code>  在页面文件中设置mathjax: true
+</code></pre><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>---
+</span></span><span class=line><span class=cl>title: On the Electrodynamics of Moving Bodies
+</span></span><span class=line><span class=cl>categories: Physics
+</span></span><span class=line><span class=cl>date: 1905-06-30 12:00:00
+</span></span><span class=line><span class=cl>mathjax: true
+</span></span><span class=line><span class=cl>---
+</span></span></code></pre></td></tr></table></div></div></div><blockquote><blockquote><blockquote></blockquote></blockquote></blockquote></li></ul><p><strong>6. 锚（anchors）的用法</strong></p><p>可能自己不会用，因此，没太关注这个功能</p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl># Markdown-it config
+</span></span><span class=line><span class=cl>markdown:
+</span></span><span class=line><span class=cl>  anchors:
+</span></span><span class=line><span class=cl>    level: 2
+</span></span><span class=line><span class=cl>    collisionSuffix: &#39;v&#39;
+</span></span><span class=line><span class=cl>    permalink: true
+</span></span><span class=line><span class=cl>    permalinkClass: header-anchor
+</span></span><span class=line><span class=cl>    permalinkSymbol: ¶
+</span></span></code></pre></td></tr></table></div></div></div><ul><li>level：生成 Heading ID 的标题等级</li><li>collisionSuffix：Heading ID 重复时，数字的后缀</li><li>permalink：&rsquo;true&rsquo;，则创建一个锚标记，除标题外还有一个固定链接</li><li>permalinkClass：用于固定链接锚标记的样式</li><li>permalinkSymbol：用于固定链接标记的符号</li></ul><h3 id=四安装主题>四、安装主题</h3><p>目前主题采用<a href=http://github.com/wujun234/hexo-theme-tree>Tree</a>,</p><p><del>目前我用的主题是<a href=https://github.com/wzpan/hexo-theme-freemind>Freemind</a>，</del></p><p><del>优点：</del></p><p><del>1. 自带搜索引擎，看起来高大上</del></p><p><del>2. 标签插件加强</del></p><p><del>3. 多套颜色主题</del></p><p><del>4. 支持 Front-Matter</del></p><ol start=5><li>自带评论系统。不过我把评论系统改成了<a href=https://giscus.app/zh-CN>giscus</a>，乱码问题参考了这个<a href=https://blog.southfox.me/2022/01/%E4%B8%BA%E5%8D%9A%E5%AE%A2%E6%94%AF%E6%8C%81%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/>古老风格</a>。</li></ol><p>配置在Hexo的_config.yml，但是recent_comments组件没有完成。</p><p>按照giscus的官方教程一路操作就行。</p><h3 id=五自动部署>五、自动部署</h3><p>参考这个简单的部署方法：<a href=https://www.heson10.com/posts/61031.html>利用Github Action实现hexo博客的自动部署</a>。</p><p>增加文章后，只需要下面三条命令，就会推送到服务器自动生成。</p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>git add .
+</span></span><span class=line><span class=cl>git commit -m &#34;增加博文&#34;
+</span></span><span class=line><span class=cl>git push
+</span></span></code></pre></td></tr></table></div></div></div><h3 id=六编辑工具和图床>六、编辑工具和图床</h3><p>编辑工具使用 Typora，图床用github，图床工具用picGo。</p><h3 id=七文章使用父子分类>七、文章使用父子分类</h3><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>categories:
+</span></span><span class=line><span class=cl>- [Diary, PlayStation]
+</span></span><span class=line><span class=cl>- [Diary, Games]
+</span></span><span class=line><span class=cl>- [Life]
+</span></span></code></pre></td></tr></table></div></div></div><p>此时这篇文章同时包括三个分类： PlayStation 和 Games 分别都是父分类 Diary 的子分类，同时 Life 是一个没有子分类的分类。</p><div class=footnotes role=doc-endnotes><hr><ol><li id=fn:1><p>脚注的内容&#160;<a href=#fnref:1 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li></ol></div></div><div class="post-meta meta-tags"><ul class=clearfix><li><a href=/tags/blog.html target=_blank>Blog</a></li><li><a href=/tags/%E5%AE%89%E8%A3%85.html target=_blank>安装</a></li></ul></div></article><div id=remark42></div><script>var remark_config={host:"https://remark42.matteo.eu.org",site_id:"matteo",locale:"zh",simple_view:!1,no_footer:!1}</script><script>!function(e,t){for(s=0;s<e.length;s++){var s,n=t.createElement("script"),o=".js",i=t.head||t.body;"noModule"in n?(n.type="module",o=".mjs"):n.async=!0,n.defer=!0,n.src=remark_config.host+"/web/"+e[s]+o,i.appendChild(n)}}(remark_config.components||["embed"],document)</script></div><footer id=footer><div>&copy; 2025 <a href=https://matteo.eu.org/>奥国天空 By</a></div><br><div><div class=github-badge><a href=https://gohugo.io/ target=_black rel=nofollow><span class=badge-subject>Powered by</span><span class="badge-value bg-blue">Hugo</span></a></div><div class=github-badge><a href=https://www.flysnow.org/ target=_black><span class=badge-subject>Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a></div><div class=github-badge><a href=https://github.com/flysnow-org/maupassant-hugo target=_black><span class=badge-subject>Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a></div></div></footer><script type=text/javascript>window.MathJax={tex2jax:{inlineMath:[["$","$"]],processEscapes:!0}}</script><script src='//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script><a id=rocket href=#top></a><script type=text/javascript src='/js/totop.js?v=0.0.0' async></script><style type=text/css>div.highlight{position:relative;margin:1em 0}.copy-code{display:none;position:absolute;top:4px;right:4px;color:rgba(255,255,255,.8);background:rgba(78,78,78,.8);border-radius:var(--radius);padding:0 5px;font:inherit;user-select:none;cursor:pointer;border:0;--radius:8px}div.highlight:hover .copy-code,pre:hover .copy-code{display:block}</style><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script><script>window.addEventListener("load",function(){var t,e=document.querySelector(".sidebar_container");Lightense("img:not(.no-lightense),.lightense",{beforeShow(){t=window.getComputedStyle(e).getPropertyValue("display"),e.style.display="none"},afterHide(){e.style.display=t}})},!1);function getZindex(e){var t=document.querySelector(e);return window.getComputedStyle(t).getPropertyValue("z-index")}function getDisplay(e){var t=document.querySelector(e);return window.getComputedStyle(t).getPropertyValue("display")}function getPosition(e){var t=document.querySelector(e);return window.getComputedStyle(t).getPropertyValue("position")}</script><script src=/js/lightense.min.js></script></main><aside id=sidebar_container class=sidebar_container><div id=sidebar><div class=widget><figure><img class=no-lightense src=/icons/favicon-192x192.png width=100 height=100><figcaption><h4>Matteo</h4></figcaption></figure></div><div class=widget><div class=widget-title><i class="fa fa-search">搜索</a></i></div><div class=search-form><input id=local-search-input placeholder=Search type=text name=q results=0><div id=local-search-result></div><p>文章数量: 30</p></div></div><div class=widget><div class=widget-title><i class="fa fa-folder-o"><a href=/categories.html>分类</a></i></div><ul class=tree-sections><ul><li><a href=https://matteo.eu.org/post/01net.html>①网海拾贝</a><ul><li><a href=https://matteo.eu.org/post/01net/wen.html>网络文摘</a>
+<span class=category-count>(1)</span><ul></ul></li></ul></li><li><a href=https://matteo.eu.org/post/02pr.html>②编程语言</a><ul><li><a href=https://matteo.eu.org/post/02pr/cplus.html>C++</a>
+<span class=category-count>(4)</span><ul></ul></li></ul></li><li><a href=https://matteo.eu.org/post/03it.html>③IT世界</a><ul><li><a href=https://matteo.eu.org/post/03it/blog.html>Blog相关</a>
+<span class=category-count>(6)</span><ul></ul></li><li><a href=https://matteo.eu.org/post/03it/mark.html>Markdown</a>
+<span class=category-count>(4)</span><ul></ul></li><li><a href=https://matteo.eu.org/post/03it/exp.html>奇巧经验</a>
+<span class=category-count>(2)</span><ul></ul></li><li><a href=https://matteo.eu.org/post/03it/tech.html>前沿技术</a>
+<span class=category-count>(1)</span><ul></ul></li></ul></li><li><a href=https://matteo.eu.org/post/04deut.html>④德语学习</a><ul><li><a href=https://matteo.eu.org/post/04deut/gram.html>语法</a>
+<span class=category-count>(6)</span><ul></ul></li></ul></li><li><a href=https://matteo.eu.org/post/05life.html>⑤人生百味</a><ul><li><a href=https://matteo.eu.org/post/05life/talk.html>胡言乱语</a>
+<span class=category-count>(6)</span><ul></ul></li></ul></li></ul></ul></div><div class=widget><div class=widget-title><i class="fa fa-files-o">最近文章</i></div><ul class=recent_post><li><a href=https://matteo.eu.org/2024/20241022005306.html title="在 Visual Studio Code（VSCode) 中通过 CMake 和 vcpkg 安装和使用包">在 Visual Studio Code（VSCode) 中通过 CMake 和 vcpkg 安装和使用包</a></li><li><a href=https://matteo.eu.org/2023/20230313153822.html title=C++中const的各种用法的详解>C++中const的各种用法的详解</a></li><li><a href=https://matteo.eu.org/2023/20230313020157.html title=德语中只接第三格Dativ的动词>德语中只接第三格Dativ的动词</a></li><li><a href=https://matteo.eu.org/2023/20230313011111.html title=德语中的人三物四>德语中的人三物四</a></li><li><a href=https://matteo.eu.org/2023/20230311215201.html title=古今中外时间对照表，系统详细，方便记忆查询>古今中外时间对照表，系统详细，方便记忆查询</a></li><li><a href=https://matteo.eu.org/2023/20230218191559.html title=调整美化Hugo的maupassant主题>调整美化Hugo的maupassant主题</a></li><li><a href=https://matteo.eu.org/2023/20230217181620.html title=开源C++库列表>开源C++库列表</a></li><li><a href=https://matteo.eu.org/2023/20230216233051.html title="Github 使用 rsync 同步网站到个人服务器">Github 使用 rsync 同步网站到个人服务器</a></li><li><a href=https://matteo.eu.org/2023/20230214151418.html title=情人节的起源和风行世界的原因>情人节的起源和风行世界的原因</a></li><li><a href=https://matteo.eu.org/2023/20230214001310.html title=一个直径60米的气球在18000米高空需要多少氦气？>一个直径60米的气球在18000米高空需要多少氦气？</a></li></ul></div><section class=widget><div class=widget-title><i class="fa fa-star-o">标签</i></div><div class=tagcloud><a href=https://matteo.eu.org/tags/a2.html>A2</a>
+<a href=https://matteo.eu.org/tags/blog.html>Blog</a>
+<a href=https://matteo.eu.org/tags/c++.html>C++</a>
+<a href=https://matteo.eu.org/tags/c++%E5%9F%BA%E7%A1%80.html>C++基础</a>
+<a href=https://matteo.eu.org/tags/cmake.html>CMake</a>
+<a href=https://matteo.eu.org/tags/email.html>Email</a>
+<a href=https://matteo.eu.org/tags/hugo.html>Hugo</a>
+<a href=https://matteo.eu.org/tags/markdown.html>Markdown</a>
+<a href=https://matteo.eu.org/tags/maupassant.html>Maupassant</a>
+<a href=https://matteo.eu.org/tags/vcpkg.html>Vcpkg</a>
+<a href=https://matteo.eu.org/tags/vscode.html>VSCode</a>
+<a href=https://matteo.eu.org/tags/%E4%B8%BB%E9%A2%98.html>主题</a>
+<a href=https://matteo.eu.org/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD.html>人工智能</a>
+<a href=https://matteo.eu.org/tags/%E4%BB%A3%E8%AF%8D.html>代词</a>
+<a href=https://matteo.eu.org/tags/%E5%86%A0%E8%AF%8D.html>冠词</a>
+<a href=https://matteo.eu.org/tags/%E5%8A%A8%E8%AF%8D.html>动词</a>
+<a href=https://matteo.eu.org/tags/%E5%90%8D%E8%AF%8D.html>名词</a>
+<a href=https://matteo.eu.org/tags/%E5%9F%9F%E5%90%8D.html>域名</a>
+<a href=https://matteo.eu.org/tags/%E5%AE%89%E8%A3%85.html>安装</a>
+<a href=https://matteo.eu.org/tags/%E5%BC%80%E6%BA%90.html>开源</a>
+<a href=https://matteo.eu.org/tags/%E5%BE%B7%E8%AF%AD.html>德语</a>
+<a href=https://matteo.eu.org/tags/%E6%97%B6%E9%97%B4.html>时间</a>
+<a href=https://matteo.eu.org/tags/%E7%83%AD%E7%82%B9.html>热点</a>
+<a href=https://matteo.eu.org/tags/%E7%A7%91%E5%AD%A6.html>科学</a>
+<a href=https://matteo.eu.org/tags/%E7%BE%8E%E9%A3%9F.html>美食</a>
+<a href=https://matteo.eu.org/tags/%E8%8A%82%E6%97%A5.html>节日</a>
+<a href=https://matteo.eu.org/tags/%E8%AF%AD%E6%B3%95.html>语法</a>
+<a href=https://matteo.eu.org/tags/%E8%AF%BB%E5%90%8E%E6%84%9F.html>读后感</a></div></section><section class=widget><h3 class=widget-title>友情链接</h3><ul class=widget-list><li><a target=_blank href=https://www.flysnow.org/ title=飞雪无情的博客>飞雪无情的博客</a></li></ul></section><section class=widget><h3 class=widget-title>其它</h3><ul class=widget-list><li><a href=https://matteo.eu.org/index.xml>文章 RSS</a></li></ul></section></div></aside><div><input type=checkbox id=nav-toggle aria-hidden=true>
+<label for=nav-toggle class=nav-toggle><div class=nav-toggle-inner><span></span>
+<span></span>
+<span></span></div></label></div></div></body><script>const sidebarToggle=document.querySelector(".nav-toggle"),sidebar=document.querySelector(".sidebar_container");sidebarToggle.addEventListener("click",()=>{sidebar.classList.toggle("show"),main.classList.toggle("blur"),sidebarToggle.classList.toggle("open")});const sidebarMarginTop=sidebar.style.marginTop,toggleTop=sidebarToggle.getBoundingClientRect().top;window.addEventListener("scroll",()=>{var e=document.documentElement.scrollTop;sidebar.style.marginTop=e+sidebarMarginTop+"px"})</script></html>

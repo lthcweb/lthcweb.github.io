@@ -1,0 +1,693 @@
+<!doctype html><html lang=zh-hans><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta content="yes" name=apple-mobile-web-app-capable><meta content="black-translucent" name=apple-mobile-web-app-status-bar-style><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>Markdown用Mermaid显示流程图等图形 | 奥国天空</title>
+<meta property="og:title" content="Markdown用Mermaid显示流程图等图形 - 奥国天空"><meta property="og:type" content="article"><meta property="article:published_time" content='2023-02-03T13:04:06+08:00'><meta property="article:modified_time" content='2023-02-03T13:04:06+08:00'><meta name=Keywords content><meta name=description content="Markdown用Mermaid显示流程图等图形"><meta name=author content><meta property="og:url" content="https://matteo.eu.org/2023/20230203130406.html"><link rel="shortcut icon" href=/favicon.ico type=image/x-icon><link rel=apple-touch-icon sizes=180x180 href=/icons/favicon-apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/icons/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/icons/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=stylesheet type=text/css href=/css/style.css><link rel=stylesheet type=text/css href=/css/friendly.css><link rel=stylesheet href=//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css><script type=text/javascript src=//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js></script></head><body><div id=body_container class=body_container><main id=main class=main_container><div id=header><div class=site-name><h1 class=hidden>奥国天空</h1><a id=logo href=/.>奥国天空</a><p class=description>Matteo's Daily Life and Reflections</p></div><div id=nav-menu><a class=current href=https://matteo.eu.org/><i class="fa fa-home">首页</i></a>
+<a href=https://matteo.eu.org/categories.html title=分类><i class='fa fa-folder'></i><span>分类</span></a>
+<a href=https://matteo.eu.org/tags.html title=标签><i class='fa fa-tag'></i><span>标签</span></a>
+<a href=https://matteo.eu.org/archives.html title=归档><i class='fa fa-archive'></i><span>归档</span></a></div></div><div class=content_container><div class=toc-article><h2 class=toc-title>文章目录</h2><div class=toc-content><nav id=TableOfContents><ol><li><a href=#1-流程图模块>1. 流程图模块</a></li><li><a href=#2-安装mermaid>2. 安装Mermaid</a><ol><li><ol><li><a href=#步骤1>步骤1</a></li><li><a href=#步骤2>步骤2</a></li><li><a href=#步骤3>步骤3</a></li><li><a href=#步骤4>步骤4</a></li></ol></li></ol></li><li><a href=#3-mermaid功能>3. Mermaid功能</a></li><li><a href=#4-mermaid使用方法>4. Mermaid使用方法</a></li><li><a href=#5-示例>5. 示例</a><ol><li><a href=#1-流程图-mermaid-flowchart-tbtdbtrllr>1. 流程图 <code>mermaid flowchart TB/TD/BT/RL/LR</code></a></li><li><a href=#2-时序图-mermaid-sequencediagram>2. 时序图 <code>mermaid sequenceDiagram</code></a></li><li><a href=#3-饼图-mermaid-pie>3. 饼图 <code>mermaid pie</code></a></li><li><a href=#4-甘特图-mermaid>4. 甘特图 <code>mermaid</code></a></li><li><a href=#5-类图-class-diagram----experimental>5. 类图 Class diagram - ❗️ experimental</a></li><li><a href=#6-git分支图-git-graph----experimental>6. Git分支图 Git graph - ❗️ experimental</a></li><li><a href=#7-状态图-state-diagram>7. 状态图 State Diagram</a></li><li><a href=#8-实体关系图-entity-relationship-diagram>8. 实体关系图 Entity Relationship Diagram</a></li><li><a href=#9-用户旅程图-user-journey>9. 用户旅程图 User Journey</a></li><li><a href=#10-需求图-requirement-diagram>10. 需求图 Requirement Diagram</a></li><li><a href=#11-c4c-diagram-未测试>11. C4C Diagram （未测试）</a></li><li><a href=#12-脑图-mindmaps-未测试>12. 脑图 Mindmaps （未测试）</a></li></ol></li></ol></nav></div></div><script type=text/javascript>var postToc=document.querySelector(".toc-article");if(postToc){const e=postToc.getBoundingClientRect().top;window.addEventListener("scroll",function(){var t=document.documentElement.scrollTop,t=t<188?0:t-188;postToc.style.top=t+e+"px"})}document.querySelector("#TableOfContents").children.length<1&&document.querySelector(".toc-article").remove()</script><article class=post><header><h1 class=post-title>Markdown用Mermaid显示流程图等图形</h1></header><time datetime=2023-02-03T12:04:06Z class="post-meta meta-date dt-published">2023年2月3日</time><div class=post-meta><span>&nbsp;|</span>
+<a href=/categories/markdown target=_blank>Markdown</a></div><div class=clear style=display:none><div class=toc-article><div class=toc-title>文章目录</div></div></div><div class=post-content><p><img class=mx-auto alt=介绍基于Hexo的流程图、时序图、饼图、甘特图等图形的显示方法 src=https://raw.githubusercontent.com/lthcweb/BlogImg/main/gp/202302120041467.webp></p><ul><li>有时候需要用流程图来说明思路，使用图片的话，加载太慢，使用markdown的语法来画流程图是一个不错的办法。</li><li>vscode自带的markdown预览功能似乎不支持显示流程图，需要安装一个插件Markdown Preview Enhanced</li><li>hexo中默认不支持流程图的markdown语法，需要安装相关的插件来进行渲染。</li></ul><h2 id=1-流程图模块>1. 流程图模块</h2><ul><li>mermaid<ul><li><a href=https://github.com/webappdevelp/hexo-filter-mermaid-diagrams>https://github.com/webappdevelp/hexo-filter-mermaid-diagrams</a></li></ul></li><li>flowchart<ul><li><a href=https://github.com/bubkoo/hexo-filter-flowchart>https://github.com/bubkoo/hexo-filter-flowchart</a></li></ul></li><li>sequence<ul><li><a href=https://github.com/bubkoo/hexo-filter-sequence>https://github.com/bubkoo/hexo-filter-sequence</a></li></ul></li></ul><p>不同的模块，安装和使用方法也不相同，这里我安装<code>mermaid</code></p><h2 id=2-安装mermaid>2. 安装Mermaid</h2><h4 id=步骤1>步骤1</h4><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl> npm i hexo-filter-mermaid-diagrams --save
+</span></span></code></pre></td></tr></table></div></div></div><h4 id=步骤2>步骤2</h4><p>修改Hexo配置文件<code>_config.yml</code></p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-gdscript3 data-lang=gdscript3><span class=line><span class=cl><span class=c1># mermaid chart</span>
+</span></span><span class=line><span class=cl><span class=n>mermaid</span><span class=p>:</span> <span class=c1>## mermaid url https://github.com/knsv/mermaid</span>
+</span></span><span class=line><span class=cl>  <span class=n>enable</span><span class=p>:</span> <span class=bp>true</span>  <span class=c1># default true</span>
+</span></span><span class=line><span class=cl>  <span class=n>version</span><span class=p>:</span> <span class=s2>&#34;9.3.0&#34;</span> <span class=c1># default v7.1.2</span>
+</span></span><span class=line><span class=cl>  <span class=n>options</span><span class=p>:</span>  <span class=c1># find more api options from https://github.com/knsv/mermaid/blob/master/src/mermaidAPI.js</span>
+</span></span><span class=line><span class=cl>  <span class=c1>#startOnload: true  // default true</span>
+</span></span></code></pre></td></tr></table></div></div></div><h4 id=步骤3>步骤3</h4><p>在主题目录里，有个<code>footer.ejs</code>文件（一般在<code>layout</code>目录下面），把下面代码加到最后</p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>&lt;% if (config.mermaid &amp;&amp; config.mermaid.enable &amp;&amp; page.mermaid) { %&gt;
+</span></span><span class=line><span class=cl>  &lt;script src=&#34;https://cdn.bootcdn.net/ajax/libs/mermaid/&lt;%= config.mermaid.version %&gt;/mermaid.min.js&#34;&gt;&lt;/script&gt;
+</span></span><span class=line><span class=cl>    &lt;/script&gt;
+</span></span><span class=line><span class=cl>&lt;% } %&gt;
+</span></span></code></pre></td></tr></table></div></div></div><h4 id=步骤4>步骤4</h4><p>把<code>mermaid: true</code> 加入页面文件</p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>---
+</span></span><span class=line><span class=cl>title: Hexo支持流程图
+</span></span><span class=line><span class=cl>date: 2023-02-03 13:04:06
+</span></span><span class=line><span class=cl>tags: Markdown
+</span></span><span class=line><span class=cl>mermaid: true
+</span></span><span class=line><span class=cl>---
+</span></span></code></pre></td></tr></table></div></div></div><h2 id=3-mermaid功能>3. Mermaid功能</h2><p>Mermaid支持以下图形：</p><ul><li><a href=https://mermaid.js.org/syntax/flowchart.html>Flowchart</a> 流程图</li><li><a href=https://mermaid.js.org/syntax/sequenceDiagram.html>Sequence Diagram</a> 时序图</li><li><a href=https://mermaid.js.org/syntax/classDiagram.html>Class Diagram</a> 类图</li><li><a href=https://mermaid.js.org/syntax/stateDiagram.html>State Diagram</a> 状态图</li><li><a href=https://mermaid.js.org/syntax/entityRelationshipDiagram.html>Entity Relationship Diagram</a> 实体关系图</li><li><a href=https://mermaid.js.org/syntax/userJourney.html>User Journey</a> 用户旅程图</li><li><a href=https://mermaid.js.org/syntax/gantt.html>Gantt</a> 甘特图</li><li><a href=https://mermaid.js.org/syntax/pie.html>Pie Chart</a> 饼图</li><li><a href=https://mermaid.js.org/syntax/requirementDiagram.html>Requirement Diagram</a> 需求图</li><li><a href=https://mermaid.js.org/syntax/gitgraph.html>Gitgraph Diagrams</a> Git分支图</li></ul><p>另外还有几种实验性质的图形，不一定能用</p><ul><li><a href=https://mermaid.js.org/syntax/c4c.html>C4 Diagrams</a> C4图</li><li><a href=https://mermaid.js.org/syntax/mindmap.html>Mindmap</a> 迷你地图</li></ul><h2 id=4-mermaid使用方法>4. Mermaid使用方法</h2><p>把流程图代码用 ==```mermaid ```== 包裹起来。</p><h2 id=5-示例>5. 示例</h2><p>==若下面不显示图形，刷新本页==</p><h3 id=1-流程图-mermaid-flowchart-tbtdbtrllr>1. 流程图 <code>mermaid flowchart TB/TD/BT/RL/LR</code></h3><p><strong>流程图基本单元</strong>
+有方形框 、圆角框、菱形等十几种节点，节点间的连接线也有好几种，详见<a href=https://mermaid.js.org/syntax/flowchart.html>流程图基本单元</a></p><ul><li>横向流程图 `mermaid flowchart RL/LR</li></ul><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>flowchart LR
+</span></span><span class=line><span class=cl>    A[方形] --&gt;B(圆角)
+</span></span><span class=line><span class=cl>    B --&gt; C{条件a}
+</span></span><span class=line><span class=cl>    C --&gt;|a=1| D[结果1]
+</span></span><span class=line><span class=cl>    C --&gt;|a=2| E[结果2]
+</span></span><span class=line><span class=cl>    F[从左至右横向流程图]
+</span></span></code></pre></td></tr></table></div></div></div><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>flowchart LR
+</span></span><span class=line><span class=cl>    A[方形] --&gt;B(圆角)
+</span></span><span class=line><span class=cl>    B --&gt; C{条件a}
+</span></span><span class=line><span class=cl>    C --&gt;|a=1| D[结果1]
+</span></span><span class=line><span class=cl>    C --&gt;|a=2| E[结果2]
+</span></span><span class=line><span class=cl>    F[从左至右横向流程图]
+</span></span></code></pre></td></tr></table></div></div></div><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>flowchart RL
+</span></span><span class=line><span class=cl>    A[方形] --&gt;B(圆角)
+</span></span><span class=line><span class=cl>    B --&gt; C{条件a}
+</span></span><span class=line><span class=cl>    C --&gt;|a=1| D[结果1]
+</span></span><span class=line><span class=cl>    C --&gt;|a=2| E[结果2]
+</span></span><span class=line><span class=cl>    F[从右至左横向流程图]
+</span></span></code></pre></td></tr></table></div></div></div><ul><li>竖向流程图 <code>mermaid flowchart TD/TB/BT</code></li></ul><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>flowchart TD
+</span></span><span class=line><span class=cl>A[方形] --&gt; B(圆角)
+</span></span><span class=line><span class=cl>    B --&gt; C{条件a}
+</span></span><span class=line><span class=cl>    C --&gt; |a=1| D[结果1]
+</span></span><span class=line><span class=cl>    C --&gt; |a=2| E[结果2]
+</span></span><span class=line><span class=cl>    F[竖向流程图]
+</span></span></code></pre></td></tr></table></div></div></div><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>flowchart TD
+</span></span><span class=line><span class=cl>A[方形] --&gt; B(圆角)
+</span></span><span class=line><span class=cl>    B --&gt; C{条件a}
+</span></span><span class=line><span class=cl>    C --&gt; |a=1| D[结果1]
+</span></span><span class=line><span class=cl>    C --&gt; |a=2| E[结果2]
+</span></span><span class=line><span class=cl>    F[从上往下竖向流程图]
+</span></span></code></pre></td></tr></table></div></div></div><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>flowchart BT
+</span></span><span class=line><span class=cl>A[方形] --&gt; B(圆角)
+</span></span><span class=line><span class=cl>    B --&gt; C{条件a}
+</span></span><span class=line><span class=cl>    C --&gt; |a=1| D[结果1]
+</span></span><span class=line><span class=cl>    C --&gt; |a=2| E[结果2]
+</span></span><span class=line><span class=cl>    F[从下往上竖向流程图]
+</span></span></code></pre></td></tr></table></div></div></div><ul><li>带有样式的更大的流程图</li></ul><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>graph TB
+</span></span><span class=line><span class=cl>    sq[Square shape] --&gt; ci((Circle shape))
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    subgraph A
+</span></span><span class=line><span class=cl>        od&gt;Odd shape]-- Two line&lt;br/&gt;edge comment --&gt; ro
+</span></span><span class=line><span class=cl>        di{Diamond with &lt;br/&gt; line break} -.-&gt; ro(Rounded&lt;br&gt;square&lt;br&gt;shape)
+</span></span><span class=line><span class=cl>        di==&gt;ro2(Rounded square shape)
+</span></span><span class=line><span class=cl>    end
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    %% Notice that no text in shape are added here instead that is appended further down
+</span></span><span class=line><span class=cl>    e --&gt; od3&gt;Really long text with linebreak&lt;br&gt;in an Odd shape]
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    %% Comments after double percent signs
+</span></span><span class=line><span class=cl>    e((Inner / circle&lt;br&gt;and some odd &lt;br&gt;special characters)) --&gt; f(,.?!+-*ز)
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    cyr[Cyrillic]--&gt;cyr2((Circle shape Начало));
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>     classDef green fill:#9f6,stroke:#333,stroke-width:2px;
+</span></span><span class=line><span class=cl>     classDef orange fill:#f96,stroke:#333,stroke-width:4px;
+</span></span><span class=line><span class=cl>     class sq,e green
+</span></span><span class=line><span class=cl>     class di orange
+</span></span></code></pre></td></tr></table></div></div></div><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>graph TB
+</span></span><span class=line><span class=cl>    sq[Square shape] --&gt; ci((Circle shape))
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    subgraph A
+</span></span><span class=line><span class=cl>        od&gt;Odd shape]-- Two line&lt;br/&gt;edge comment --&gt; ro
+</span></span><span class=line><span class=cl>        di{Diamond with &lt;br/&gt; line break} -.-&gt; ro(Rounded&lt;br&gt;square&lt;br&gt;shape)
+</span></span><span class=line><span class=cl>        di==&gt;ro2(Rounded square shape)
+</span></span><span class=line><span class=cl>    end
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    %% Notice that no text in shape are added here instead that is appended further down
+</span></span><span class=line><span class=cl>    e --&gt; od3&gt;Really long text with linebreak&lt;br&gt;in an Odd shape]
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    %% Comments after double percent signs
+</span></span><span class=line><span class=cl>    e((Inner / circle&lt;br&gt;and some odd &lt;br&gt;special characters)) --&gt; f(,.?!+-*ز)
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    cyr[Cyrillic]--&gt;cyr2((Circle shape Начало));
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>     classDef green fill:#9f6,stroke:#333,stroke-width:2px;
+</span></span><span class=line><span class=cl>     classDef orange fill:#f96,stroke:#333,stroke-width:4px;
+</span></span><span class=line><span class=cl>     class sq,e green
+</span></span><span class=line><span class=cl>     class di orange
+</span></span></code></pre></td></tr></table></div></div></div><h3 id=2-时序图-mermaid-sequencediagram>2. 时序图 <code>mermaid sequenceDiagram</code></h3><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>%% 时序图例子,-&gt; 直线，--&gt;虚线，-&gt;&gt;实线箭头
+</span></span><span class=line><span class=cl>  sequenceDiagram
+</span></span><span class=line><span class=cl>    participant 张三
+</span></span><span class=line><span class=cl>    participant 李四
+</span></span><span class=line><span class=cl>    张三-&gt;王五: 王五你好吗？
+</span></span><span class=line><span class=cl>    loop 健康检查
+</span></span><span class=line><span class=cl>        王五-&gt;王五: 与疾病战斗
+</span></span><span class=line><span class=cl>    end
+</span></span><span class=line><span class=cl>    Note right of 王五: 合理 食物 &lt;br/&gt;看医生...
+</span></span><span class=line><span class=cl>    李四--&gt;&gt;张三: 很好!
+</span></span><span class=line><span class=cl>    王五-&gt;李四: 你怎么样?
+</span></span><span class=line><span class=cl>    李四--&gt;王五: 很好!
+</span></span></code></pre></td></tr></table></div></div></div><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>%% 时序图例子,-&gt; 直线，--&gt;虚线，-&gt;&gt;实线箭头
+</span></span><span class=line><span class=cl>  sequenceDiagram
+</span></span><span class=line><span class=cl>    participant 张三
+</span></span><span class=line><span class=cl>    participant 李四
+</span></span><span class=line><span class=cl>    张三-&gt;王五: 王五你好吗？
+</span></span><span class=line><span class=cl>    loop 健康检查
+</span></span><span class=line><span class=cl>        王五-&gt;王五: 与疾病战斗
+</span></span><span class=line><span class=cl>    end
+</span></span><span class=line><span class=cl>    Note right of 王五: 合理 食物 &lt;br/&gt;看医生...
+</span></span><span class=line><span class=cl>    李四--&gt;&gt;张三: 很好!
+</span></span><span class=line><span class=cl>    王五-&gt;李四: 你怎么样?
+</span></span><span class=line><span class=cl>    李四--&gt;王五: 很好!
+</span></span></code></pre></td></tr></table></div></div></div><h3 id=3-饼图-mermaid-pie>3. 饼图 <code>mermaid pie</code></h3><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>pie
+</span></span><span class=line><span class=cl>    title 饼图
+</span></span><span class=line><span class=cl>    &#34;Joplin&#34; : 42.96
+</span></span><span class=line><span class=cl>    &#34;Qdown&#34; : 50.05
+</span></span><span class=line><span class=cl>    &#34; 黑科技&#34; : 10.01
+</span></span><span class=line><span class=cl>    &#34;其它&#34; :  5
+</span></span></code></pre></td></tr></table></div></div></div><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>pie
+</span></span><span class=line><span class=cl>    title 饼图
+</span></span><span class=line><span class=cl>    &#34;Joplin&#34; : 42.96
+</span></span><span class=line><span class=cl>    &#34;Qdown&#34; : 50.05
+</span></span><span class=line><span class=cl>    &#34; 黑科技&#34; : 10.01
+</span></span><span class=line><span class=cl>    &#34;其它&#34; :  5
+</span></span></code></pre></td></tr></table></div></div></div><h3 id=4-甘特图-mermaid>4. 甘特图 <code>mermaid</code></h3><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>gantt
+</span></span><span class=line><span class=cl>dateFormat  YYYY-MM-DD
+</span></span><span class=line><span class=cl>title 软件开发甘特图
+</span></span><span class=line><span class=cl>section 设计
+</span></span><span class=line><span class=cl>需求                      :done,    des1, 2014-01-06,2014-01-08
+</span></span><span class=line><span class=cl>原型                      :active,  des2, 2014-01-09, 3d
+</span></span><span class=line><span class=cl>UI设计                     :         des3, after des2, 5d
+</span></span><span class=line><span class=cl>未来任务                     :         des4, after des3, 5d
+</span></span><span class=line><span class=cl>section 开发
+</span></span><span class=line><span class=cl>学习准备理解需求                      :crit, done, 2014-01-06,24h
+</span></span><span class=line><span class=cl>设计框架                             :crit, done, after des2, 2d
+</span></span><span class=line><span class=cl>开发                                 :crit, active, 3d
+</span></span><span class=line><span class=cl>未来任务                              :crit, 5d
+</span></span><span class=line><span class=cl>耍                                   :2d
+</span></span><span class=line><span class=cl>section 测试
+</span></span><span class=line><span class=cl>功能测试                              :active, a1, after des3, 3d
+</span></span><span class=line><span class=cl>压力测试                               :after a1  , 20h
+</span></span><span class=line><span class=cl>测试报告                               : 48h
+</span></span></code></pre></td></tr></table></div></div></div><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>gantt
+</span></span><span class=line><span class=cl>dateFormat  YYYY-MM-DD
+</span></span><span class=line><span class=cl>title 软件开发甘特图
+</span></span><span class=line><span class=cl>section 设计
+</span></span><span class=line><span class=cl>需求                      :done,    des1, 2014-01-06,2014-01-08
+</span></span><span class=line><span class=cl>原型                      :active,  des2, 2014-01-09, 3d
+</span></span><span class=line><span class=cl>UI设计                     :         des3, after des2, 5d
+</span></span><span class=line><span class=cl>未来任务                     :         des4, after des3, 5d
+</span></span><span class=line><span class=cl>section 开发
+</span></span><span class=line><span class=cl>学习准备理解需求                      :crit, done, 2014-01-06,24h
+</span></span><span class=line><span class=cl>设计框架                             :crit, done, after des2, 2d
+</span></span><span class=line><span class=cl>开发                                 :crit, active, 3d
+</span></span><span class=line><span class=cl>未来任务                              :crit, 5d
+</span></span><span class=line><span class=cl>耍                                   :2d
+</span></span><span class=line><span class=cl>section 测试
+</span></span><span class=line><span class=cl>功能测试                              :active, a1, after des3, 3d
+</span></span><span class=line><span class=cl>压力测试                               :after a1  , 20h
+</span></span><span class=line><span class=cl>测试报告                               : 48h
+</span></span></code></pre></td></tr></table></div></div></div><h3 id=5-类图-class-diagram----experimental>5. 类图 Class diagram - ❗️ experimental</h3><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>classDiagram
+</span></span><span class=line><span class=cl>Class01 &lt;|-- AveryLongClass : Cool
+</span></span><span class=line><span class=cl>Class03 *-- Class04
+</span></span><span class=line><span class=cl>Class05 o-- Class06
+</span></span><span class=line><span class=cl>Class07 .. Class08
+</span></span><span class=line><span class=cl>Class09 --&gt; C2 : Where am i?
+</span></span><span class=line><span class=cl>Class09 --* C3
+</span></span><span class=line><span class=cl>Class09 --|&gt; Class07
+</span></span><span class=line><span class=cl>Class07 : equals()
+</span></span><span class=line><span class=cl>Class07 : Object[] elementData
+</span></span><span class=line><span class=cl>Class01 : size()
+</span></span><span class=line><span class=cl>Class01 : int chimp
+</span></span><span class=line><span class=cl>Class01 : int gorilla
+</span></span><span class=line><span class=cl>Class08 &lt;--&gt; C2: Cool label
+</span></span></code></pre></td></tr></table></div></div></div><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>classDiagram
+</span></span><span class=line><span class=cl>Class01 &lt;|-- AveryLongClass : Cool
+</span></span><span class=line><span class=cl>Class03 *-- Class04
+</span></span><span class=line><span class=cl>Class05 o-- Class06
+</span></span><span class=line><span class=cl>Class07 .. Class08
+</span></span><span class=line><span class=cl>Class09 --&gt; C2 : Where am i?
+</span></span><span class=line><span class=cl>Class09 --* C3
+</span></span><span class=line><span class=cl>Class09 --|&gt; Class07
+</span></span><span class=line><span class=cl>Class07 : equals()
+</span></span><span class=line><span class=cl>Class07 : Object[] elementData
+</span></span><span class=line><span class=cl>Class01 : size()
+</span></span><span class=line><span class=cl>Class01 : int chimp
+</span></span><span class=line><span class=cl>Class01 : int gorilla
+</span></span><span class=line><span class=cl>Class08 &lt;--&gt; C2: Cool label
+</span></span></code></pre></td></tr></table></div></div></div><h3 id=6-git分支图-git-graph----experimental>6. Git分支图 Git graph - ❗️ experimental</h3><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>    commit &#34;Ashish&#34;
+</span></span><span class=line><span class=cl>    branch newbranch
+</span></span><span class=line><span class=cl>    checkout newbranch
+</span></span><span class=line><span class=cl>    commit id:&#34;1111&#34;
+</span></span><span class=line><span class=cl>    commit tag:&#34;test&#34;
+</span></span><span class=line><span class=cl>    checkout main
+</span></span><span class=line><span class=cl>    commit type: HIGHLIGHT
+</span></span><span class=line><span class=cl>    commit
+</span></span><span class=line><span class=cl>    merge newbranch
+</span></span><span class=line><span class=cl>    commit
+</span></span><span class=line><span class=cl>    branch b2
+</span></span><span class=line><span class=cl>    commit
+</span></span></code></pre></td></tr></table></div></div></div><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>gitGraph:
+</span></span><span class=line><span class=cl>    commit &#34;Ashish&#34;
+</span></span><span class=line><span class=cl>    branch newbranch
+</span></span><span class=line><span class=cl>    checkout newbranch
+</span></span><span class=line><span class=cl>    commit id:&#34;1111&#34;
+</span></span><span class=line><span class=cl>    commit tag:&#34;test&#34;
+</span></span><span class=line><span class=cl>    checkout main
+</span></span><span class=line><span class=cl>    commit type: HIGHLIGHT
+</span></span><span class=line><span class=cl>    commit
+</span></span><span class=line><span class=cl>    merge newbranch
+</span></span><span class=line><span class=cl>    commit
+</span></span><span class=line><span class=cl>    branch b2
+</span></span><span class=line><span class=cl>    commit
+</span></span></code></pre></td></tr></table></div></div></div><h3 id=7-状态图-state-diagram>7. 状态图 State Diagram</h3><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>stateDiagram-v2
+</span></span><span class=line><span class=cl>    [*] --&gt; Active
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    state Active {
+</span></span><span class=line><span class=cl>        [*] --&gt; NumLockOff
+</span></span><span class=line><span class=cl>        NumLockOff --&gt; NumLockOn : EvNumLockPressed
+</span></span><span class=line><span class=cl>        NumLockOn --&gt; NumLockOff : EvNumLockPressed
+</span></span><span class=line><span class=cl>        --
+</span></span><span class=line><span class=cl>        [*] --&gt; CapsLockOff
+</span></span><span class=line><span class=cl>        CapsLockOff --&gt; CapsLockOn : EvCapsLockPressed
+</span></span><span class=line><span class=cl>        CapsLockOn --&gt; CapsLockOff : EvCapsLockPressed
+</span></span><span class=line><span class=cl>        --
+</span></span><span class=line><span class=cl>        [*] --&gt; ScrollLockOff
+</span></span><span class=line><span class=cl>        ScrollLockOff --&gt; ScrollLockOn : EvScrollLockPressed
+</span></span><span class=line><span class=cl>        ScrollLockOn --&gt; ScrollLockOff : EvScrollLockPressed
+</span></span><span class=line><span class=cl>    }
+</span></span></code></pre></td></tr></table></div></div></div><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>stateDiagram-v2
+</span></span><span class=line><span class=cl>    [*] --&gt; Active
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    state Active {
+</span></span><span class=line><span class=cl>        [*] --&gt; NumLockOff
+</span></span><span class=line><span class=cl>        NumLockOff --&gt; NumLockOn : EvNumLockPressed
+</span></span><span class=line><span class=cl>        NumLockOn --&gt; NumLockOff : EvNumLockPressed
+</span></span><span class=line><span class=cl>        --
+</span></span><span class=line><span class=cl>        [*] --&gt; CapsLockOff
+</span></span><span class=line><span class=cl>        CapsLockOff --&gt; CapsLockOn : EvCapsLockPressed
+</span></span><span class=line><span class=cl>        CapsLockOn --&gt; CapsLockOff : EvCapsLockPressed
+</span></span><span class=line><span class=cl>        --
+</span></span><span class=line><span class=cl>        [*] --&gt; ScrollLockOff
+</span></span><span class=line><span class=cl>        ScrollLockOff --&gt; ScrollLockOn : EvScrollLockPressed
+</span></span><span class=line><span class=cl>        ScrollLockOn --&gt; ScrollLockOff : EvScrollLockPressed
+</span></span><span class=line><span class=cl>    }
+</span></span></code></pre></td></tr></table></div></div></div><h3 id=8-实体关系图-entity-relationship-diagram>8. 实体关系图 Entity Relationship Diagram</h3><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>erDiagram
+</span></span><span class=line><span class=cl>    CAR ||--o{ NAMED-DRIVER : allows
+</span></span><span class=line><span class=cl>    CAR {
+</span></span><span class=line><span class=cl>        string registrationNumber
+</span></span><span class=line><span class=cl>        string make
+</span></span><span class=line><span class=cl>        string model
+</span></span><span class=line><span class=cl>    }
+</span></span><span class=line><span class=cl>    PERSON ||--o{ NAMED-DRIVER : is
+</span></span><span class=line><span class=cl>    PERSON {
+</span></span><span class=line><span class=cl>        string firstName
+</span></span><span class=line><span class=cl>        string lastName
+</span></span><span class=line><span class=cl>        int age
+</span></span><span class=line><span class=cl>    }
+</span></span></code></pre></td></tr></table></div></div></div><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>erDiagram
+</span></span><span class=line><span class=cl>    CAR ||--o{ NAMED-DRIVER : allows
+</span></span><span class=line><span class=cl>    CAR {
+</span></span><span class=line><span class=cl>        string registrationNumber
+</span></span><span class=line><span class=cl>        string make
+</span></span><span class=line><span class=cl>        string model
+</span></span><span class=line><span class=cl>    }
+</span></span><span class=line><span class=cl>    PERSON ||--o{ NAMED-DRIVER : is
+</span></span><span class=line><span class=cl>    PERSON {
+</span></span><span class=line><span class=cl>        string firstName
+</span></span><span class=line><span class=cl>        string lastName
+</span></span><span class=line><span class=cl>        int age
+</span></span><span class=line><span class=cl>    }
+</span></span></code></pre></td></tr></table></div></div></div><h3 id=9-用户旅程图-user-journey>9. 用户旅程图 User Journey</h3><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>journey
+</span></span><span class=line><span class=cl>    title My working day
+</span></span><span class=line><span class=cl>    section Go to work
+</span></span><span class=line><span class=cl>      Make tea: 5: Me
+</span></span><span class=line><span class=cl>      Go upstairs: 3: Me
+</span></span><span class=line><span class=cl>      Do work: 1: Me, Cat
+</span></span><span class=line><span class=cl>    section Go home
+</span></span><span class=line><span class=cl>      Go downstairs: 5: Me
+</span></span><span class=line><span class=cl>      Sit down: 5: Me
+</span></span></code></pre></td></tr></table></div></div></div><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>journey
+</span></span><span class=line><span class=cl>    title My working day
+</span></span><span class=line><span class=cl>    section Go to work
+</span></span><span class=line><span class=cl>      Make tea: 5: Me
+</span></span><span class=line><span class=cl>      Go upstairs: 3: Me
+</span></span><span class=line><span class=cl>      Do work: 1: Me, Cat
+</span></span><span class=line><span class=cl>    section Go home
+</span></span><span class=line><span class=cl>      Go downstairs: 5: Me
+</span></span><span class=line><span class=cl>      Sit down: 5: Me
+</span></span></code></pre></td></tr></table></div></div></div><h3 id=10-需求图-requirement-diagram>10. 需求图 Requirement Diagram</h3><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>    requirementDiagram
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    requirement test_req {
+</span></span><span class=line><span class=cl>    id: 1
+</span></span><span class=line><span class=cl>    text: the test text.
+</span></span><span class=line><span class=cl>    risk: high
+</span></span><span class=line><span class=cl>    verifymethod: test
+</span></span><span class=line><span class=cl>    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    element test_entity {
+</span></span><span class=line><span class=cl>    type: simulation
+</span></span><span class=line><span class=cl>    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    test_entity - satisfies -&gt; test_req
+</span></span></code></pre></td></tr></table></div></div></div><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>    requirementDiagram
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    requirement test_req {
+</span></span><span class=line><span class=cl>    id: 1
+</span></span><span class=line><span class=cl>    text: the test text.
+</span></span><span class=line><span class=cl>    risk: high
+</span></span><span class=line><span class=cl>    verifymethod: test
+</span></span><span class=line><span class=cl>    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    element test_entity {
+</span></span><span class=line><span class=cl>    type: simulation
+</span></span><span class=line><span class=cl>    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    test_entity - satisfies -&gt; test_req
+</span></span></code></pre></td></tr></table></div></div></div><h3 id=11-c4c-diagram-未测试>11. C4C Diagram （未测试）</h3><p><a href=https://mermaid.js.org/syntax/c4c.html>官网链接</a></p><h3 id=12-脑图-mindmaps-未测试>12. 脑图 Mindmaps （未测试）</h3><p><a href=https://mermaid.js.org/syntax/mindmap.html>官网链接</a></p></div><div class=post-archive><h2>相关文章</h2><ul class=listing><li><a href=/2023/20230202230406.html>Markdown插入视频</a></li><li><a href=/2023/20230201154300.html>Markdown用Mathjax编译公式</a></li></ul></div><div class="post-meta meta-tags"><ul class=clearfix><li><a href=/tags/markdown.html target=_blank>Markdown</a></li></ul></div></article><div id=remark42></div><script>var remark_config={host:"https://remark42.matteo.eu.org",site_id:"matteo",locale:"zh",simple_view:!1,no_footer:!1}</script><script>!function(e,t){for(s=0;s<e.length;s++){var s,n=t.createElement("script"),o=".js",i=t.head||t.body;"noModule"in n?(n.type="module",o=".mjs"):n.async=!0,n.defer=!0,n.src=remark_config.host+"/web/"+e[s]+o,i.appendChild(n)}}(remark_config.components||["embed"],document)</script></div><footer id=footer><div>&copy; 2025 <a href=https://matteo.eu.org/>奥国天空 By</a></div><br><div><div class=github-badge><a href=https://gohugo.io/ target=_black rel=nofollow><span class=badge-subject>Powered by</span><span class="badge-value bg-blue">Hugo</span></a></div><div class=github-badge><a href=https://www.flysnow.org/ target=_black><span class=badge-subject>Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a></div><div class=github-badge><a href=https://github.com/flysnow-org/maupassant-hugo target=_black><span class=badge-subject>Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a></div></div></footer><script type=text/javascript>window.MathJax={tex2jax:{inlineMath:[["$","$"]],processEscapes:!0}}</script><script src='//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script><a id=rocket href=#top></a><script type=text/javascript src='/js/totop.js?v=0.0.0' async></script><style type=text/css>div.highlight{position:relative;margin:1em 0}.copy-code{display:none;position:absolute;top:4px;right:4px;color:rgba(255,255,255,.8);background:rgba(78,78,78,.8);border-radius:var(--radius);padding:0 5px;font:inherit;user-select:none;cursor:pointer;border:0;--radius:8px}div.highlight:hover .copy-code,pre:hover .copy-code{display:block}</style><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script><script>window.addEventListener("load",function(){var t,e=document.querySelector(".sidebar_container");Lightense("img:not(.no-lightense),.lightense",{beforeShow(){t=window.getComputedStyle(e).getPropertyValue("display"),e.style.display="none"},afterHide(){e.style.display=t}})},!1);function getZindex(e){var t=document.querySelector(e);return window.getComputedStyle(t).getPropertyValue("z-index")}function getDisplay(e){var t=document.querySelector(e);return window.getComputedStyle(t).getPropertyValue("display")}function getPosition(e){var t=document.querySelector(e);return window.getComputedStyle(t).getPropertyValue("position")}</script><script src=/js/lightense.min.js></script></main><aside id=sidebar_container class=sidebar_container><div id=sidebar><div class=widget><figure><img class=no-lightense src=/icons/favicon-192x192.png width=100 height=100><figcaption><h4>Matteo</h4></figcaption></figure></div><div class=widget><div class=widget-title><i class="fa fa-search">搜索</a></i></div><div class=search-form><input id=local-search-input placeholder=Search type=text name=q results=0><div id=local-search-result></div><p>文章数量: 30</p></div></div><div class=widget><div class=widget-title><i class="fa fa-folder-o"><a href=/categories.html>分类</a></i></div><ul class=tree-sections><ul><li><a href=https://matteo.eu.org/post/01net.html>①网海拾贝</a><ul><li><a href=https://matteo.eu.org/post/01net/wen.html>网络文摘</a>
+<span class=category-count>(1)</span><ul></ul></li></ul></li><li><a href=https://matteo.eu.org/post/02pr.html>②编程语言</a><ul><li><a href=https://matteo.eu.org/post/02pr/cplus.html>C++</a>
+<span class=category-count>(4)</span><ul></ul></li></ul></li><li><a href=https://matteo.eu.org/post/03it.html>③IT世界</a><ul><li><a href=https://matteo.eu.org/post/03it/blog.html>Blog相关</a>
+<span class=category-count>(6)</span><ul></ul></li><li><a href=https://matteo.eu.org/post/03it/mark.html>Markdown</a>
+<span class=category-count>(4)</span><ul></ul></li><li><a href=https://matteo.eu.org/post/03it/exp.html>奇巧经验</a>
+<span class=category-count>(2)</span><ul></ul></li><li><a href=https://matteo.eu.org/post/03it/tech.html>前沿技术</a>
+<span class=category-count>(1)</span><ul></ul></li></ul></li><li><a href=https://matteo.eu.org/post/04deut.html>④德语学习</a><ul><li><a href=https://matteo.eu.org/post/04deut/gram.html>语法</a>
+<span class=category-count>(6)</span><ul></ul></li></ul></li><li><a href=https://matteo.eu.org/post/05life.html>⑤人生百味</a><ul><li><a href=https://matteo.eu.org/post/05life/talk.html>胡言乱语</a>
+<span class=category-count>(6)</span><ul></ul></li></ul></li></ul></ul></div><div class=widget><div class=widget-title><i class="fa fa-files-o">最近文章</i></div><ul class=recent_post><li><a href=https://matteo.eu.org/2024/20241022005306.html title="在 Visual Studio Code（VSCode) 中通过 CMake 和 vcpkg 安装和使用包">在 Visual Studio Code（VSCode) 中通过 CMake 和 vcpkg 安装和使用包</a></li><li><a href=https://matteo.eu.org/2023/20230313153822.html title=C++中const的各种用法的详解>C++中const的各种用法的详解</a></li><li><a href=https://matteo.eu.org/2023/20230313020157.html title=德语中只接第三格Dativ的动词>德语中只接第三格Dativ的动词</a></li><li><a href=https://matteo.eu.org/2023/20230313011111.html title=德语中的人三物四>德语中的人三物四</a></li><li><a href=https://matteo.eu.org/2023/20230311215201.html title=古今中外时间对照表，系统详细，方便记忆查询>古今中外时间对照表，系统详细，方便记忆查询</a></li><li><a href=https://matteo.eu.org/2023/20230218191559.html title=调整美化Hugo的maupassant主题>调整美化Hugo的maupassant主题</a></li><li><a href=https://matteo.eu.org/2023/20230217181620.html title=开源C++库列表>开源C++库列表</a></li><li><a href=https://matteo.eu.org/2023/20230216233051.html title="Github 使用 rsync 同步网站到个人服务器">Github 使用 rsync 同步网站到个人服务器</a></li><li><a href=https://matteo.eu.org/2023/20230214151418.html title=情人节的起源和风行世界的原因>情人节的起源和风行世界的原因</a></li><li><a href=https://matteo.eu.org/2023/20230214001310.html title=一个直径60米的气球在18000米高空需要多少氦气？>一个直径60米的气球在18000米高空需要多少氦气？</a></li></ul></div><section class=widget><div class=widget-title><i class="fa fa-star-o">标签</i></div><div class=tagcloud><a href=https://matteo.eu.org/tags/a2.html>A2</a>
+<a href=https://matteo.eu.org/tags/blog.html>Blog</a>
+<a href=https://matteo.eu.org/tags/c++.html>C++</a>
+<a href=https://matteo.eu.org/tags/c++%E5%9F%BA%E7%A1%80.html>C++基础</a>
+<a href=https://matteo.eu.org/tags/cmake.html>CMake</a>
+<a href=https://matteo.eu.org/tags/email.html>Email</a>
+<a href=https://matteo.eu.org/tags/hugo.html>Hugo</a>
+<a href=https://matteo.eu.org/tags/markdown.html>Markdown</a>
+<a href=https://matteo.eu.org/tags/maupassant.html>Maupassant</a>
+<a href=https://matteo.eu.org/tags/vcpkg.html>Vcpkg</a>
+<a href=https://matteo.eu.org/tags/vscode.html>VSCode</a>
+<a href=https://matteo.eu.org/tags/%E4%B8%BB%E9%A2%98.html>主题</a>
+<a href=https://matteo.eu.org/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD.html>人工智能</a>
+<a href=https://matteo.eu.org/tags/%E4%BB%A3%E8%AF%8D.html>代词</a>
+<a href=https://matteo.eu.org/tags/%E5%86%A0%E8%AF%8D.html>冠词</a>
+<a href=https://matteo.eu.org/tags/%E5%8A%A8%E8%AF%8D.html>动词</a>
+<a href=https://matteo.eu.org/tags/%E5%90%8D%E8%AF%8D.html>名词</a>
+<a href=https://matteo.eu.org/tags/%E5%9F%9F%E5%90%8D.html>域名</a>
+<a href=https://matteo.eu.org/tags/%E5%AE%89%E8%A3%85.html>安装</a>
+<a href=https://matteo.eu.org/tags/%E5%BC%80%E6%BA%90.html>开源</a>
+<a href=https://matteo.eu.org/tags/%E5%BE%B7%E8%AF%AD.html>德语</a>
+<a href=https://matteo.eu.org/tags/%E6%97%B6%E9%97%B4.html>时间</a>
+<a href=https://matteo.eu.org/tags/%E7%83%AD%E7%82%B9.html>热点</a>
+<a href=https://matteo.eu.org/tags/%E7%A7%91%E5%AD%A6.html>科学</a>
+<a href=https://matteo.eu.org/tags/%E7%BE%8E%E9%A3%9F.html>美食</a>
+<a href=https://matteo.eu.org/tags/%E8%8A%82%E6%97%A5.html>节日</a>
+<a href=https://matteo.eu.org/tags/%E8%AF%AD%E6%B3%95.html>语法</a>
+<a href=https://matteo.eu.org/tags/%E8%AF%BB%E5%90%8E%E6%84%9F.html>读后感</a></div></section><section class=widget><h3 class=widget-title>友情链接</h3><ul class=widget-list><li><a target=_blank href=https://www.flysnow.org/ title=飞雪无情的博客>飞雪无情的博客</a></li></ul></section><section class=widget><h3 class=widget-title>其它</h3><ul class=widget-list><li><a href=https://matteo.eu.org/index.xml>文章 RSS</a></li></ul></section></div></aside><div><input type=checkbox id=nav-toggle aria-hidden=true>
+<label for=nav-toggle class=nav-toggle><div class=nav-toggle-inner><span></span>
+<span></span>
+<span></span></div></label></div></div></body><script>const sidebarToggle=document.querySelector(".nav-toggle"),sidebar=document.querySelector(".sidebar_container");sidebarToggle.addEventListener("click",()=>{sidebar.classList.toggle("show"),main.classList.toggle("blur"),sidebarToggle.classList.toggle("open")});const sidebarMarginTop=sidebar.style.marginTop,toggleTop=sidebarToggle.getBoundingClientRect().top;window.addEventListener("scroll",()=>{var e=document.documentElement.scrollTop;sidebar.style.marginTop=e+sidebarMarginTop+"px"})</script></html>
